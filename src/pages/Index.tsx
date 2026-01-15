@@ -16,6 +16,15 @@ import Icon from "@/components/ui/icon";
 import { CatCameraIcon, CatDoctorIcon, CatPlayIcon, CatSpaIcon, CatReportIcon, CatComfortIcon } from "@/components/BenefitCatIcons";
 import { MousePawPrints } from "@/components/MousePawPrints";
 import { playSound, playMeowSequence } from "@/utils/sounds";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const Index = () => {
   const { toast } = useToast();
@@ -26,7 +35,8 @@ const Index = () => {
     catsCount: "1",
     name: "",
     phone: "",
-    email: ""
+    email: "",
+    agreeToTerms: false
   });
 
   const roomPrices: Record<string, number> = {
@@ -61,6 +71,16 @@ const Index = () => {
       toast({
         title: "Заполните все поля",
         description: "Пожалуйста, укажите даты, имя и телефон",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    if (!bookingData.agreeToTerms) {
+      playSound('meow');
+      toast({
+        title: "Необходимо согласие",
+        description: "Пожалуйста, примите условия соглашения",
         variant: "destructive"
       });
       return;
@@ -521,10 +541,69 @@ const Index = () => {
                   </div>
                 )}
 
+                <div className="flex items-start gap-3 pt-4">
+                  <Checkbox 
+                    id="terms" 
+                    checked={bookingData.agreeToTerms}
+                    onCheckedChange={(checked) => setBookingData({...bookingData, agreeToTerms: checked as boolean})}
+                  />
+                  <Label htmlFor="terms" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+                    Я согласен с{" "}
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button type="button" className="text-primary underline hover:text-primary/80 transition-colors">
+                          обработкой персональных данных
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
+                          <DialogTitle className="text-2xl font-heading">Политика конфиденциальности</DialogTitle>
+                          <DialogDescription>
+                            Политика в отношении обработки персональных данных
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="prose prose-sm max-w-none">
+                          <p className="text-muted-foreground">
+                            Здесь будет размещена политика конфиденциальности.
+                          </p>
+                          <p className="text-muted-foreground mt-4">
+                            Вы можете добавить текст политики позже.
+                          </p>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                    {" "}и{" "}
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <button type="button" className="text-primary underline hover:text-primary/80 transition-colors">
+                          договором оферты
+                        </button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
+                          <DialogTitle className="text-2xl font-heading">Договор оферты</DialogTitle>
+                          <DialogDescription>
+                            Публичная оферта на оказание услуг
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="prose prose-sm max-w-none">
+                          <p className="text-muted-foreground">
+                            Здесь будет размещен договор оферты.
+                          </p>
+                          <p className="text-muted-foreground mt-4">
+                            Вы можете добавить текст договора позже.
+                          </p>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </Label>
+                </div>
+
                 <Button 
                   type="submit"
                   size="lg" 
                   className="w-full text-xl py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                  disabled={!bookingData.agreeToTerms}
                 >
                   ЗАБРОНИРОВАТЬ СЕЙЧАС 🎉
                 </Button>
