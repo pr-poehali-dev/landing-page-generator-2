@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import Icon from "@/components/ui/icon";
+import { CameraIcon, HeartIcon, PlayIcon, SparkleIcon, ReportIcon, PhoneIcon } from "@/components/CatIcons";
 
 const Index = () => {
   const { toast } = useToast();
@@ -69,32 +70,32 @@ const Index = () => {
   };
   const benefits = [
     {
-      emoji: "🔒",
+      icon: CameraIcon,
       title: "Видеонаблюдение 24/7",
       desc: "4K камеры в каждой комнате с защищённым приложением"
     },
     {
-      emoji: "❤️",
+      icon: HeartIcon,
       title: "Ветеринар 24/7",
       desc: "Ежедневный осмотр и премиум корм включены"
     },
     {
-      emoji: "🎾",
+      icon: PlayIcon,
       title: "Игровые комнаты",
       desc: "Когтеточки, конструкции, игрушки, социализация"
     },
     {
-      emoji: "✨",
+      icon: SparkleIcon,
       title: "Груминг и спа",
       desc: "Чистка, стрижка, массаж, парфюмирование"
     },
     {
-      emoji: "💚",
+      icon: ReportIcon,
       title: "Ежедневные отчёты",
       desc: "Фото, видео, письма о питании и сне"
     },
     {
-      emoji: "📱",
+      icon: PhoneIcon,
       title: "Простота и комфорт",
       desc: "Бронирование за 30 сек, доставка включена"
     }
@@ -209,21 +210,26 @@ const Index = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {benefits.map((benefit, idx) => (
-              <Card 
-                key={idx} 
-                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2"
-                style={{ animationDelay: `${idx * 100}ms` }}
-              >
-                <CardHeader>
-                  <div className="text-6xl mb-4">{benefit.emoji}</div>
-                  <CardTitle className="text-xl font-heading">{benefit.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">{benefit.desc}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
+            {benefits.map((benefit, idx) => {
+              const IconComponent = benefit.icon;
+              return (
+                <Card 
+                  key={idx} 
+                  className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2 group"
+                  style={{ animationDelay: `${idx * 100}ms` }}
+                >
+                  <CardHeader>
+                    <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent />
+                    </div>
+                    <CardTitle className="text-xl font-heading">{benefit.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-base">{benefit.desc}</CardDescription>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
