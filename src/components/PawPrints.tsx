@@ -14,15 +14,15 @@ export const PawPrints = () => {
   useEffect(() => {
     const generatePawPrints = () => {
       const newPawPrints: PawPrint[] = [];
-      const numberOfPaws = 15;
+      const numberOfPaws = 20;
 
       for (let i = 0; i < numberOfPaws; i++) {
         newPawPrints.push({
           id: i,
-          x: Math.random() * 100,
-          y: Math.random() * 100,
+          x: Math.random() * 95,
+          y: Math.random() * 95,
           rotation: Math.random() * 360,
-          delay: Math.random() * 10
+          delay: Math.random() * 8
         });
       }
 
@@ -30,7 +30,7 @@ export const PawPrints = () => {
     };
 
     generatePawPrints();
-    const interval = setInterval(generatePawPrints, 20000);
+    const interval = setInterval(generatePawPrints, 15000);
 
     return () => clearInterval(interval);
   }, []);
@@ -49,21 +49,21 @@ export const PawPrints = () => {
           }}
         >
           <svg
-            width="40"
-            height="40"
+            width="50"
+            height="50"
             viewBox="0 0 50 50"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="opacity-0"
             style={{
-              animation: `pawFade 8s ease-in-out ${paw.delay}s`
+              animation: `pawFade 8s ease-in-out ${paw.delay}s infinite`
             }}
           >
-            <ellipse cx="25" cy="35" rx="8" ry="10" fill="#2180a1" opacity="0.15" />
-            <ellipse cx="15" cy="20" rx="4" ry="5" fill="#2180a1" opacity="0.15" />
-            <ellipse cx="25" cy="18" rx="4" ry="5" fill="#2180a1" opacity="0.15" />
-            <ellipse cx="35" cy="20" rx="4" ry="5" fill="#2180a1" opacity="0.15" />
-            <ellipse cx="25" cy="25" rx="3.5" ry="4" fill="#2180a1" opacity="0.15" />
+            <ellipse cx="25" cy="35" rx="8" ry="10" fill="#2180a1" opacity="0.4" />
+            <ellipse cx="15" cy="20" rx="4" ry="5" fill="#2180a1" opacity="0.4" />
+            <ellipse cx="25" cy="18" rx="4" ry="5" fill="#2180a1" opacity="0.4" />
+            <ellipse cx="35" cy="20" rx="4" ry="5" fill="#2180a1" opacity="0.4" />
+            <ellipse cx="25" cy="25" rx="3.5" ry="4" fill="#2180a1" opacity="0.4" />
           </svg>
         </div>
       ))}
@@ -72,23 +72,23 @@ export const PawPrints = () => {
         @keyframes pawFade {
           0% {
             opacity: 0;
-            transform: scale(0.8) translateY(0);
+            transform: scale(0.5) translateY(0);
           }
-          10% {
-            opacity: 0.3;
-            transform: scale(1) translateY(0);
+          15% {
+            opacity: 0.7;
+            transform: scale(1.1) translateY(0);
           }
-          50% {
-            opacity: 0.25;
-            transform: scale(1) translateY(-20px);
+          40% {
+            opacity: 0.6;
+            transform: scale(1) translateY(-10px);
           }
-          90% {
-            opacity: 0.15;
-            transform: scale(0.9) translateY(-30px);
+          70% {
+            opacity: 0.4;
+            transform: scale(0.95) translateY(-20px);
           }
           100% {
             opacity: 0;
-            transform: scale(0.7) translateY(-40px);
+            transform: scale(0.8) translateY(-30px);
           }
         }
 
