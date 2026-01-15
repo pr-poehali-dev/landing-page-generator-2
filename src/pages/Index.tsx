@@ -300,37 +300,6 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-card">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
-            📈 Цифры растущей популярности
-          </h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, idx) => (
-              <Card 
-                key={idx} 
-                className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 cursor-pointer"
-                onClick={() => playSound('purr')}
-              >
-                <CardHeader>
-                  <CardTitle className="text-3xl font-heading font-bold text-primary">
-                    {stat.year}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold mb-2">{stat.cats}</div>
-                  <div className="text-xl text-secondary font-semibold mb-2">{stat.rating}</div>
-                  {stat.cert && (
-                    <Badge className="bg-secondary text-secondary-foreground">{stat.cert}</Badge>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-20 px-4 bg-gradient-to-br from-secondary/10 to-background">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
