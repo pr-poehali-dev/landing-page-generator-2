@@ -102,9 +102,10 @@
     font-family: "Open Sans", sans-serif;
     background: linear-gradient(
       135deg,
-      hsl(220, 60%, 98%) 0%,
-      hsl(280, 50%, 97%) 50%,
-      hsl(340, 55%, 97%) 100%
+      hsl(200, 80%, 88%) 0%,
+      hsl(280, 70%, 85%) 35%,
+      hsl(320, 75%, 88%) 65%,
+      hsl(340, 80%, 90%) 100%
     );
     background-attachment: fixed;
   }
