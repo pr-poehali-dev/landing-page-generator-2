@@ -14,7 +14,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import Icon from "@/components/ui/icon";
 import { CameraIcon, HeartIcon, PlayIcon, SparkleIcon, ReportIcon, PhoneIcon } from "@/components/CatIcons";
-import { CatWithYarn } from "@/components/CatWithYarn";
 import { MousePawPrints } from "@/components/MousePawPrints";
 import { playSound, playMeowSequence } from "@/utils/sounds";
 
@@ -174,7 +173,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative">
-      <CatWithYarn />
       <MousePawPrints />
       <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/5 py-20 px-4 overflow-hidden">
         <div className="absolute top-10 right-10 text-9xl opacity-10 animate-pulse-gentle">😸</div>
