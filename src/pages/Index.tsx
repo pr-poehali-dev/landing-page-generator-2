@@ -13,7 +13,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import Icon from "@/components/ui/icon";
-import { CameraIcon, HeartIcon, PlayIcon, SparkleIcon, ReportIcon, PhoneIcon } from "@/components/CatIcons";
+import { CatCameraIcon, CatDoctorIcon, CatPlayIcon, CatSpaIcon, CatReportIcon, CatComfortIcon } from "@/components/BenefitCatIcons";
 import { MousePawPrints } from "@/components/MousePawPrints";
 import { playSound, playMeowSequence } from "@/utils/sounds";
 
@@ -74,32 +74,32 @@ const Index = () => {
   };
   const benefits = [
     {
-      icon: CameraIcon,
+      icon: CatCameraIcon,
       title: "Видеонаблюдение 24/7",
       desc: "4K камеры в каждой комнате с защищённым приложением"
     },
     {
-      icon: HeartIcon,
+      icon: CatDoctorIcon,
       title: "Ветеринар 24/7",
       desc: "Ежедневный осмотр и премиум корм включены"
     },
     {
-      icon: PlayIcon,
+      icon: CatPlayIcon,
       title: "Игровые комнаты",
       desc: "Когтеточки, конструкции, игрушки, социализация"
     },
     {
-      icon: SparkleIcon,
+      icon: CatSpaIcon,
       title: "Груминг и спа",
       desc: "Чистка, стрижка, массаж, парфюмирование"
     },
     {
-      icon: ReportIcon,
+      icon: CatReportIcon,
       title: "Ежедневные отчёты",
       desc: "Фото, видео, письма о питании и сне"
     },
     {
-      icon: PhoneIcon,
+      icon: CatComfortIcon,
       title: "Простота и комфорт",
       desc: "Бронирование за 30 сек, доставка включена"
     }
