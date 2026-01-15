@@ -1,12 +1,370 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import Icon from "@/components/ui/icon";
 
 const Index = () => {
+  const benefits = [
+    {
+      emoji: "🔒",
+      title: "Видеонаблюдение 24/7",
+      desc: "4K камеры в каждой комнате с защищённым приложением"
+    },
+    {
+      emoji: "❤️",
+      title: "Ветеринар 24/7",
+      desc: "Ежедневный осмотр и премиум корм включены"
+    },
+    {
+      emoji: "🎾",
+      title: "Игровые комнаты",
+      desc: "Когтеточки, конструкции, игрушки, социализация"
+    },
+    {
+      emoji: "✨",
+      title: "Груминг и спа",
+      desc: "Чистка, стрижка, массаж, парфюмирование"
+    },
+    {
+      emoji: "💚",
+      title: "Ежедневные отчёты",
+      desc: "Фото, видео, письма о питании и сне"
+    },
+    {
+      emoji: "📱",
+      title: "Простота и комфорт",
+      desc: "Бронирование за 30 сек, доставка включена"
+    }
+  ];
+
+  const rooms = [
+    {
+      name: "Стандартный",
+      price: "600 ₽/день",
+      popular: false,
+      features: ["Номер 3,5 кв.м", "Премиум корм", "Уборка", "Осмотр ветеринара", "Фотоотчет"]
+    },
+    {
+      name: "Комфорт",
+      price: "900 ₽/день",
+      popular: true,
+      features: ["Номер 5 кв.м", "Видео 24/7", "Игровая 2+ часа", "Груминг", "Социализация"]
+    },
+    {
+      name: "Люкс",
+      price: "1400 ₽/день",
+      popular: false,
+      features: ["Номер 8 кв.м", "Видеозвонки", "Неограниченный доступ", "Спа", "Кейс-менеджер"]
+    }
+  ];
+
+  const stats = [
+    { year: 2022, cats: 120, rating: "4.2★" },
+    { year: 2023, cats: 350, rating: "4.6★" },
+    { year: 2024, cats: 650, rating: "4.9★" },
+    { year: 2025, cats: "800+", rating: "4.9★", cert: "Pet Friendly ✅" }
+  ];
+
+  const testimonials = [
+    {
+      text: "Кошка вернулась счастливей. Видеосвязь спасала отпуск!",
+      author: "Елена И."
+    },
+    {
+      text: "Фотоотчеты каждый день успокаивали. Спасибо!",
+      author: "Сергей и Мария"
+    },
+    {
+      text: "Это спа-салон для кошек! Рекомендуем всем.",
+      author: "Виктория К."
+    }
+  ];
+
+  const faqItems = [
+    {
+      q: "Моя кошка боится незнакомцев. Адаптируется?",
+      a: "Да, за 1-2 дня! Персонал 15+ лет опыта, техники спокойствия, отдельные номера. Гарантия: вернём домой если некомфортно."
+    },
+    {
+      q: "Что если кошке нужно лекарство?",
+      a: "Ветеринар 24/7 на месте. Даём лекарства по расписанию, специальная диета, мониторинг."
+    },
+    {
+      q: "Почему дороже чем передержка?",
+      a: "Видео 24/7 + ветеринар + развлечения + гарантия качества. Это инвестиция в здоровье кошки."
+    },
+    {
+      q: "Гарантия безопасности?",
+      a: "100%! За 3+ года = 0 побегов. Герметичные номера, двойные двери, видео, страховка."
+    }
+  ];
+
+  const scrollToBooking = () => {
+    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <div className="min-h-screen">
+      <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/5 py-20 px-4 overflow-hidden">
+        <div className="absolute top-10 right-10 text-9xl opacity-10 animate-pulse-gentle">😸</div>
+        <div className="absolute bottom-10 left-10 text-7xl opacity-10 animate-pulse-gentle delay-100">🐱</div>
+        
+        <div className="max-w-5xl mx-auto text-center relative z-10">
+          <div className="text-4xl md:text-5xl font-heading font-bold mb-4 animate-fade-in">
+            😸 Кошачьи каникулы
+          </div>
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-fade-in delay-100">
+            🎉 Оставь кошку на выходных и не волнуйся — она будет счастливее, чем дома
+          </h1>
+          
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in delay-200">
+            Премиум гостиница с видеонаблюдением 24/7 | 800+ кошек | 4.9★ | Pet Friendly ✅
+          </p>
+          
+          <div className="mb-8 animate-scale-in delay-300">
+            <Button 
+              size="lg" 
+              className="text-xl px-8 py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              onClick={scrollToBooking}
+            >
+              ЗАБРОНИРОВАТЬ СЕЙЧАС
+            </Button>
+          </div>
+          
+          <div className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 py-3 rounded-full animate-pulse-gentle shadow-lg">
+            <Icon name="AlertCircle" size={20} />
+            <span className="font-semibold">Осталось 4 свободных места в январе</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-card">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
+            6 преимуществ "Кошачьих каникул"
+          </h2>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {benefits.map((benefit, idx) => (
+              <Card 
+                key={idx} 
+                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2"
+                style={{ animationDelay: `${idx * 100}ms` }}
+              >
+                <CardHeader>
+                  <div className="text-6xl mb-4">{benefit.emoji}</div>
+                  <CardTitle className="text-xl font-heading">{benefit.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base">{benefit.desc}</CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="py-20 px-4 bg-muted/30">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
+            💰 Типы номеров и цены
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            {rooms.map((room, idx) => (
+              <Card 
+                key={idx}
+                className={`relative hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
+                  room.popular ? 'border-4 border-accent shadow-xl scale-105' : 'border-2'
+                }`}
+              >
+                {room.popular && (
+                  <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground px-6 py-1 text-sm">
+                    Популярный
+                  </Badge>
+                )}
+                
+                <CardHeader className="text-center pb-4">
+                  <CardTitle className="text-2xl font-heading mb-2">{room.name}</CardTitle>
+                  <div className="text-3xl font-bold text-primary">{room.price}</div>
+                </CardHeader>
+                
+                <CardContent>
+                  <ul className="space-y-3">
+                    {room.features.map((feature, fIdx) => (
+                      <li key={fIdx} className="flex items-start gap-2">
+                        <Icon name="Check" size={20} className="text-secondary shrink-0 mt-0.5" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <Button 
+                    className="w-full mt-6" 
+                    variant={room.popular ? "default" : "outline"}
+                    onClick={scrollToBooking}
+                  >
+                    Выбрать
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="mt-8 text-center text-lg font-semibold text-muted-foreground">
+            7 дн: -10% | 14 дн: -15% | 2 кошки: -20% | Постоянные: -20%
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-card">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
+            📈 Цифры растущей популярности
+          </h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {stats.map((stat, idx) => (
+              <Card 
+                key={idx} 
+                className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2"
+              >
+                <CardHeader>
+                  <CardTitle className="text-3xl font-heading font-bold text-primary">
+                    {stat.year}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold mb-2">{stat.cats}</div>
+                  <div className="text-xl text-secondary font-semibold mb-2">{stat.rating}</div>
+                  {stat.cert && (
+                    <Badge className="bg-secondary text-secondary-foreground">{stat.cert}</Badge>
+                  )}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-gradient-to-br from-secondary/10 to-background">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
+            💬 Отзывы клиентов
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {testimonials.map((testimonial, idx) => (
+              <Card key={idx} className="hover:shadow-xl transition-all duration-300 border-2">
+                <CardContent className="pt-6">
+                  <div className="text-5xl mb-4">⭐</div>
+                  <p className="text-lg mb-4 italic">"{testimonial.text}"</p>
+                  <p className="font-semibold text-primary">— {testimonial.author}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-card">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
+            ❓ Частые вопросы
+          </h2>
+          
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqItems.map((item, idx) => (
+              <AccordionItem key={idx} value={`item-${idx}`} className="border-2 rounded-lg px-6">
+                <AccordionTrigger className="text-lg font-semibold hover:text-primary">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-base text-muted-foreground pt-2">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          
+          <Card className="mt-12 bg-secondary/10 border-2 border-secondary">
+            <CardContent className="pt-6">
+              <div className="flex items-start gap-3">
+                <div className="text-3xl">✅</div>
+                <p className="text-lg">
+                  <strong>100% возврат денег</strong> если кошке некомфортно в 1-й день. 
+                  Практика: 92% адаптируются за 4-8 часов, 98% счастливы, 67% не хотят уходить!
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section id="booking" className="py-20 px-4 bg-gradient-to-br from-accent/10 via-primary/5 to-background relative overflow-hidden">
+        <div className="absolute top-10 left-10 text-8xl opacity-10 animate-pulse-gentle">🔥</div>
+        <div className="absolute bottom-10 right-10 text-8xl opacity-10 animate-pulse-gentle delay-100">🎯</div>
+        
+        <div className="max-w-3xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
+            🔥 Январь-февраль заполняются быстро
+          </h2>
+          
+          <div className="bg-card border-2 border-accent rounded-2xl p-8 mb-8 shadow-xl">
+            <p className="text-xl mb-4 font-semibold">
+              8 из 10 дат заняты
+            </p>
+            <p className="text-lg text-muted-foreground mb-2">
+              Сейчас: <span className="text-2xl font-bold text-primary">900₽</span> → 
+              Завтра: <span className="line-through">950₽</span> → 
+              Неделя: <span className="line-through">1100₽</span>
+            </p>
+          </div>
+          
+          <Button 
+            size="lg" 
+            className="text-2xl px-12 py-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 animate-pulse-gentle"
+          >
+            ЗАБРОНИРОВАТЬ ЛЮКС-НОМЕР СЕЙЧАС
+          </Button>
+        </div>
+      </section>
+
+      <footer className="bg-primary text-primary-foreground py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <h3 className="font-heading font-bold text-xl mb-4">Контакты</h3>
+              <p className="mb-2">Владивосток</p>
+              <p className="mb-2">📞 +7-949-XXXX-XXX</p>
+              <p>📧 info@koshachi-kanikuly-vl.ru</p>
+            </div>
+            
+            <div>
+              <h3 className="font-heading font-bold text-xl mb-4">Часы работы</h3>
+              <p className="mb-2">Пн-Сб: 9:00-21:00</p>
+              <p className="mb-2">Вс: 10:00-19:00</p>
+              <p>Консультация: WhatsApp/Telegram</p>
+            </div>
+            
+            <div>
+              <h3 className="font-heading font-bold text-xl mb-4">Соцсети</h3>
+              <p className="mb-2">Instagram | VK</p>
+              <p>YouTube | TikTok</p>
+            </div>
+          </div>
+          
+          <div className="text-center pt-8 border-t border-primary-foreground/20">
+            <p>© 2025 Кошачьи каникулы Владивостока | SSL ✅ | Pet Friendly ✅</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
