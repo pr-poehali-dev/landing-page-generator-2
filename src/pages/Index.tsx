@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -7,9 +8,65 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useToast } from "@/hooks/use-toast";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
+  const { toast } = useToast();
+  const [bookingData, setBookingData] = useState({
+    roomType: "comfort",
+    checkIn: "",
+    checkOut: "",
+    catsCount: "1",
+    name: "",
+    phone: "",
+    email: ""
+  });
+
+  const roomPrices: Record<string, number> = {
+    standard: 600,
+    comfort: 900,
+    luxury: 1400
+  };
+
+  const calculateTotal = () => {
+    if (!bookingData.checkIn || !bookingData.checkOut) return 0;
+    const start = new Date(bookingData.checkIn);
+    const end = new Date(bookingData.checkOut);
+    const days = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
+    if (days <= 0) return 0;
+    
+    let basePrice = roomPrices[bookingData.roomType] * days;
+    const catsCount = parseInt(bookingData.catsCount);
+    
+    if (catsCount > 1) basePrice *= catsCount * 0.8;
+    if (days >= 14) basePrice *= 0.85;
+    else if (days >= 7) basePrice *= 0.9;
+    
+    return Math.round(basePrice);
+  };
+
+  const handleBooking = (e: React.FormEvent) => {
+    e.preventDefault();
+    const total = calculateTotal();
+    
+    if (!bookingData.checkIn || !bookingData.checkOut || !bookingData.name || !bookingData.phone) {
+      toast({
+        title: "Заполните все поля",
+        description: "Пожалуйста, укажите даты, имя и телефон",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    toast({
+      title: "Бронирование отправлено! 🎉",
+      description: `Итого: ${total}₽. Мы свяжемся с вами в течение часа!`,
+    });
+  };
   const benefits = [
     {
       emoji: "🔒",
@@ -311,12 +368,12 @@ const Index = () => {
         <div className="absolute top-10 left-10 text-8xl opacity-10 animate-pulse-gentle">🔥</div>
         <div className="absolute bottom-10 right-10 text-8xl opacity-10 animate-pulse-gentle delay-100">🎯</div>
         
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-6">
             🔥 Январь-февраль заполняются быстро
           </h2>
           
-          <div className="bg-card border-2 border-accent rounded-2xl p-8 mb-8 shadow-xl">
+          <div className="bg-card border-2 border-accent rounded-2xl p-8 mb-8 shadow-xl text-center">
             <p className="text-xl mb-4 font-semibold">
               8 из 10 дат заняты
             </p>
@@ -327,12 +384,160 @@ const Index = () => {
             </p>
           </div>
           
-          <Button 
-            size="lg" 
-            className="text-2xl px-12 py-8 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105 animate-pulse-gentle"
-          >
-            ЗАБРОНИРОВАТЬ ЛЮКС-НОМЕР СЕЙЧАС
-          </Button>
+          <Card className="border-4 border-primary shadow-2xl">
+            <CardHeader className="text-center">
+              <CardTitle className="text-3xl font-heading">Форма бронирования</CardTitle>
+              <CardDescription className="text-lg">Заполните форму за 30 секунд</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <form onSubmit={handleBooking} className="space-y-6">
+                <div>
+                  <Label className="text-lg font-semibold mb-3 block">Тип номера</Label>
+                  <RadioGroup 
+                    value={bookingData.roomType} 
+                    onValueChange={(value) => setBookingData({...bookingData, roomType: value})}
+                    className="grid md:grid-cols-3 gap-4"
+                  >
+                    <Label 
+                      htmlFor="standard" 
+                      className="flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer hover:border-primary transition-all"
+                    >
+                      <RadioGroupItem value="standard" id="standard" />
+                      <div>
+                        <div className="font-semibold">Стандартный</div>
+                        <div className="text-sm text-muted-foreground">600₽/день</div>
+                      </div>
+                    </Label>
+                    <Label 
+                      htmlFor="comfort" 
+                      className="flex items-center space-x-3 border-2 border-accent rounded-lg p-4 cursor-pointer hover:border-primary transition-all bg-accent/5"
+                    >
+                      <RadioGroupItem value="comfort" id="comfort" />
+                      <div>
+                        <div className="font-semibold">Комфорт ⭐</div>
+                        <div className="text-sm text-muted-foreground">900₽/день</div>
+                      </div>
+                    </Label>
+                    <Label 
+                      htmlFor="luxury" 
+                      className="flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer hover:border-primary transition-all"
+                    >
+                      <RadioGroupItem value="luxury" id="luxury" />
+                      <div>
+                        <div className="font-semibold">Люкс</div>
+                        <div className="text-sm text-muted-foreground">1400₽/день</div>
+                      </div>
+                    </Label>
+                  </RadioGroup>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <Label htmlFor="checkIn" className="text-base font-semibold">Дата заезда</Label>
+                    <Input 
+                      id="checkIn"
+                      type="date" 
+                      value={bookingData.checkIn}
+                      onChange={(e) => setBookingData({...bookingData, checkIn: e.target.value})}
+                      min={new Date().toISOString().split('T')[0]}
+                      className="mt-2 text-lg"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="checkOut" className="text-base font-semibold">Дата выезда</Label>
+                    <Input 
+                      id="checkOut"
+                      type="date" 
+                      value={bookingData.checkOut}
+                      onChange={(e) => setBookingData({...bookingData, checkOut: e.target.value})}
+                      min={bookingData.checkIn || new Date().toISOString().split('T')[0]}
+                      className="mt-2 text-lg"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="catsCount" className="text-base font-semibold">Количество кошек</Label>
+                  <RadioGroup 
+                    value={bookingData.catsCount} 
+                    onValueChange={(value) => setBookingData({...bookingData, catsCount: value})}
+                    className="flex gap-4 mt-2"
+                  >
+                    {["1", "2", "3", "4"].map(num => (
+                      <Label 
+                        key={num}
+                        htmlFor={`cats-${num}`} 
+                        className="flex items-center space-x-2 border-2 rounded-lg px-4 py-2 cursor-pointer hover:border-primary transition-all"
+                      >
+                        <RadioGroupItem value={num} id={`cats-${num}`} />
+                        <span className="font-semibold">{num}</span>
+                      </Label>
+                    ))}
+                  </RadioGroup>
+                  {parseInt(bookingData.catsCount) > 1 && (
+                    <p className="text-sm text-secondary mt-2 font-semibold">✅ Скидка 20% на 2+ кошек!</p>
+                  )}
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <Label htmlFor="name" className="text-base font-semibold">Ваше имя</Label>
+                    <Input 
+                      id="name"
+                      type="text" 
+                      placeholder="Иван Иванов"
+                      value={bookingData.name}
+                      onChange={(e) => setBookingData({...bookingData, name: e.target.value})}
+                      className="mt-2 text-lg"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="phone" className="text-base font-semibold">Телефон</Label>
+                    <Input 
+                      id="phone"
+                      type="tel" 
+                      placeholder="+7 999 123-45-67"
+                      value={bookingData.phone}
+                      onChange={(e) => setBookingData({...bookingData, phone: e.target.value})}
+                      className="mt-2 text-lg"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="email" className="text-base font-semibold">Email (опционально)</Label>
+                  <Input 
+                    id="email"
+                    type="email" 
+                    placeholder="ivan@example.com"
+                    value={bookingData.email}
+                    onChange={(e) => setBookingData({...bookingData, email: e.target.value})}
+                    className="mt-2 text-lg"
+                  />
+                </div>
+
+                {calculateTotal() > 0 && (
+                  <div className="bg-secondary/10 border-2 border-secondary rounded-xl p-6 text-center animate-scale-in">
+                    <p className="text-lg mb-2">Итоговая стоимость:</p>
+                    <p className="text-4xl font-bold text-primary">{calculateTotal()}₽</p>
+                    {bookingData.checkIn && bookingData.checkOut && (
+                      <p className="text-sm text-muted-foreground mt-2">
+                        {Math.ceil((new Date(bookingData.checkOut).getTime() - new Date(bookingData.checkIn).getTime()) / (1000 * 60 * 60 * 24))} дней • {parseInt(bookingData.catsCount)} кошек
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                <Button 
+                  type="submit"
+                  size="lg" 
+                  className="w-full text-xl py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
+                >
+                  ЗАБРОНИРОВАТЬ СЕЙЧАС 🎉
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
