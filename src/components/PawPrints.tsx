@@ -6,6 +6,7 @@ interface PawPrint {
   y: number;
   rotation: number;
   delay: number;
+  isLeft: boolean;
 }
 
 export const PawPrints = () => {
@@ -14,16 +15,34 @@ export const PawPrints = () => {
   useEffect(() => {
     const generatePawPrints = () => {
       const newPawPrints: PawPrint[] = [];
-      const numberOfPaws = 20;
-
-      for (let i = 0; i < numberOfPaws; i++) {
-        newPawPrints.push({
-          id: i,
-          x: Math.random() * 95,
-          y: Math.random() * 95,
-          rotation: Math.random() * 360,
-          delay: Math.random() * 8
-        });
+      const numberOfTrails = 8;
+      
+      for (let trail = 0; trail < numberOfTrails; trail++) {
+        const startX = Math.random() * 70 + 10;
+        const startY = Math.random() * 80 + 10;
+        const angle = Math.random() * 360;
+        const pawsInTrail = 6;
+        
+        for (let i = 0; i < pawsInTrail; i++) {
+          const distance = i * 35;
+          const angleRad = (angle * Math.PI) / 180;
+          const offsetX = Math.cos(angleRad) * distance;
+          const offsetY = Math.sin(angleRad) * distance;
+          
+          const isLeft = i % 2 === 0;
+          const perpOffset = isLeft ? -8 : 8;
+          const perpX = Math.cos(angleRad + Math.PI / 2) * perpOffset;
+          const perpY = Math.sin(angleRad + Math.PI / 2) * perpOffset;
+          
+          newPawPrints.push({
+            id: trail * pawsInTrail + i,
+            x: startX + (offsetX / window.innerWidth) * 100 + (perpX / window.innerWidth) * 100,
+            y: startY + (offsetY / window.innerHeight) * 100 + (perpY / window.innerHeight) * 100,
+            rotation: angle + (isLeft ? -15 : 15),
+            delay: trail * 2 + i * 0.3,
+            isLeft
+          });
+        }
       }
 
       setPawPrints(newPawPrints);
@@ -49,9 +68,9 @@ export const PawPrints = () => {
           }}
         >
           <svg
-            width="50"
-            height="50"
-            viewBox="0 0 50 50"
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="opacity-0"
@@ -59,11 +78,10 @@ export const PawPrints = () => {
               animation: `pawFade 8s ease-in-out ${paw.delay}s infinite`
             }}
           >
-            <ellipse cx="25" cy="35" rx="8" ry="10" fill="#2180a1" opacity="0.4" />
-            <ellipse cx="15" cy="20" rx="4" ry="5" fill="#2180a1" opacity="0.4" />
-            <ellipse cx="25" cy="18" rx="4" ry="5" fill="#2180a1" opacity="0.4" />
-            <ellipse cx="35" cy="20" rx="4" ry="5" fill="#2180a1" opacity="0.4" />
-            <ellipse cx="25" cy="25" rx="3.5" ry="4" fill="#2180a1" opacity="0.4" />
+            <circle cx="20" cy="28" r="6" fill="#2180a1" opacity="0.5" />
+            <circle cx="12" cy="18" r="3.5" fill="#2180a1" opacity="0.5" />
+            <circle cx="20" cy="15" r="3.5" fill="#2180a1" opacity="0.5" />
+            <circle cx="28" cy="18" r="3.5" fill="#2180a1" opacity="0.5" />
           </svg>
         </div>
       ))}
@@ -92,26 +110,8 @@ export const PawPrints = () => {
           }
         }
 
-        @keyframes pawWalk {
-          0% {
-            transform: translateX(0) translateY(0);
-          }
-          25% {
-            transform: translateX(30px) translateY(-10px);
-          }
-          50% {
-            transform: translateX(60px) translateY(5px);
-          }
-          75% {
-            transform: translateX(90px) translateY(-15px);
-          }
-          100% {
-            transform: translateX(120px) translateY(0);
-          }
-        }
-
         .animate-paw-walk {
-          animation: pawWalk 8s ease-in-out infinite;
+          animation: none;
         }
       `}</style>
     </div>

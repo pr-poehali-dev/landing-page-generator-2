@@ -57,18 +57,17 @@ export const MousePawPrints = () => {
           }}
         >
           <svg
-            width="30"
-            height="30"
-            viewBox="0 0 50 50"
+            width="28"
+            height="28"
+            viewBox="0 0 40 40"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="animate-mouse-paw-fade"
           >
-            <ellipse cx="25" cy="35" rx="7" ry="9" fill="#ff5252" opacity="0.6" />
-            <ellipse cx="15" cy="20" rx="3.5" ry="4.5" fill="#ff5252" opacity="0.6" />
-            <ellipse cx="25" cy="18" rx="3.5" ry="4.5" fill="#ff5252" opacity="0.6" />
-            <ellipse cx="35" cy="20" rx="3.5" ry="4.5" fill="#ff5252" opacity="0.6" />
-            <ellipse cx="25" cy="25" rx="3" ry="3.5" fill="#ff5252" opacity="0.6" />
+            <circle cx="20" cy="28" r="5.5" fill="#ff5252" opacity="0.7" />
+            <circle cx="13" cy="18" r="3" fill="#ff5252" opacity="0.7" />
+            <circle cx="20" cy="15" r="3" fill="#ff5252" opacity="0.7" />
+            <circle cx="27" cy="18" r="3" fill="#ff5252" opacity="0.7" />
           </svg>
         </div>
       ))}
