@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import Icon from "@/components/ui/icon";
 import { CameraIcon, HeartIcon, PlayIcon, SparkleIcon, ReportIcon, PhoneIcon } from "@/components/CatIcons";
 import { PawPrints } from "@/components/PawPrints";
+import { playSound, playMeowSequence } from "@/utils/sounds";
 
 const Index = () => {
   const { toast } = useToast();
@@ -56,6 +57,7 @@ const Index = () => {
     const total = calculateTotal();
     
     if (!bookingData.checkIn || !bookingData.checkOut || !bookingData.name || !bookingData.phone) {
+      playSound('meow');
       toast({
         title: "Заполните все поля",
         description: "Пожалуйста, укажите даты, имя и телефон",
@@ -64,6 +66,7 @@ const Index = () => {
       return;
     }
     
+    playMeowSequence();
     toast({
       title: "Бронирование отправлено! 🎉",
       description: `Итого: ${total}₽. Мы свяжемся с вами в течение часа!`,
@@ -192,7 +195,10 @@ const Index = () => {
             <Button 
               size="lg" 
               className="text-xl px-8 py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
-              onClick={scrollToBooking}
+              onClick={() => {
+                playSound('meow');
+                scrollToBooking();
+              }}
             >
               ЗАБРОНИРОВАТЬ СЕЙЧАС
             </Button>
@@ -217,8 +223,10 @@ const Index = () => {
               return (
                 <Card 
                   key={idx} 
-                  className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2 group"
+                  className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2 group cursor-pointer"
                   style={{ animationDelay: `${idx * 100}ms` }}
+                  onClick={() => playSound('purr')}
+                  onMouseEnter={() => playSound('click')}
                 >
                   <CardHeader>
                     <div className="mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -274,7 +282,10 @@ const Index = () => {
                   <Button 
                     className="w-full mt-6" 
                     variant={room.popular ? "default" : "outline"}
-                    onClick={scrollToBooking}
+                    onClick={() => {
+                      playSound('meow');
+                      scrollToBooking();
+                    }}
                   >
                     Выбрать
                   </Button>
@@ -299,7 +310,8 @@ const Index = () => {
             {stats.map((stat, idx) => (
               <Card 
                 key={idx} 
-                className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2"
+                className="text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 cursor-pointer"
+                onClick={() => playSound('purr')}
               >
                 <CardHeader>
                   <CardTitle className="text-3xl font-heading font-bold text-primary">
@@ -327,7 +339,11 @@ const Index = () => {
           
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, idx) => (
-              <Card key={idx} className="hover:shadow-xl transition-all duration-300 border-2">
+              <Card 
+                key={idx} 
+                className="hover:shadow-xl transition-all duration-300 border-2 cursor-pointer"
+                onClick={() => playSound('purr')}
+              >
                 <CardContent className="pt-6">
                   <div className="text-5xl mb-4">⭐</div>
                   <p className="text-lg mb-4 italic">"{testimonial.text}"</p>
