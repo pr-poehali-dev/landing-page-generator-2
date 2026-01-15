@@ -14,6 +14,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import Icon from "@/components/ui/icon";
 import { CameraIcon, HeartIcon, PlayIcon, SparkleIcon, ReportIcon, PhoneIcon } from "@/components/CatIcons";
+import { PawPrints } from "@/components/PawPrints";
 
 const Index = () => {
   const { toast } = useToast();
@@ -168,7 +169,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <PawPrints />
       <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/5 py-20 px-4 overflow-hidden">
         <div className="absolute top-10 right-10 text-9xl opacity-10 animate-pulse-gentle">😸</div>
         <div className="absolute bottom-10 left-10 text-7xl opacity-10 animate-pulse-gentle delay-100">🐱</div>
