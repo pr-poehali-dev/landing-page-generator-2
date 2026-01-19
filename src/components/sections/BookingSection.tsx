@@ -53,7 +53,7 @@ export const BookingSection = () => {
     return Math.round(basePrice);
   };
 
-  const handleBooking = (e: React.FormEvent) => {
+  const handleBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     const total = calculateTotal();
     
@@ -77,11 +77,54 @@ export const BookingSection = () => {
       return;
     }
     
-    playMeowSequence();
-    toast({
-      title: "Бронирование отправлено! 🎉",
-      description: `Итого: ${total}₽. Мы свяжемся с вами в течение часа!`,
-    });
+    try {
+      const response = await fetch('https://functions.poehali.dev/936d3ae8-073f-4ab4-baab-23c075a0b731', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: bookingData.name,
+          phone: bookingData.phone,
+          email: bookingData.email,
+          checkinDate: bookingData.checkIn,
+          checkoutDate: bookingData.checkOut,
+          tariff: bookingData.roomType,
+          catCount: parseInt(bookingData.catsCount),
+          message: ''
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        playMeowSequence();
+        toast({
+          title: "Бронирование отправлено! 🎉",
+          description: `Итого: ${total}₽. Мы свяжемся с вами в течение часа!`,
+        });
+        
+        setBookingData({
+          roomType: "comfort",
+          checkIn: "",
+          checkOut: "",
+          catsCount: "1",
+          name: "",
+          phone: "",
+          email: "",
+          agreeToTerms: false
+        });
+      } else {
+        throw new Error(data.error || 'Ошибка сервера');
+      }
+    } catch (error) {
+      playSound('meow');
+      toast({
+        title: "Ошибка отправки",
+        description: "Попробуйте позже или позвоните нам",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
