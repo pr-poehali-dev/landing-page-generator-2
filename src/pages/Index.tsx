@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import Icon from "@/components/ui/icon";
 import { CatCameraIcon, CatDoctorIcon, CatPlayIcon, CatSpaIcon, CatReportIcon, CatComfortIcon } from "@/components/BenefitCatIcons";
 import { MousePawPrints } from "@/components/MousePawPrints";
+import { MouseToyIcon, CatBowlIcon } from "@/components/DecorationIcons";
 import { playSound, playMeowSequence } from "@/utils/sounds";
 import {
   Dialog,
@@ -378,11 +379,11 @@ const Index = () => {
       </section>
 
       <section id="booking" className="py-20 px-4 bg-gradient-to-br from-accent/10 via-primary/5 to-background relative overflow-hidden">
-        <div className="absolute top-10 left-10 w-32 h-32 opacity-25 animate-pulse-gentle">
-          <img src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/f09e9fd5-5334-487d-92ee-40de6dd93517.jpg" alt="Игрушка мышка" className="w-full h-full object-contain mix-blend-multiply" />
+        <div className="absolute top-10 left-10 w-32 h-32 opacity-20 animate-pulse-gentle">
+          <MouseToyIcon />
         </div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 opacity-25 animate-pulse-gentle delay-100">
-          <img src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/8918ad54-8c26-4221-9c0a-752710431e1b.jpg" alt="Кошачья миска" className="w-full h-full object-contain mix-blend-multiply" />
+        <div className="absolute bottom-10 right-10 w-32 h-32 opacity-20 animate-pulse-gentle delay-100">
+          <CatBowlIcon />
         </div>
         
         <div className="max-w-4xl mx-auto relative z-10">
