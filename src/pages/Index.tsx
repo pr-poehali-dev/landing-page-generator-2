@@ -378,11 +378,11 @@ const Index = () => {
       </section>
 
       <section id="booking" className="py-20 px-4 bg-gradient-to-br from-accent/10 via-primary/5 to-background relative overflow-hidden">
-        <div className="absolute top-10 left-10 w-32 h-32 opacity-20 animate-pulse-gentle">
-          <img src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/24cc7d8e-9149-4993-82c2-ebb470b18d60.jpg" alt="Игрушка мышка" className="w-full h-full object-contain" />
+        <div className="absolute top-10 left-10 w-32 h-32 opacity-25 animate-pulse-gentle">
+          <img src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/f09e9fd5-5334-487d-92ee-40de6dd93517.jpg" alt="Игрушка мышка" className="w-full h-full object-contain mix-blend-multiply" />
         </div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 opacity-20 animate-pulse-gentle delay-100">
-          <img src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/bdd8f187-2afe-4e61-a39a-6ddc18fa6829.jpg" alt="Кошачья миска" className="w-full h-full object-contain" />
+        <div className="absolute bottom-10 right-10 w-32 h-32 opacity-25 animate-pulse-gentle delay-100">
+          <img src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/8918ad54-8c26-4221-9c0a-752710431e1b.jpg" alt="Кошачья миска" className="w-full h-full object-contain mix-blend-multiply" />
         </div>
         
         <div className="max-w-4xl mx-auto relative z-10">
