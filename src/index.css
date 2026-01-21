@@ -119,3 +119,24 @@
     font-family: "Rubik", sans-serif;
   }
 }
+
+@keyframes pawWalk {
+  0% {
+    transform: translate(0, 0) rotate(var(--rotation));
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--opacity);
+  }
+  90% {
+    opacity: var(--opacity);
+  }
+  100% {
+    transform: translate(var(--move-x), var(--move-y)) rotate(var(--rotation));
+    opacity: 0;
+  }
+}
+
+.animate-paw-walk {
+  animation: pawWalk 8s ease-in-out infinite;
+}
