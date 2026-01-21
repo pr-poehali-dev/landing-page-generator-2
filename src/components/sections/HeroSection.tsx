@@ -7,38 +7,8 @@ interface HeroSectionProps {
 }
 
 export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
-  const pawPrints = [
-    { left: '5%', bottom: '5%', opacity: 0.6, rotation: 45, delay: 0, moveX: '200px', moveY: '-150px' },
-    { left: '5%', bottom: '5%', opacity: 0.5, rotation: 50, delay: 1000, moveX: '200px', moveY: '-150px' },
-    { left: '5%', bottom: '5%', opacity: 0.45, rotation: 45, delay: 2000, moveX: '200px', moveY: '-150px' },
-    { left: '5%', bottom: '5%', opacity: 0.4, rotation: 50, delay: 3000, moveX: '200px', moveY: '-150px' },
-    { left: '5%', bottom: '5%', opacity: 0.35, rotation: 45, delay: 4000, moveX: '200px', moveY: '-150px' },
-  ];
-
   return (
     <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/5 py-20 px-4 overflow-hidden">
-      {pawPrints.map((paw, index) => (
-        <div
-          key={index}
-          className="absolute text-primary animate-paw-walk z-0"
-          style={{
-            left: paw.left,
-            right: paw.right,
-            bottom: paw.bottom,
-            top: paw.top,
-            fontSize: '2.5rem',
-            animationDelay: `${paw.delay}ms`,
-            // @ts-ignore
-            '--opacity': paw.opacity,
-            '--rotation': `${paw.rotation}deg`,
-            '--move-x': paw.moveX,
-            '--move-y': paw.moveY,
-          }}
-        >
-          🐾
-        </div>
-      ))}
-      
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 animate-fade-in flex items-center justify-center gap-1">
           Кот🐱няня
