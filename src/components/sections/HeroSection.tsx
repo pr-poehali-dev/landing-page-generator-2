@@ -8,14 +8,14 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
   const pawPrints = [
-    { left: '10%', bottom: '15%', opacity: 0.6, rotation: 45, delay: 0 },
-    { left: '20%', bottom: '30%', opacity: 0.5, rotation: 50, delay: 100 },
-    { left: '30%', bottom: '45%', opacity: 0.45, rotation: 40, delay: 200 },
-    { left: '40%', bottom: '60%', opacity: 0.4, rotation: 48, delay: 300 },
-    { left: '50%', bottom: '75%', opacity: 0.35, rotation: 42, delay: 400 },
-    { left: '65%', top: '30%', opacity: 0.3, rotation: 45, delay: 500 },
-    { left: '75%', top: '20%', opacity: 0.25, rotation: 50, delay: 600 },
-    { left: '85%', top: '10%', opacity: 0.2, rotation: 43, delay: 700 },
+    { left: '5%', bottom: '10%', opacity: 0.6, rotation: 45, delay: 0 },
+    { left: '12%', bottom: '20%', opacity: 0.5, rotation: 50, delay: 100 },
+    { left: '8%', top: '15%', opacity: 0.45, rotation: 40, delay: 200 },
+    { left: '15%', top: '8%', opacity: 0.4, rotation: 48, delay: 300 },
+    { right: '5%', bottom: '12%', opacity: 0.55, rotation: -45, delay: 400 },
+    { right: '12%', bottom: '22%', opacity: 0.45, rotation: -50, delay: 500 },
+    { right: '8%', top: '18%', opacity: 0.35, rotation: -40, delay: 600 },
+    { right: '15%', top: '10%', opacity: 0.3, rotation: -48, delay: 700 },
   ];
 
   return (
@@ -26,6 +26,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
           className="absolute text-primary animate-pulse-gentle z-0"
           style={{
             left: paw.left,
+            right: paw.right,
             bottom: paw.bottom,
             top: paw.top,
             opacity: paw.opacity,
