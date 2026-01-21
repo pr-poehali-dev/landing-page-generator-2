@@ -18,7 +18,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
       </div>
       <div className="absolute bottom-10 left-10 w-28 h-28 opacity-20 animate-pulse-gentle delay-100">
         <img 
-          src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/05869095-6b17-42cc-816d-c8f012fd31bd.jpg"
+          src="https://cdn.poehali.dev/files/27ac51a3-306b-47c9-a40e-2841f0eae762.jpg"
           alt="Декор"
           className="w-full h-full object-contain"
           style={{mixBlendMode: 'multiply'}}
