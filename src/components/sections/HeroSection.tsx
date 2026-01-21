@@ -11,14 +11,14 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
     <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/5 py-20 px-4 overflow-hidden">
       <div className="absolute top-10 right-10 w-32 h-32 opacity-20 animate-pulse-gentle">
         <img 
-          src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/956311ba-7adf-4b77-80c7-adf0f89e490c.jpg"
+          src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/d25784f1-b437-4ae9-8f16-91ea7f71a626.jpg"
           alt="Декор"
           className="w-full h-full object-contain"
         />
       </div>
       <div className="absolute bottom-10 left-10 w-28 h-28 opacity-20 animate-pulse-gentle delay-100">
         <img 
-          src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a5d2a6ad-63d9-426f-bf4e-cecd1b264a21.jpg"
+          src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/05869095-6b17-42cc-816d-c8f012fd31bd.jpg"
           alt="Декор"
           className="w-full h-full object-contain"
         />
@@ -28,7 +28,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
         <div className="text-4xl md:text-5xl font-heading font-bold mb-4 animate-fade-in flex items-center justify-center gap-3">
           <div className="w-12 h-12">
             <img 
-              src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a9cae4d4-983c-4165-aa17-ddb0a46cd385.jpg"
+              src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a1285794-166d-4acb-b588-05358ee51713.jpg"
               alt="Котик"
               className="w-full h-full object-contain"
             />
