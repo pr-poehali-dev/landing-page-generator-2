@@ -8,10 +8,11 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
   const pawPrints = [
-    { left: '5%', bottom: '8%', opacity: 0.6, rotation: 45, delay: 0, moveX: '150px', moveY: '-120px' },
-    { left: '10%', bottom: '18%', opacity: 0.5, rotation: 50, delay: 2000, moveX: '150px', moveY: '-120px' },
-    { right: '5%', bottom: '12%', opacity: 0.55, rotation: -45, delay: 4000, moveX: '-150px', moveY: '-120px' },
-    { right: '10%', bottom: '22%', opacity: 0.45, rotation: -50, delay: 6000, moveX: '-150px', moveY: '-120px' },
+    { left: '5%', bottom: '5%', opacity: 0.6, rotation: 45, delay: 0, moveX: '200px', moveY: '-150px' },
+    { left: '5%', bottom: '5%', opacity: 0.5, rotation: 50, delay: 1000, moveX: '200px', moveY: '-150px' },
+    { left: '5%', bottom: '5%', opacity: 0.45, rotation: 45, delay: 2000, moveX: '200px', moveY: '-150px' },
+    { left: '5%', bottom: '5%', opacity: 0.4, rotation: 50, delay: 3000, moveX: '200px', moveY: '-150px' },
+    { left: '5%', bottom: '5%', opacity: 0.35, rotation: 45, delay: 4000, moveX: '200px', moveY: '-150px' },
   ];
 
   return (
