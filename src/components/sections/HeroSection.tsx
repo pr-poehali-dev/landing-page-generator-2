@@ -9,11 +9,12 @@ interface HeroSectionProps {
 export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
   return (
     <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/5 py-20 px-4 overflow-hidden">
-      <div className="absolute top-10 right-10 w-32 h-32 opacity-30 animate-pulse-gentle">
+      <div className="absolute top-10 right-10 w-32 h-32 opacity-90 animate-pulse-gentle">
         <img 
           src="https://cdn.poehali.dev/files/0813fb11-6e86-4c90-9e67-45cec3b093e4.jpg"
           alt="Декор"
           className="w-full h-full object-contain"
+          style={{mixBlendMode: 'darken'}}
         />
       </div>
       <div className="absolute bottom-10 left-10 w-28 h-28 opacity-20 animate-pulse-gentle delay-100">
