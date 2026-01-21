@@ -23,7 +23,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
       {pawPrints.map((paw, index) => (
         <div
           key={index}
-          className="absolute text-primary animate-pulse-gentle"
+          className="absolute text-primary animate-pulse-gentle z-0"
           style={{
             left: paw.left,
             bottom: paw.bottom,
