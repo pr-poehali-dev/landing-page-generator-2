@@ -8,14 +8,10 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
   const pawPrints = [
-    { left: '5%', bottom: '10%', opacity: 0.6, rotation: 45, delay: 0, moveX: '100px', moveY: '-80px' },
-    { left: '8%', bottom: '15%', opacity: 0.5, rotation: 50, delay: 1000, moveX: '120px', moveY: '-100px' },
-    { left: '10%', bottom: '20%', opacity: 0.45, rotation: 40, delay: 2000, moveX: '140px', moveY: '-120px' },
-    { left: '12%', bottom: '25%', opacity: 0.4, rotation: 48, delay: 3000, moveX: '160px', moveY: '-140px' },
-    { right: '5%', bottom: '12%', opacity: 0.55, rotation: -45, delay: 4000, moveX: '-100px', moveY: '-80px' },
-    { right: '8%', bottom: '17%', opacity: 0.45, rotation: -50, delay: 5000, moveX: '-120px', moveY: '-100px' },
-    { right: '10%', bottom: '22%', opacity: 0.35, rotation: -40, delay: 6000, moveX: '-140px', moveY: '-120px' },
-    { right: '12%', bottom: '27%', opacity: 0.3, rotation: -48, delay: 7000, moveX: '-160px', moveY: '-140px' },
+    { left: '5%', bottom: '8%', opacity: 0.6, rotation: 45, delay: 0, moveX: '150px', moveY: '-120px' },
+    { left: '10%', bottom: '18%', opacity: 0.5, rotation: 50, delay: 2000, moveX: '150px', moveY: '-120px' },
+    { right: '5%', bottom: '12%', opacity: 0.55, rotation: -45, delay: 4000, moveX: '-150px', moveY: '-120px' },
+    { right: '10%', bottom: '22%', opacity: 0.45, rotation: -50, delay: 6000, moveX: '-150px', moveY: '-120px' },
   ];
 
   return (
