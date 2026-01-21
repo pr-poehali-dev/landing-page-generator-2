@@ -32,7 +32,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
         </div>
         
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-fade-in delay-100">
-          🎉 Твоя кошка на каникулах, пока ты на отдыхе
+          Твоя кошка на каникулах, пока ты на отдыхе
         </h1>
         
         <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in delay-200">
