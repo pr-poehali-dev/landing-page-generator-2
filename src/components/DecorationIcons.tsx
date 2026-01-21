@@ -1,28 +1,21 @@
 export const MouseToyIcon = () => (
   <svg viewBox="0 0 120 120" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="60" cy="75" rx="20" ry="25" fill="#93c5fd" />
-    <ellipse cx="60" cy="73" rx="18" ry="23" fill="#bfdbfe" />
+    <circle cx="60" cy="60" r="35" fill="#f87171" />
+    <circle cx="60" cy="60" r="30" fill="#fca5a5" />
     
-    <circle cx="60" cy="50" r="18" fill="#93c5fd" />
-    <circle cx="60" cy="50" r="16" fill="#bfdbfe" />
+    <path d="M 55 35 Q 50 30 45 35 L 50 45 Z" fill="#ec4899" />
+    <path d="M 65 35 Q 70 30 75 35 L 70 45 Z" fill="#ec4899" />
+    <path d="M 35 55 Q 30 50 35 45 L 45 50 Z" fill="#ec4899" />
+    <path d="M 85 55 Q 90 50 85 45 L 75 50 Z" fill="#ec4899" />
+    <path d="M 55 85 Q 50 90 45 85 L 50 75 Z" fill="#ec4899" />
+    <path d="M 65 85 Q 70 90 75 85 L 70 75 Z" fill="#ec4899" />
     
-    <ellipse cx="50" cy="35" rx="12" ry="18" fill="#fb923c" />
-    <ellipse cx="70" cy="35" rx="12" ry="18" fill="#fb923c" />
-    <ellipse cx="50" cy="35" rx="9" ry="15" fill="#fdba74" />
-    <ellipse cx="70" cy="35" rx="9" ry="15" fill="#fdba74" />
+    <path d="M 35 60 Q 20 50 10 60" stroke="#fb923c" strokeWidth="3" fill="none" strokeLinecap="round" />
+    <path d="M 40 45 Q 30 30 25 40" stroke="#fb923c" strokeWidth="3" fill="none" strokeLinecap="round" />
+    <path d="M 45 35 Q 40 20 35 30" stroke="#fb923c" strokeWidth="3" fill="none" strokeLinecap="round" />
+    <path d="M 60 30 Q 60 15 55 25" stroke="#fb923c" strokeWidth="3" fill="none" strokeLinecap="round" />
     
-    <circle cx="54" cy="48" r="3" fill="#1e3a8a" />
-    <circle cx="66" cy="48" r="3" fill="#1e3a8a" />
-    
-    <path d="M 60 53 L 58 55 L 62 55 Z" fill="#ec4899" />
-    
-    <line x1="48" y1="52" x2="40" y2="50" stroke="#1e3a8a" strokeWidth="1.5" />
-    <line x1="48" y1="55" x2="40" y2="57" stroke="#1e3a8a" strokeWidth="1.5" />
-    <line x1="72" y1="52" x2="80" y2="50" stroke="#1e3a8a" strokeWidth="1.5" />
-    <line x1="72" y1="55" x2="80" y2="57" stroke="#1e3a8a" strokeWidth="1.5" />
-    
-    <path d="M 50 85 Q 40 95 35 105" stroke="#93c5fd" strokeWidth="6" fill="none" strokeLinecap="round" />
-    <circle cx="35" cy="105" r="3" fill="#93c5fd" />
+    <circle cx="60" cy="60" r="8" fill="#fff" opacity="0.3" />
   </svg>
 );
 
