@@ -8,14 +8,14 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
   const pawPrints = [
-    { left: '10%', bottom: '15%', opacity: 0.3, rotation: 45 },
-    { left: '20%', bottom: '30%', opacity: 0.25, rotation: 50 },
-    { left: '30%', bottom: '45%', opacity: 0.2, rotation: 40 },
-    { left: '40%', bottom: '60%', opacity: 0.15, rotation: 48 },
-    { left: '50%', bottom: '75%', opacity: 0.1, rotation: 42 },
-    { left: '65%', top: '30%', opacity: 0.08, rotation: 45 },
-    { left: '75%', top: '20%', opacity: 0.05, rotation: 50 },
-    { left: '85%', top: '10%', opacity: 0.03, rotation: 43 },
+    { left: '10%', bottom: '15%', opacity: 0.6, rotation: 45, delay: 0 },
+    { left: '20%', bottom: '30%', opacity: 0.5, rotation: 50, delay: 100 },
+    { left: '30%', bottom: '45%', opacity: 0.45, rotation: 40, delay: 200 },
+    { left: '40%', bottom: '60%', opacity: 0.4, rotation: 48, delay: 300 },
+    { left: '50%', bottom: '75%', opacity: 0.35, rotation: 42, delay: 400 },
+    { left: '65%', top: '30%', opacity: 0.3, rotation: 45, delay: 500 },
+    { left: '75%', top: '20%', opacity: 0.25, rotation: 50, delay: 600 },
+    { left: '85%', top: '10%', opacity: 0.2, rotation: 43, delay: 700 },
   ];
 
   return (
@@ -23,14 +23,15 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
       {pawPrints.map((paw, index) => (
         <div
           key={index}
-          className="absolute text-primary/50"
+          className="absolute text-primary animate-pulse-gentle"
           style={{
             left: paw.left,
             bottom: paw.bottom,
             top: paw.top,
             opacity: paw.opacity,
             transform: `rotate(${paw.rotation}deg)`,
-            fontSize: '2rem',
+            fontSize: '2.5rem',
+            animationDelay: `${paw.delay}ms`,
           }}
         >
           🐾
