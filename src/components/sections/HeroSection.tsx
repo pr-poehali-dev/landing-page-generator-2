@@ -26,7 +26,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
       </div>
       
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        <div className="text-4xl md:text-5xl font-heading font-bold mb-4 animate-fade-in flex items-center justify-center gap-1">
+        <div className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 animate-fade-in flex items-center justify-center gap-1">
           Кот🐱няня
         </div>
         
