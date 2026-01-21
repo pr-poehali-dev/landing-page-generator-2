@@ -9,28 +9,28 @@ interface HeroSectionProps {
 export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
   return (
     <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/5 py-20 px-4 overflow-hidden">
-      <div className="absolute top-10 right-10 w-32 h-32 opacity-20 animate-pulse-gentle rounded-full overflow-hidden shadow-lg" style={{background: 'linear-gradient(135deg, transparent 50%, white 50%)'}}>  
+      <div className="absolute top-10 right-10 w-32 h-32 opacity-20 animate-pulse-gentle">
         <img 
           src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/956311ba-7adf-4b77-80c7-adf0f89e490c.jpg"
           alt="Декор"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
-      <div className="absolute bottom-10 left-10 w-28 h-28 opacity-20 animate-pulse-gentle delay-100 rounded-full overflow-hidden shadow-lg" style={{background: 'linear-gradient(135deg, transparent 50%, white 50%)'}}>
+      <div className="absolute bottom-10 left-10 w-28 h-28 opacity-20 animate-pulse-gentle delay-100">
         <img 
           src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a5d2a6ad-63d9-426f-bf4e-cecd1b264a21.jpg"
           alt="Декор"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
         />
       </div>
       
       <div className="max-w-5xl mx-auto text-center relative z-10">
         <div className="text-4xl md:text-5xl font-heading font-bold mb-4 animate-fade-in flex items-center justify-center gap-3">
-          <div className="w-12 h-12 rounded-full overflow-hidden shadow-md" style={{background: 'linear-gradient(135deg, transparent 50%, white 50%)'}}>
+          <div className="w-12 h-12">
             <img 
               src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a9cae4d4-983c-4165-aa17-ddb0a46cd385.jpg"
               alt="Котик"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
           Кошачьи каникулы
