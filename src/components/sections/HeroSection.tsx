@@ -26,16 +26,8 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
       </div>
       
       <div className="max-w-5xl mx-auto text-center relative z-10">
-        <div className="text-4xl md:text-5xl font-heading font-bold mb-4 animate-fade-in flex items-center justify-center gap-3">
-          <div className="w-12 h-12">
-            <img 
-              src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a1285794-166d-4acb-b588-05358ee51713.jpg"
-              alt="Котик"
-              className="w-full h-full object-contain"
-              style={{mixBlendMode: 'multiply'}}
-            />
-          </div>
-          Кошачьи каникулы
+        <div className="text-4xl md:text-5xl font-heading font-bold mb-4 animate-fade-in flex items-center justify-center gap-1">
+          К🐱Тоняня
         </div>
         
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-fade-in delay-100">
