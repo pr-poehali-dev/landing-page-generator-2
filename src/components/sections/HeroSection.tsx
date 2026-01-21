@@ -35,7 +35,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
         </h1>
         
         <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in delay-200">
-          Премиум гостиница с видеонаблюдением 24/7 | 800+ кошек | 4.9★ | Pet Friendly ✅
+          Премиум-гостиница для кошек во Владивостоке | 24/7 | 4.9★ |
         </p>
         
         <div className="mb-8 animate-scale-in delay-300">
