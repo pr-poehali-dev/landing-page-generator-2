@@ -11,7 +11,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
     <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/5 py-20 px-4 overflow-hidden">
       <div className="absolute top-10 right-10 w-32 h-32 opacity-30 animate-pulse-gentle">
         <img 
-          src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/bucket/6b379465-4e5a-4994-91c4-9a9876815d89.png"
+          src="https://cdn.poehali.dev/files/0813fb11-6e86-4c90-9e67-45cec3b093e4.jpg"
           alt="Декор"
           className="w-full h-full object-contain"
         />
