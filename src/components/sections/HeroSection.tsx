@@ -14,7 +14,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
           src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/d25784f1-b437-4ae9-8f16-91ea7f71a626.jpg"
           alt="Декор"
           className="w-full h-full object-contain"
-          style={{mixBlendMode: 'darken'}}
+          style={{mixBlendMode: 'multiply'}}
         />
       </div>
       <div className="absolute bottom-10 left-10 w-28 h-28 opacity-20 animate-pulse-gentle delay-100">
@@ -22,7 +22,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
           src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/05869095-6b17-42cc-816d-c8f012fd31bd.jpg"
           alt="Декор"
           className="w-full h-full object-contain"
-          style={{mixBlendMode: 'darken'}}
+          style={{mixBlendMode: 'multiply'}}
         />
       </div>
       
@@ -33,7 +33,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
               src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a1285794-166d-4acb-b588-05358ee51713.jpg"
               alt="Котик"
               className="w-full h-full object-contain"
-              style={{mixBlendMode: 'darken'}}
+              style={{mixBlendMode: 'multiply'}}
             />
           </div>
           Кошачьи каникулы
