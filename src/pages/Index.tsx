@@ -1,5 +1,6 @@
 import { MousePawPrints } from "@/components/MousePawPrints";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { LocationSection } from "@/components/sections/LocationSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { RoomsSection } from "@/components/sections/RoomsSection";
 import { StatsSection } from "@/components/sections/StatsSection";
@@ -16,6 +17,7 @@ const Index = () => {
     <div className="min-h-screen relative">
       <MousePawPrints />
       <HeroSection onBookNowClick={scrollToBooking} />
+      <LocationSection />
       <BenefitsSection />
       <RoomsSection onBookNowClick={scrollToBooking} />
       <StatsSection />
