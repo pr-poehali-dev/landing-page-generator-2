@@ -21,11 +21,11 @@ const Index = () => {
       <LocationSection />
       <BenefitsSection />
       <PricingSection onBookNowClick={scrollToBooking} />
+      <BookingSection />
       <GallerySection />
       <TeamSection />
       <TestimonialsSection />
       <FAQSection />
-      <BookingSection />
     </div>
   );
 };
