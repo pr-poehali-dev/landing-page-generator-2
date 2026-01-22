@@ -56,8 +56,8 @@ export const LocationSection = () => {
           <div className="order-1 md:order-2">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/7a11db44-e24c-446a-ae3e-2daf7885977f.jpg" 
-                alt="Кошачья гостиница во Владивостоке"
+                src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/bae14a1c-caab-4732-b8e9-75e5049635e3.jpg" 
+                alt="Кошачья гостиница КОТоняня во Владивостоке"
                 className="w-full h-[400px] object-cover"
               />
             </div>
