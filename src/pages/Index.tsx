@@ -3,7 +3,8 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { LocationSection } from "@/components/sections/LocationSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { RoomsSection } from "@/components/sections/RoomsSection";
-import { StatsSection } from "@/components/sections/StatsSection";
+import { GallerySection } from "@/components/sections/GallerySection";
+import { TeamSection } from "@/components/sections/TeamSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { BookingSection } from "@/components/sections/BookingSection";
@@ -20,7 +21,8 @@ const Index = () => {
       <LocationSection />
       <BenefitsSection />
       <RoomsSection onBookNowClick={scrollToBooking} />
-      <StatsSection />
+      <GallerySection />
+      <TeamSection />
       <TestimonialsSection />
       <FAQSection />
       <BookingSection />
