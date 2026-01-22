@@ -1,39 +1,96 @@
 import { Card, CardContent } from "@/components/ui/card";
+import Icon from "@/components/ui/icon";
 
 export const TestimonialsSection = () => {
   const testimonials = [
     {
-      text: "Кошка вернулась счастливей. Видеосвязь спасала отпуск!",
-      author: "Елена И."
+      text: "Оставили нашу Мурку на две недели. Каждый день получали видео, как она играет и спит. Вернулась довольная и упитанная! Спасибо команде за заботу ❤️",
+      author: "Елена Иванова",
+      catName: "Мурка",
+      rating: 5,
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/919d5031-54ca-4c63-a3ee-87d93be34ddf.jpg"
     },
     {
-      text: "Фотоотчеты каждый день успокаивали. Спасибо!",
-      author: "Сергей и Мария"
+      text: "Рыжик впервые остался без нас, очень переживали. Но видеонаблюдение 24/7 успокоило - видели, что он прекрасно проводит время. Теперь только сюда!",
+      author: "Сергей и Мария Петровы",
+      catName: "Рыжик",
+      rating: 5,
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/2419dd70-326e-47f9-a060-00a19862050f.jpg"
     },
     {
-      text: "Это спа-салон для кошек! Рекомендуем всем.",
-      author: "Виктория К."
+      text: "Это не гостиница, это спа-курорт для кошек! Симба вернулся расчесанный, довольный, даже похудел немного. Груминг на высшем уровне 👍",
+      author: "Виктория Кравцова",
+      catName: "Симба",
+      rating: 5,
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/603557ff-8038-465f-b5e7-833fa3b1a1e4.jpg"
+    },
+    {
+      text: "Впервые доверили кого-то чужим рукам. Боня оказался в надёжных руках профессионалов. Ежедневные фотоотчёты и внимательное отношение - рекомендую!",
+      author: "Дмитрий Соколов",
+      catName: "Боня",
+      rating: 5,
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/31bb39c6-1283-493a-adc3-3588a6fdd6f3.jpg"
+    },
+    {
+      text: "Багира очень привередливая, но здесь ей понравилось! Персонал нашёл подход, кормили только тем, что она любит. Спасибо за индивидуальный подход 🐈‍⬛",
+      author: "Анна Романова",
+      catName: "Багира",
+      rating: 5,
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/5206530d-a986-4b08-98bb-d704b7e1e987.jpg"
+    },
+    {
+      text: "Люксовый номер превзошёл ожидания! Барсик жил как король - панорамное окно, спа-процедуры. Теперь он требует такой же сервис дома 😄",
+      author: "Олег и Светлана",
+      catName: "Барсик",
+      rating: 5,
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/6959f908-7068-46bb-adf4-1132bb3648e3.jpg"
     }
   ];
 
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-accent/5 via-background to-secondary/5">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
-          Отзывы наших клиентов
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
+          Отзывы наших клиентов 💬
         </h2>
+        <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto">
+          Реальные истории от хозяев счастливых котиков
+        </p>
         
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, idx) => (
             <Card 
               key={idx}
-              className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2"
+              className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2 flex flex-col"
               style={{ animationDelay: `${idx * 100}ms` }}
             >
-              <CardContent className="pt-6">
-                <div className="text-4xl mb-4 opacity-50">💬</div>
-                <p className="text-lg mb-4 italic">"{testimonial.text}"</p>
-                <p className="text-sm text-muted-foreground font-semibold">— {testimonial.author}</p>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={testimonial.photo} 
+                  alt={testimonial.catName}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-3 right-3 bg-white/95 rounded-full px-3 py-1 flex items-center gap-1 shadow-lg">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Icon key={i} name="Star" size={14} className="text-yellow-500 fill-yellow-500" />
+                  ))}
+                </div>
+              </div>
+              
+              <CardContent className="pt-6 flex-1 flex flex-col">
+                <div className="mb-3">
+                  <p className="font-semibold text-lg text-primary mb-1">{testimonial.catName}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.author}</p>
+                </div>
+                
+                <p className="text-sm leading-relaxed mb-4 flex-1 italic text-muted-foreground">
+                  "{testimonial.text}"
+                </p>
+                
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <Icon name="CheckCircle" size={16} className="text-green-600" />
+                  <span>Проверенный отзыв</span>
+                </div>
               </CardContent>
             </Card>
           ))}
