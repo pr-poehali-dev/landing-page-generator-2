@@ -22,7 +22,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
           Премиум-гостиница для кошек во Владивостоке | 24/7 | 4.9★ |
         </p>
         
-        <div className="mb-8 animate-scale-in delay-300">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8 animate-scale-in delay-300">
           <Button 
             size="lg" 
             className="text-xl px-8 py-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
@@ -32,6 +32,18 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
             }}
           >
             ЗАБРОНИРОВАТЬ СЕЙЧАС
+          </Button>
+          
+          <Button 
+            size="lg"
+            variant="outline"
+            className="text-lg px-6 py-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border-2"
+            asChild
+          >
+            <a href="tel:+74235555555" className="flex items-center gap-2">
+              <Icon name="Phone" size={20} />
+              +7 (423) 555-55-55
+            </a>
           </Button>
         </div>
         
