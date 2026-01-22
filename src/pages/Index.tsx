@@ -2,7 +2,7 @@ import { MousePawPrints } from "@/components/MousePawPrints";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { LocationSection } from "@/components/sections/LocationSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
-import { RoomsSection } from "@/components/sections/RoomsSection";
+import { PricingSection } from "@/components/sections/PricingSection";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { TeamSection } from "@/components/sections/TeamSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
@@ -20,7 +20,7 @@ const Index = () => {
       <HeroSection onBookNowClick={scrollToBooking} />
       <LocationSection />
       <BenefitsSection />
-      <RoomsSection onBookNowClick={scrollToBooking} />
+      <PricingSection onBookNowClick={scrollToBooking} />
       <GallerySection />
       <TeamSection />
       <TestimonialsSection />
