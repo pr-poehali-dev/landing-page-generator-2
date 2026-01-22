@@ -2,7 +2,7 @@ import { MapPin, Phone, Clock } from 'lucide-react';
 
 export const LocationSection = () => {
   return (
-    <section className="py-20 px-4 bg-background">
+    <section className="py-20 px-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
