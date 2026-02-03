@@ -14,12 +14,8 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
           Кот🐱няня
         </div>
         
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-fade-in delay-100">
-          Твоя кошка на каникулах, пока ты на отдыхе
-        </h1>
-        
-        <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in delay-200">
-          Премиум-гостиница для кошек во Владивостоке | 24/7 | 4.9★ |
+        <p className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-8 animate-fade-in delay-100 max-w-4xl mx-auto leading-relaxed">
+          Премиум-гостиница во Владивостоке с видеонаблюдением, где заботятся о вашем питомце, когда вы находитесь в отъезде.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in delay-300">
