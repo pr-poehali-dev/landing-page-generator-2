@@ -5,19 +5,19 @@ export const TeamSection = () => {
     {
       name: "Анна Ветрова",
       role: "Главный ветеринар",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/c557501a-e87d-4744-813b-d8ff02ffdc95.jpg",
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/c8ee1052-f012-49e2-bbfd-98fa6fda6fae.jpg",
       description: "15 лет опыта, специалист по кошачьему здоровью"
     },
     {
       name: "Мария Грумова",
       role: "Профессиональный грумер",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/7f170553-f820-47c6-bbd2-9d69c09fc3a0.jpg",
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a1318300-5d43-4305-89e9-d1cb9f3cab66.jpg",
       description: "Мастер груминга и спа-процедур для котиков"
     },
     {
       name: "Дмитрий Котов",
       role: "Кот-психолог и смотритель",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/639fee94-3540-440a-a522-a3687d0b4213.jpg",
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/b27bd120-98a6-4285-87c1-13ad618a8dab.jpg",
       description: "Эксперт по поведению кошек и их социализации"
     }
   ];
@@ -26,7 +26,7 @@ export const TeamSection = () => {
     <section className="py-20 px-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
-          Команда профессионалов 👨‍⚕️
+          Наша команда 👨‍⚕️
         </h2>
         <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto">
           Опытные специалисты с любовью заботятся о каждом пушистом госте
