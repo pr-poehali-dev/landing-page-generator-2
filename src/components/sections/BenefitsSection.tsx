@@ -64,12 +64,12 @@ export const BenefitsSection = () => {
             return (
               <div 
                 key={idx}
-                className="perspective-1000 animate-fade-in cursor-pointer"
+                className="perspective-1000 animate-fade-in cursor-pointer min-h-[320px]"
                 style={{ animationDelay: `${idx * 100}ms` }}
                 onClick={() => toggleFlip(idx)}
               >
                 <div className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
-                  <Card className="absolute w-full h-full backface-hidden hover:shadow-xl transition-shadow duration-300 border-2 group">
+                  <Card className="absolute w-full h-full backface-hidden hover:shadow-xl transition-shadow duration-300 border-2 group min-h-[320px]">
                     <CardHeader className="text-center pb-4">
                       <div className="mx-auto mb-4 w-24 h-24 transition-transform duration-300 group-hover:scale-110">
                         <IconComponent />
@@ -83,8 +83,8 @@ export const BenefitsSection = () => {
                     </CardContent>
                   </Card>
 
-                  <Card className="absolute w-full h-full backface-hidden rotate-y-180 hover:shadow-xl transition-shadow duration-300 border-2 bg-primary text-primary-foreground">
-                    <CardContent className="flex flex-col items-center justify-center h-full p-6 text-center">
+                  <Card className="absolute w-full h-full backface-hidden rotate-y-180 hover:shadow-xl transition-shadow duration-300 border-2 bg-primary text-primary-foreground min-h-[320px]">
+                    <CardContent className="flex flex-col items-center justify-center h-full p-6 text-center min-h-[320px]">
                       <div className="text-4xl mb-4">{benefit.title.split(' ')[0]}</div>
                       <p className="text-base leading-relaxed">
                         {benefit.detailedDesc}
