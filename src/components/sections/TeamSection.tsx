@@ -19,6 +19,36 @@ export const TeamSection = () => {
       role: "Кот-психолог и смотритель",
       photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/b27bd120-98a6-4285-87c1-13ad618a8dab.jpg",
       description: "Эксперт по поведению кошек и их социализации"
+    },
+    {
+      name: "Олеся Черешнева",
+      role: "Котоняня",
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/453f8830-e560-41d9-a453-14a428d1c464.jpg",
+      description: "Заботливый уход и внимание каждому питомцу"
+    },
+    {
+      name: "Наталья Никонова",
+      role: "Котоняня",
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a7dbad96-fc46-474a-8cf5-40b75abf53b6.jpg",
+      description: "Опытный специалист по уходу за кошками"
+    },
+    {
+      name: "Мария Князян",
+      role: "Администратор",
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/af277dbf-7da8-4f3d-bf18-86751077ebe2.jpg",
+      description: "Всегда на связи и поможет с бронированием"
+    },
+    {
+      name: "Вероника Лукина",
+      role: "Менеджер",
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/66cc3fac-47a8-41a0-80ba-166d8db2fedc.jpg",
+      description: "Организует комфортное пребывание вашего питомца"
+    },
+    {
+      name: "Владислав Саенко",
+      role: "Ветеринар и смотритель",
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/e9fedca7-82c2-46bf-92d0-e8576c3f9f03.jpg",
+      description: "Следит за здоровьем и безопасностью котиков"
     }
   ];
 
@@ -32,7 +62,7 @@ export const TeamSection = () => {
           Опытные специалисты с любовью заботятся о каждом пушистом госте
         </p>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, idx) => (
             <Card 
               key={idx}
