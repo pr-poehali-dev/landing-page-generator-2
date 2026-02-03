@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CatCameraIcon, CatDoctorIcon, CatPlayIcon, CatSpaIcon, CatReportIcon, CatComfortIcon } from "@/components/BenefitCatIcons";
+import Icon from "@/components/ui/icon";
 
 export const BenefitsSection = () => {
   const [flipped, setFlipped] = useState<number[]>([]);
@@ -70,16 +71,15 @@ export const BenefitsSection = () => {
               >
                 <div className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
                   <Card className="absolute w-full h-full backface-hidden hover:shadow-xl transition-shadow duration-300 border-2 group min-h-[320px]">
-                    <CardHeader className="text-center pb-4">
+                    <CardContent className="flex flex-col items-center justify-center h-full p-6 text-center min-h-[320px] relative">
                       <div className="mx-auto mb-4 w-24 h-24 transition-transform duration-300 group-hover:scale-110">
                         <IconComponent />
                       </div>
                       <CardTitle className="text-xl">{benefit.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription className="text-center text-base">
-                        {benefit.desc}
-                      </CardDescription>
+                      
+                      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Icon name="ArrowLeftRight" size={24} className="text-muted-foreground" />
+                      </div>
                     </CardContent>
                   </Card>
 
