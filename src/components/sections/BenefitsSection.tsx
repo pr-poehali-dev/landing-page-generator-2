@@ -1,39 +1,54 @@
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CatCameraIcon, CatDoctorIcon, CatPlayIcon, CatSpaIcon, CatReportIcon, CatComfortIcon } from "@/components/BenefitCatIcons";
 
 export const BenefitsSection = () => {
+  const [flipped, setFlipped] = useState<number[]>([]);
+
   const benefits = [
     {
       icon: CatCameraIcon,
       title: "Видеонаблюдение 24/7",
-      desc: "4K камеры в каждой комнате с защищённым приложением"
+      desc: "4K камеры в каждой комнате с защищённым приложением",
+      detailedDesc: "Смотрите жизнь вашей кошки онлайн в любой момент со смартфона — полная прозрачность и спокойствие."
     },
     {
       icon: CatDoctorIcon,
       title: "Ветеринар 24/7",
-      desc: "Ежедневный осмотр и премиум корм включены"
+      desc: "Ежедневный осмотр и премиум корм включены",
+      detailedDesc: "Лицензированный ветеринар работает без выходных, готов помочь в любой момент — здоровье питомца в надёжных руках."
     },
     {
       icon: CatPlayIcon,
       title: "Игровые комнаты",
-      desc: "Когтеточки, конструкции, игрушки, социализация"
+      desc: "Когтеточки, конструкции, игрушки, социализация",
+      detailedDesc: "Специально оборудованные комнаты с интерактивными игрушками развивают интеллект кошки, и она вернётся домой весёлой и активной."
     },
     {
       icon: CatSpaIcon,
       title: "Груминг и спа",
-      desc: "Чистка, стрижка, массаж, парфюмирование"
+      desc: "Чистка, стрижка, массаж, парфюмирование",
+      detailedDesc: "Профессиональный уход дарит питомцу сияющую шёрстку, здоровые коготки и полный релакс."
     },
     {
       icon: CatReportIcon,
       title: "Ежедневные отчёты",
-      desc: "Фото, видео, письма о питании и сне"
+      desc: "Фото, видео, письма о питании и сне",
+      detailedDesc: "Каждый день получаете подробный отчёт с фото и видео о жизни вашей кошки — никаких сюрпризов, только факты."
     },
     {
       icon: CatComfortIcon,
       title: "Простота и комфорт",
-      desc: "Бронирование за 30 сек, доставка включена"
+      desc: "Бронирование за 30 сек, доставка включена",
+      detailedDesc: "Бронирование в две клики, ваша кошка получает просторную комнату и внимание опытного персонала — вы спокойны."
     }
   ];
+
+  const toggleFlip = (idx: number) => {
+    setFlipped(prev => 
+      prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]
+    );
+  };
 
   return (
     <section className="py-20 px-4 bg-card">
@@ -45,24 +60,39 @@ export const BenefitsSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {benefits.map((benefit, idx) => {
             const IconComponent = benefit.icon;
+            const isFlipped = flipped.includes(idx);
             return (
-              <Card 
-                key={idx} 
-                className="hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2 group cursor-pointer"
+              <div 
+                key={idx}
+                className="perspective-1000 animate-fade-in cursor-pointer"
                 style={{ animationDelay: `${idx * 100}ms` }}
+                onClick={() => toggleFlip(idx)}
               >
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 w-24 h-24 transition-transform duration-300 group-hover:scale-110">
-                    <IconComponent />
-                  </div>
-                  <CardTitle className="text-xl">{benefit.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-center text-base">
-                    {benefit.desc}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                <div className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
+                  <Card className="absolute w-full h-full backface-hidden hover:shadow-xl transition-shadow duration-300 border-2 group">
+                    <CardHeader className="text-center pb-4">
+                      <div className="mx-auto mb-4 w-24 h-24 transition-transform duration-300 group-hover:scale-110">
+                        <IconComponent />
+                      </div>
+                      <CardTitle className="text-xl">{benefit.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-center text-base">
+                        {benefit.desc}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="absolute w-full h-full backface-hidden rotate-y-180 hover:shadow-xl transition-shadow duration-300 border-2 bg-primary text-primary-foreground">
+                    <CardContent className="flex flex-col items-center justify-center h-full p-6 text-center">
+                      <div className="text-4xl mb-4">{benefit.title.split(' ')[0]}</div>
+                      <p className="text-base leading-relaxed">
+                        {benefit.detailedDesc}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             );
           })}
         </div>
