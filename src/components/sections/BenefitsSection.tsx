@@ -65,28 +65,28 @@ export const BenefitsSection = () => {
             return (
               <div 
                 key={idx}
-                className="perspective-1000 animate-fade-in cursor-pointer min-h-[320px]"
+                className="perspective-1000 animate-fade-in cursor-pointer min-h-[280px] sm:min-h-[300px] md:min-h-[320px]"
                 style={{ animationDelay: `${idx * 100}ms` }}
                 onClick={() => toggleFlip(idx)}
               >
                 <div className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
-                  <Card className="absolute w-full h-full backface-hidden hover:shadow-xl transition-shadow duration-300 border-2 group min-h-[320px]">
-                    <CardContent className="flex flex-col items-center justify-center h-full p-6 text-center min-h-[320px] relative">
-                      <div className="mx-auto mb-4 w-24 h-24 transition-transform duration-300 group-hover:scale-110">
+                  <Card className="absolute w-full h-full backface-hidden hover:shadow-xl transition-shadow duration-300 border-2 group min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
+                    <CardContent className="flex flex-col items-center justify-center h-full p-4 sm:p-6 text-center min-h-[280px] sm:min-h-[300px] md:min-h-[320px] relative">
+                      <div className="mx-auto mb-3 sm:mb-4 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 transition-transform duration-300 group-hover:scale-110">
                         <IconComponent />
                       </div>
-                      <CardTitle className="text-xl">{benefit.title}</CardTitle>
+                      <CardTitle className="text-lg sm:text-xl">{benefit.title}</CardTitle>
                       
-                      <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Icon name="ArrowLeftRight" size={24} className="text-muted-foreground" />
+                      <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Icon name="ArrowLeftRight" size={20} className="text-muted-foreground sm:w-6 sm:h-6" />
                       </div>
                     </CardContent>
                   </Card>
 
-                  <Card className="absolute w-full h-full backface-hidden rotate-y-180 hover:shadow-xl transition-shadow duration-300 border-2 bg-primary text-primary-foreground min-h-[320px]">
-                    <CardContent className="flex flex-col items-center justify-center h-full p-6 text-center min-h-[320px]">
-                      <div className="text-4xl mb-4">{benefit.title.split(' ')[0]}</div>
-                      <p className="text-base leading-relaxed">
+                  <Card className="absolute w-full h-full backface-hidden rotate-y-180 hover:shadow-xl transition-shadow duration-300 border-2 bg-primary text-primary-foreground min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
+                    <CardContent className="flex flex-col items-center justify-center h-full p-4 sm:p-6 text-center min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
+                      <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{benefit.title.split(' ')[0]}</div>
+                      <p className="text-sm sm:text-base leading-relaxed">
                         {benefit.detailedDesc}
                       </p>
                     </CardContent>
