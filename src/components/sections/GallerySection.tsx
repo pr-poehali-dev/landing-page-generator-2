@@ -1,3 +1,8 @@
+import { useState, useCallback, useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import { Button } from '@/components/ui/button';
+import Icon from '@/components/ui/icon';
+
 export const GallerySection = () => {
   const photos = [
     {
@@ -26,6 +31,43 @@ export const GallerySection = () => {
     }
   ];
 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1,
+  });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (emblaApi) emblaApi.scrollTo(index);
+    },
+    [emblaApi]
+  );
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
+
   return (
     <section className="py-20 px-4 bg-card">
       <div className="max-w-7xl mx-auto">
@@ -36,24 +78,61 @@ export const GallerySection = () => {
           Наши пушистые гости наслаждаются комфортом, играми и заботой
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {photos.map((photo, idx) => (
-            <div 
-              key={idx}
-              className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 aspect-square animate-fade-in"
-              style={{ animationDelay: `${idx * 100}ms` }}
-            >
-              <img 
-                src={photo.url} 
-                alt={photo.alt}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-white text-sm font-medium">{photo.alt}</p>
+        <div className="relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-6">
+              {photos.map((photo, idx) => (
+                <div 
+                  key={idx}
+                  className="relative flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                >
+                  <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 aspect-square">
+                    <img 
+                      src={photo.url} 
+                      alt={photo.alt}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <p className="text-white text-sm font-medium">{photo.alt}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
+          </div>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background shadow-xl"
+            onClick={scrollPrev}
+          >
+            <Icon name="ChevronLeft" size={24} />
+          </Button>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background shadow-xl"
+            onClick={scrollNext}
+          >
+            <Icon name="ChevronRight" size={24} />
+          </Button>
+        </div>
+
+        <div className="flex justify-center gap-2 mt-8">
+          {scrollSnaps.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                idx === selectedIndex
+                  ? 'bg-primary w-8'
+                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+              }`}
+              onClick={() => scrollTo(idx)}
+            />
           ))}
         </div>
       </div>
