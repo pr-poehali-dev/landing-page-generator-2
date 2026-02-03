@@ -10,7 +10,7 @@ export const GallerySection = () => {
       alt: "Рыжий котик играет с игрушками"
     },
     {
-      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/be3412d8-d84c-458f-a67d-b39a10c8b861.jpg",
+      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/45ece2d9-d7ee-45a8-aa76-c5e99f0f4941.jpg",
       alt: "Серый котик отдыхает на мягкой лежанке"
     },
     {
@@ -92,11 +92,6 @@ export const GallerySection = () => {
                       alt={photo.alt}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <p className="text-white text-sm font-medium">{photo.alt}</p>
-                      </div>
-                    </div>
                   </div>
                 </div>
               ))}
