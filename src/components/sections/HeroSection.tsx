@@ -15,11 +15,11 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
         </div>
         
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight animate-fade-in delay-100">
-          Где котоняни и ветеринары заботятся о вашем питомце
+          Твоя кошка на каникулах, пока ты на отдыхе
         </h1>
         
         <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in delay-200">
-          Гостиница для кошек во Владивостоке, когда вы в отъезде | 24/7 | 4.9★
+          Премиум-гостиница для кошек во Владивостоке | 24/7 | 4.9★ |
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in delay-300">
