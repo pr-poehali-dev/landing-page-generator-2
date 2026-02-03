@@ -10,7 +10,7 @@ export const ScrollToTop = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrolledPercentage = (window.scrollY / scrollHeight) * 100;
       
-      if (scrolledPercentage >= 75) {
+      if (scrolledPercentage >= 50) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
