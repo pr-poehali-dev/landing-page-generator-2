@@ -7,7 +7,10 @@ export const ScrollToTop = () => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 500) {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolledPercentage = (window.scrollY / scrollHeight) * 100;
+      
+      if (scrolledPercentage >= 75) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -29,8 +32,8 @@ export const ScrollToTop = () => {
     <Button
       onClick={scrollToTop}
       size="icon"
-      className={`fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16 pointer-events-none'
+      className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-14 h-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 ${
+        isVisible ? 'opacity-60 hover:opacity-100 translate-y-0' : 'opacity-0 translate-y-16 pointer-events-none'
       } bg-primary hover:bg-primary/90 animate-bounce`}
       aria-label="Наверх"
     >
