@@ -78,7 +78,7 @@ export const BenefitsSection = () => {
                       <CardTitle className="text-lg sm:text-xl">{benefit.title}</CardTitle>
                       
                       <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Icon name="ArrowLeftRight" size={20} className="text-muted-foreground sm:w-6 sm:h-6" />
+                        <Icon name="ArrowLeftRight" size={20} className="text-red-500 sm:w-6 sm:h-6 animate-pulse" />
                       </div>
                     </CardContent>
                   </Card>
