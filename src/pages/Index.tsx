@@ -7,7 +7,7 @@ import { GallerySection } from "@/components/sections/GallerySection";
 import { TeamSection } from "@/components/sections/TeamSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
-import { BookingSection } from "@/components/sections/BookingSection";
+import { BookingCalendar } from "@/components/booking/BookingCalendar";
 
 const Index = () => {
   const scrollToBooking = () => {
@@ -21,7 +21,19 @@ const Index = () => {
       <LocationSection />
       <BenefitsSection />
       <PricingSection onBookNowClick={scrollToBooking} />
-      <BookingSection />
+      
+      <section id="booking" className="py-20 px-4 bg-gradient-to-br from-accent/10 via-primary/5 to-background">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
+            Онлайн бронирование
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 text-lg max-w-2xl mx-auto">
+            Выберите даты проживания в календаре и заполните форму — мы свяжемся с вами для подтверждения
+          </p>
+          <BookingCalendar />
+        </div>
+      </section>
+      
       <GallerySection />
       <TeamSection />
       <TestimonialsSection />
