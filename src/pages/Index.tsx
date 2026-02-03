@@ -8,6 +8,8 @@ import { TeamSection } from "@/components/sections/TeamSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
+import { ScrollToTop } from "@/components/ScrollToTop";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   const scrollToBooking = () => {
@@ -38,6 +40,8 @@ const Index = () => {
       <TeamSection />
       <TestimonialsSection />
       <FAQSection />
+      <ScrollToTop />
+      <Footer />
     </div>
   );
 };
