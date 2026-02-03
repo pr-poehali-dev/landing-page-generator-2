@@ -85,7 +85,7 @@ export const BenefitsSection = () => {
 
                   <Card className="absolute w-full h-full backface-hidden rotate-y-180 hover:shadow-xl transition-shadow duration-300 border-2 bg-primary text-primary-foreground min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
                     <CardContent className="flex flex-col items-center justify-center h-full p-4 sm:p-6 text-center min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
-                      <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{benefit.title.split(' ')[0]}</div>
+                      <CardTitle className="text-lg sm:text-xl mb-3 sm:mb-4">{benefit.title}</CardTitle>
                       <p className="text-sm sm:text-base leading-relaxed">
                         {benefit.detailedDesc}
                       </p>
