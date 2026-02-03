@@ -126,7 +126,7 @@ export const FAQSection = () => {
               <h3 className="text-xl font-bold">Не нашли ответ?</h3>
             </div>
             <p className="text-muted-foreground mb-4">
-              Свяжитесь с нами по телефону или WhatsApp
+              Свяжитесь с нами по телефону или Telegram
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a 
@@ -137,13 +137,13 @@ export const FAQSection = () => {
                 +7 (423) 555-55-55
               </a>
               <a 
-                href="https://wa.me/74235555555"
+                href="https://t.me/+74235555555"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"
               >
-                <Icon name="MessageCircle" size={18} />
-                WhatsApp
+                <Icon name="Send" size={18} />
+                Telegram
               </a>
             </div>
           </Card>
