@@ -1,4 +1,8 @@
+import { useState, useCallback, useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from '@/components/ui/button';
+import Icon from '@/components/ui/icon';
 
 export const TeamSection = () => {
   const team = [
@@ -52,9 +56,46 @@ export const TeamSection = () => {
     }
   ];
 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1,
+  });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const scrollTo = useCallback(
+    (index: number) => {
+      if (emblaApi) emblaApi.scrollTo(index);
+    },
+    [emblaApi]
+  );
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
+
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
           Наша команда 👨‍⚕️
         </h2>
@@ -62,26 +103,63 @@ export const TeamSection = () => {
           Опытные специалисты с любовью заботятся о каждом пушистом госте
         </p>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {team.map((member, idx) => (
-            <Card 
+        <div className="relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-6">
+              {team.map((member, idx) => (
+                <div 
+                  key={idx}
+                  className="relative flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%] xl:flex-[0_0_25%]"
+                >
+                  <Card className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 h-full">
+                    <div className="aspect-square overflow-hidden">
+                      <img 
+                        src={member.photo} 
+                        alt={member.name}
+                        className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                    <CardContent className="p-6 text-center">
+                      <h3 className="text-xl font-heading font-bold mb-2">{member.name}</h3>
+                      <p className="text-primary font-semibold mb-3">{member.role}</p>
+                      <p className="text-muted-foreground text-sm">{member.description}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background shadow-xl"
+            onClick={scrollPrev}
+          >
+            <Icon name="ChevronLeft" size={24} />
+          </Button>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background shadow-xl"
+            onClick={scrollNext}
+          >
+            <Icon name="ChevronRight" size={24} />
+          </Button>
+        </div>
+
+        <div className="flex justify-center gap-2 mt-8">
+          {scrollSnaps.map((_, idx) => (
+            <button
               key={idx}
-              className="overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fade-in border-2"
-              style={{ animationDelay: `${idx * 150}ms` }}
-            >
-              <div className="aspect-square overflow-hidden">
-                <img 
-                  src={member.photo} 
-                  alt={member.name}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <CardContent className="p-6 text-center">
-                <h3 className="text-2xl font-heading font-bold mb-2">{member.name}</h3>
-                <p className="text-primary font-semibold mb-3">{member.role}</p>
-                <p className="text-muted-foreground text-sm">{member.description}</p>
-              </CardContent>
-            </Card>
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                idx === selectedIndex
+                  ? 'bg-primary w-8'
+                  : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+              }`}
+              onClick={() => scrollTo(idx)}
+            />
           ))}
         </div>
       </div>
