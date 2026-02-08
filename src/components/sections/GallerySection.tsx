@@ -93,12 +93,12 @@ export const GallerySection = () => {
                   className="relative flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
                 >
                   {/* Polaroid frame */}
-                  <div className="group relative bg-white p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300 rotate-0 hover:rotate-1">
+                  <div className="group relative bg-white p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300 rotate-0 hover:rotate-2 hover:scale-110 hover:-translate-y-2 cursor-pointer">
                     <div className="relative overflow-hidden aspect-square">
                       <img 
                         src={photo.url} 
                         alt={photo.alt}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                     {/* Handwritten name */}
