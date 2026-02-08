@@ -75,7 +75,7 @@ export const GallerySection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="py-20 px-4 bg-card">
+    <section className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
           Галерея счастливых котиков 😻
