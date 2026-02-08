@@ -37,7 +37,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
 
               {/* Subheadline */}
               <p className="text-[#2B2E3A] text-base md:text-lg lg:text-xl leading-relaxed mb-10 max-w-[460px]">
-                Профессиональный уход и любовь, когда вас нет. Счастливый питомец, спокойный хозяин.
+                Уютная гостиница во Владивостоке с видеонаблюдением, где заботятся о вашем питомце, пока вы в отъезде
               </p>
 
               {/* CTA Button */}
