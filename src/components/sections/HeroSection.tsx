@@ -22,12 +22,8 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
           <div className="flex flex-col justify-center px-5 md:px-20 py-8 md:py-16 lg:py-0 order-1 lg:order-2">
             <div className="max-w-[480px]">
               {/* Logo */}
-              <div className="mb-6">
-                <img
-                  src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/bucket/f2591fe8-fe92-4367-b2ec-064a827c01b7.jpeg"
-                  alt="Котняня"
-                  className="h-8 md:h-10 w-auto"
-                />
+              <div className="text-[#050816] font-bold text-base md:text-xl mb-6 tracking-wide">
+                Кот🐱няня
               </div>
 
               {/* Headline */}
