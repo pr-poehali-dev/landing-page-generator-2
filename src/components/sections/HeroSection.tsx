@@ -26,7 +26,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
                 <img
                   src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/bucket/9c87fc62-5581-492b-8b9e-abafef336bc8.png"
                   alt="Котняня"
-                  className="h-10 md:h-12 w-auto"
+                  className="h-[120px] md:h-[144px] w-auto"
                 />
               </div>
 
