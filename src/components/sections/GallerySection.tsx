@@ -7,27 +7,33 @@ export const GallerySection = () => {
   const photos = [
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/bd502c4a-abe5-47f8-94ef-fa9343ad1e1a.jpg",
-      alt: "Рыжий котик играет с игрушками"
+      alt: "Рыжий котик играет с игрушками",
+      name: "Рыжик"
     },
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/45ece2d9-d7ee-45a8-aa76-c5e99f0f4941.jpg",
-      alt: "Серый котик отдыхает на мягкой лежанке"
+      alt: "Серый котик отдыхает на мягкой лежанке",
+      name: "Дымок"
     },
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/15c0aab2-2952-4f72-9ab3-1d1bcadd69c1.jpg",
-      alt: "Белый котик кушает премиум корм"
+      alt: "Белый котик кушает премиум корм",
+      name: "Снежок"
     },
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/035c8c87-a03e-4147-a04b-d16be02b1f93.jpg",
-      alt: "Котики играют вместе на игровых конструкциях"
+      alt: "Котики играют вместе на игровых конструкциях",
+      name: "Мурзик"
     },
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/1efe21b4-e23b-4f06-b499-df48d629a168.jpg",
-      alt: "Черный котик на груминге"
+      alt: "Черный котик на груминге",
+      name: "Уголёк"
     },
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/0c5526c5-b6d9-4f74-a96f-e3b3ec6c105c.jpg",
-      alt: "Трехцветный котик мирно спит у окна"
+      alt: "Трехцветный котик мирно спит у окна",
+      name: "Маркиза"
     }
   ];
 
@@ -86,12 +92,21 @@ export const GallerySection = () => {
                   key={idx}
                   className="relative flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
                 >
-                  <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 aspect-square">
-                    <img 
-                      src={photo.url} 
-                      alt={photo.alt}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+                  {/* Polaroid frame */}
+                  <div className="group relative bg-white p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300 rotate-0 hover:rotate-1">
+                    <div className="relative overflow-hidden aspect-square">
+                      <img 
+                        src={photo.url} 
+                        alt={photo.alt}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    {/* Handwritten name */}
+                    <div className="absolute bottom-4 left-4 right-4 text-center">
+                      <p className="text-xl font-handwriting text-black" style={{ fontFamily: 'Permanent Marker, cursive' }}>
+                        {photo.name}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
