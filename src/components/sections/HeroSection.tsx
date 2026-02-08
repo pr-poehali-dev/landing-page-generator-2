@@ -6,7 +6,7 @@ interface HeroSectionProps {
 
 export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#E3F3FF] via-[#EDEBFF] to-[#F9E0FF] overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#D5E8F7] via-[#E0E5F5] to-[#EAD9F0] overflow-hidden">
       <div className="w-full max-w-[1920px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-0 min-h-screen">
           {/* Left Column - Image */}
