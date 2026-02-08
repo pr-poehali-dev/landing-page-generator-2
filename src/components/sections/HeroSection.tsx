@@ -32,7 +32,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
 
               {/* Headline */}
               <h1 className="text-[#050816] font-extrabold text-[32px] md:text-[40px] lg:text-[56px] leading-[1.05] mb-6">
-                Ваш кот<br />в надёжных лапах!
+                Ваш лучший друг в надежных руках
               </h1>
 
               {/* Subheadline */}
