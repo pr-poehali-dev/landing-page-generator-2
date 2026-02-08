@@ -45,7 +45,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
                 onClick={onBookNowClick}
                 className="w-full lg:w-auto px-12 md:px-20 py-5 text-lg md:text-xl font-semibold rounded-full bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] shadow-[0_0_30px_rgba(0,0,0,0.25)] hover:shadow-[0_0_40px_rgba(0,0,0,0.3)] hover:scale-[1.02] transition-all duration-300"
               >
-                Заказать няню
+                Забронировать номер
               </Button>
             </div>
           </div>
