@@ -20,7 +20,7 @@ export const TeamSection = () => {
     },
     {
       name: "Александр Литвинов",
-      role: "Кот-психолог и смотритель",
+      role: "Зоопсихолог",
       photo: "https://cdn.poehali.dev/files/47b29564-a2c0-4437-9ab3-0718d6c2b551.jpeg",
       description: "Эксперт по поведению кошек и их социализации"
     },
