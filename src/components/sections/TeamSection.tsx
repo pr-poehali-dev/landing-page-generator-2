@@ -19,9 +19,9 @@ export const TeamSection = () => {
       description: "Мастер груминга и спа-процедур для котиков"
     },
     {
-      name: "Дмитрий Котов",
+      name: "Александр Литвинов",
       role: "Кот-психолог и смотритель",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/b27bd120-98a6-4285-87c1-13ad618a8dab.jpg",
+      photo: "https://cdn.poehali.dev/files/47b29564-a2c0-4437-9ab3-0718d6c2b551.jpeg",
       description: "Эксперт по поведению кошек и их социализации"
     },
     {
