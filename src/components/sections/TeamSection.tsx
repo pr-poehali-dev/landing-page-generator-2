@@ -45,7 +45,7 @@ export const TeamSection = () => {
     {
       name: "Вероника Лукина",
       role: "Менеджер",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/66cc3fac-47a8-41a0-80ba-166d8db2fedc.jpg",
+      photo: "https://cdn.poehali.dev/files/ac89ab95-1170-47da-970e-b534ca0d1f39.jpeg",
       description: "Организует комфортное пребывание вашего питомца"
     },
     {
