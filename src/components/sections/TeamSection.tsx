@@ -27,7 +27,7 @@ export const TeamSection = () => {
     {
       name: "Олеся Черешнева",
       role: "Котоняня",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/453f8830-e560-41d9-a453-14a428d1c464.jpg",
+      photo: "https://cdn.poehali.dev/files/c3a16c2e-0872-4049-8c34-323d73fc8906.jpeg",
       description: "Заботливый уход и внимание каждому питомцу"
     },
     {
