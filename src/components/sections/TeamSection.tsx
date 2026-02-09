@@ -13,9 +13,9 @@ export const TeamSection = () => {
       description: "15 лет опыта, специалист по кошачьему здоровью"
     },
     {
-      name: "Мария Грумова",
+      name: "Мартынова Олеся",
       role: "Профессиональный грумер",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a1318300-5d43-4305-89e9-d1cb9f3cab66.jpg",
+      photo: "https://cdn.poehali.dev/files/06b96703-a248-4030-9fb6-a6affb3b728b.jpeg",
       description: "Мастер груминга и спа-процедур для котиков"
     },
     {
