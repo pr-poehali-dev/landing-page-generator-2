@@ -12,8 +12,8 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
           {/* Left Column - Image */}
           <div className="relative h-[220px] lg:h-auto order-2 lg:order-1">
             <img
-              src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/19f647d6-2546-4471-9ccc-d7ca21f6f925.jpg"
-              alt="Довольный пушистый кот на мягком пледе"
+              src="https://cdn.poehali.dev/files/ebe8c095-1e37-4233-bc3c-5817801f687a.jpeg"
+              alt="Пушистый кот отдыхает на уютном диване"
               className="w-full h-full object-cover"
             />
           </div>
