@@ -183,31 +183,65 @@ export const BookingSection = () => {
                 </RadioGroup>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="checkIn">Дата заезда</Label>
-                  <Input 
-                    id="checkIn"
-                    type="date" 
-                    min={today}
-                    max={twoMonthsLater}
-                    value={bookingData.checkIn}
-                    onChange={(e) => setBookingData({...bookingData, checkIn: e.target.value})}
-                    className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
-                  />
+              <div className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="checkIn">Дата заезда</Label>
+                    <Input 
+                      id="checkIn"
+                      type="date" 
+                      min={today}
+                      max={twoMonthsLater}
+                      value={bookingData.checkIn}
+                      onChange={(e) => setBookingData({...bookingData, checkIn: e.target.value})}
+                      className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="checkOut">Дата выезда</Label>
+                    <Input 
+                      id="checkOut"
+                      type="date" 
+                      min={today}
+                      max={twoMonthsLater}
+                      value={bookingData.checkOut}
+                      onChange={(e) => setBookingData({...bookingData, checkOut: e.target.value})}
+                      className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
+                    />
+                  </div>
                 </div>
-                
-                <div>
-                  <Label htmlFor="checkOut">Дата выезда</Label>
-                  <Input 
-                    id="checkOut"
-                    type="date" 
-                    min={today}
-                    max={twoMonthsLater}
-                    value={bookingData.checkOut}
-                    onChange={(e) => setBookingData({...bookingData, checkOut: e.target.value})}
-                    className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
-                  />
+
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="checkInMonth">Или выберите месяц заезда</Label>
+                    <Input 
+                      id="checkInMonth"
+                      type="month" 
+                      min={new Date().toISOString().slice(0, 7)}
+                      max={new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString().slice(0, 7)}
+                      onChange={(e) => {
+                        const firstDay = e.target.value + '-01';
+                        setBookingData({...bookingData, checkIn: firstDay});
+                      }}
+                      className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="checkOutMonth">Или выберите месяц выезда</Label>
+                    <Input 
+                      id="checkOutMonth"
+                      type="month" 
+                      min={new Date().toISOString().slice(0, 7)}
+                      max={new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString().slice(0, 7)}
+                      onChange={(e) => {
+                        const lastDay = new Date(e.target.value.split('-')[0], e.target.value.split('-')[1], 0).toISOString().split('T')[0];
+                        setBookingData({...bookingData, checkOut: lastDay});
+                      }}
+                      className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
+                    />
+                  </div>
                 </div>
               </div>
 
