@@ -4,7 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
 import Icon from "@/components/ui/icon";
 
-export const TestimonialsSection = () => {
+interface TestimonialsSectionProps {
+  id?: string;
+}
+
+export const TestimonialsSection = ({ id }: TestimonialsSectionProps) => {
   const testimonials = [
     {
       text: "Оставили нашу Мурку на две недели. Каждый день получали видео, как она играет и спит. Вернулась довольная и упитанная! Спасибо команде за заботу ❤️",
@@ -88,7 +92,7 @@ export const TestimonialsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+    <section id={id} className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
           Отзывы наших клиентов 💬

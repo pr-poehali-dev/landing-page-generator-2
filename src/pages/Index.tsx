@@ -1,4 +1,5 @@
 import { MousePawPrints } from "@/components/MousePawPrints";
+import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { LocationSection } from "@/components/sections/LocationSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
@@ -19,10 +20,11 @@ const Index = () => {
   return (
     <div className="min-h-screen relative">
       <MousePawPrints />
+      <Navigation />
       <HeroSection onBookNowClick={scrollToBooking} />
       <LocationSection />
-      <BenefitsSection />
-      <PricingSection onBookNowClick={scrollToBooking} />
+      <BenefitsSection id="benefits" />
+      <PricingSection id="pricing" onBookNowClick={scrollToBooking} />
       
       <section id="booking" className="py-20 px-4 bg-gradient-to-br from-accent/10 via-primary/5 to-background">
         <div className="max-w-7xl mx-auto">
@@ -38,8 +40,8 @@ const Index = () => {
       
       <GallerySection />
       <TeamSection />
-      <TestimonialsSection />
-      <FAQSection />
+      <TestimonialsSection id="testimonials" />
+      <FAQSection id="faq" />
       <ScrollToTop />
       <Footer />
     </div>

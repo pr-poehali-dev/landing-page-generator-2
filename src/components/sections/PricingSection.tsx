@@ -5,10 +5,11 @@ import Icon from "@/components/ui/icon";
 import { playSound } from "@/utils/sounds";
 
 interface PricingSectionProps {
+  id?: string;
   onBookNowClick: () => void;
 }
 
-export const PricingSection = ({ onBookNowClick }: PricingSectionProps) => {
+export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
   const plans = [
     {
       name: "Стандарт",
@@ -64,7 +65,7 @@ export const PricingSection = ({ onBookNowClick }: PricingSectionProps) => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+    <section id={id} className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
           Тарифы и цены 💰
