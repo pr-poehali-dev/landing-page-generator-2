@@ -10,6 +10,7 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { TelegramFloatingButton } from "@/components/TelegramFloatingButton";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
@@ -47,6 +48,7 @@ const Index = () => {
       <TestimonialsSection id="testimonials" />
       <FAQSection id="faq" />
       <ScrollToTop />
+      <TelegramFloatingButton />
       <Footer />
     </div>
   );
