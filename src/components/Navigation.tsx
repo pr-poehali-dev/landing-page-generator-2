@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,7 +16,19 @@ export const Navigation = () => {
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
   };
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <nav 
@@ -84,13 +97,78 @@ export const Navigation = () => {
             </Button>
           </div>
 
+          <div className="md:hidden flex items-center gap-2">
+            <Button
+              size="sm"
+              className="gap-1.5 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold px-3 py-2 text-sm"
+              onClick={() => scrollToSection('booking')}
+            >
+              <Icon name="Calendar" size={16} />
+              Бронь
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="h-10 w-10"
+            >
+              <Icon name={isMobileMenuOpen ? "X" : "Menu"} size={24} />
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      {/* Мобильное меню */}
+      <div
+        className={`fixed inset-0 top-[60px] bg-background/98 backdrop-blur-xl md:hidden transition-all duration-300 ${
+          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+      >
+        <div className="flex flex-col items-center justify-center h-full gap-4 p-6">
           <Button
-            size="sm"
-            className="md:hidden gap-1.5 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold px-3 py-2 text-sm"
-            onClick={() => scrollToSection('booking')}
+            variant="ghost"
+            onClick={() => scrollToSection('benefits')}
+            className="w-full max-w-xs gap-3 text-lg py-6 justify-start"
           >
-            <Icon name="Calendar" size={16} />
-            Бронь
+            <Icon name="Star" size={24} />
+            Наши преимущества
+          </Button>
+
+          <Button
+            variant="ghost"
+            onClick={() => scrollToSection('pricing')}
+            className="w-full max-w-xs gap-3 text-lg py-6 justify-start"
+          >
+            <Icon name="Tag" size={24} />
+            Тарифы
+          </Button>
+
+          <Button
+            variant="ghost"
+            onClick={() => scrollToSection('testimonials')}
+            className="w-full max-w-xs gap-3 text-lg py-6 justify-start"
+          >
+            <Icon name="MessageCircle" size={24} />
+            Отзывы
+          </Button>
+
+          <Button
+            variant="ghost"
+            onClick={() => scrollToSection('faq')}
+            className="w-full max-w-xs gap-3 text-lg py-6 justify-start"
+          >
+            <Icon name="HelpCircle" size={24} />
+            Частые вопросы
+          </Button>
+
+          <div className="h-px w-full max-w-xs bg-border my-2"></div>
+
+          <Button
+            onClick={() => scrollToSection('booking')}
+            className="w-full max-w-xs gap-3 text-lg py-6 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold hover:shadow-lg transition-all"
+          >
+            <Icon name="Calendar" size={24} />
+            Забронировать
           </Button>
         </div>
       </div>
