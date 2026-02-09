@@ -8,9 +8,11 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="text-2xl font-heading font-bold mb-4 flex items-center gap-2">
-              Кот🐱няня
-            </h3>
+            <img 
+              src="https://cdn.poehali.dev/files/8dc06b31-00a0-48d2-b370-0158f31a4aa2.png"
+              alt="Котоняня"
+              className="h-12 w-auto mb-4"
+            />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Премиум-гостиница для кошек во Владивостоке с видеонаблюдением и заботой 24/7
             </p>
@@ -85,7 +87,14 @@ export const Footer = () => {
 
         <div className="border-t border-border pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <p>© {currentYear} Кот🐱няня. Все права защищены.</p>
+            <div className="flex items-center gap-2">
+              <img 
+                src="https://cdn.poehali.dev/files/8dc06b31-00a0-48d2-b370-0158f31a4aa2.png"
+                alt="Котоняня"
+                className="h-6 w-auto"
+              />
+              <p>© {currentYear} Все права защищены.</p>
+            </div>
             <div className="flex gap-6">
               <a href="#" className="hover:text-primary transition-colors">Политика конфиденциальности</a>
               <a href="#" className="hover:text-primary transition-colors">Договор оферты</a>
