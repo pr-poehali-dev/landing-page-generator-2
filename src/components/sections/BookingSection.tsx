@@ -19,6 +19,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 export const BookingSection = () => {
   const { toast } = useToast();
+  const today = new Date().toISOString().split('T')[0];
+  const nextMonth = new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().split('T')[0];
+
   const [bookingData, setBookingData] = useState({
     roomType: "comfort",
     checkIn: "",
@@ -186,9 +189,11 @@ export const BookingSection = () => {
                   <Input 
                     id="checkIn"
                     type="date" 
+                    min={today}
+                    max={nextMonth}
                     value={bookingData.checkIn}
                     onChange={(e) => setBookingData({...bookingData, checkIn: e.target.value})}
-                    className="mt-2"
+                    className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
                   />
                 </div>
                 
@@ -197,9 +202,11 @@ export const BookingSection = () => {
                   <Input 
                     id="checkOut"
                     type="date" 
+                    min={today}
+                    max={nextMonth}
                     value={bookingData.checkOut}
                     onChange={(e) => setBookingData({...bookingData, checkOut: e.target.value})}
-                    className="mt-2"
+                    className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
                   />
                 </div>
               </div>
@@ -213,7 +220,7 @@ export const BookingSection = () => {
                   max="10"
                   value={bookingData.catsCount}
                   onChange={(e) => setBookingData({...bookingData, catsCount: e.target.value})}
-                  className="mt-2"
+                  className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
                 />
               </div>
 
@@ -225,7 +232,7 @@ export const BookingSection = () => {
                   placeholder="Иван Иванов"
                   value={bookingData.name}
                   onChange={(e) => setBookingData({...bookingData, name: e.target.value})}
-                  className="mt-2"
+                  className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
                 />
               </div>
 
@@ -237,7 +244,7 @@ export const BookingSection = () => {
                   placeholder="+7 (999) 123-45-67"
                   value={bookingData.phone}
                   onChange={(e) => setBookingData({...bookingData, phone: e.target.value})}
-                  className="mt-2"
+                  className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
                 />
               </div>
 
@@ -249,7 +256,7 @@ export const BookingSection = () => {
                   placeholder="example@mail.ru"
                   value={bookingData.email}
                   onChange={(e) => setBookingData({...bookingData, email: e.target.value})}
-                  className="mt-2"
+                  className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
                 />
               </div>
 
