@@ -37,7 +37,7 @@ export const Footer = () => {
               </a>
               <div className="flex items-start gap-2 text-muted-foreground">
                 <Icon name="MapPin" size={16} className="mt-1 flex-shrink-0" />
-                <span>г. Владивосток, ул. Светланская, 100</span>
+                <span>г. Владивосток, ул. Светланская, 123</span>
               </div>
             </div>
           </div>
