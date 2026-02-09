@@ -75,11 +75,13 @@ export const BenefitsSection = ({ id }: BenefitsSectionProps) => {
               >
                 <div className={`relative w-full h-full transition-transform duration-500 transform-style-3d ${isFlipped ? 'rotate-y-180' : ''}`}>
                   <Card className="absolute w-full h-full backface-hidden hover:shadow-xl transition-shadow duration-300 border-2 group min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
-                    <CardContent className="flex flex-col items-center justify-center h-full p-4 sm:p-6 text-center min-h-[280px] sm:min-h-[300px] md:min-h-[320px] relative">
-                      <div className="mx-auto mb-3 sm:mb-4 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 transition-transform duration-300 group-hover:scale-110">
+                    <CardContent className="flex flex-col items-center justify-between h-full p-4 sm:p-6 text-center min-h-[280px] sm:min-h-[300px] md:min-h-[320px] relative">
+                      <div className="flex-shrink-0 mx-auto mb-3 sm:mb-4 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 transition-transform duration-300 group-hover:scale-110">
                         <IconComponent />
                       </div>
-                      <CardTitle className="text-lg sm:text-xl">{benefit.title}</CardTitle>
+                      <div className="flex-grow flex items-center justify-center">
+                        <CardTitle className="text-base sm:text-lg md:text-xl leading-tight">{benefit.title}</CardTitle>
+                      </div>
                       
                       <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <Icon name="ArrowLeftRight" size={20} className="text-red-500 sm:w-6 sm:h-6 animate-pulse" />
@@ -88,8 +90,8 @@ export const BenefitsSection = ({ id }: BenefitsSectionProps) => {
                   </Card>
 
                   <Card className="absolute w-full h-full backface-hidden rotate-y-180 hover:shadow-xl transition-shadow duration-300 border-2 bg-primary text-primary-foreground min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
-                    <CardContent className="flex flex-col items-center justify-center h-full p-4 sm:p-6 text-center min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
-                      <CardTitle className="text-lg sm:text-xl mb-3 sm:mb-4">{benefit.title}</CardTitle>
+                    <CardContent className="flex flex-col items-center justify-center h-full p-5 sm:p-6 md:p-8 text-center min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
+                      <CardTitle className="text-base sm:text-lg md:text-xl mb-3 sm:mb-4 leading-tight">{benefit.title}</CardTitle>
                       <p className="text-sm sm:text-base leading-relaxed">
                         {benefit.detailedDesc}
                       </p>
