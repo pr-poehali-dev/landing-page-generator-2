@@ -13,7 +13,7 @@ export const GallerySection = () => {
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/45ece2d9-d7ee-45a8-aa76-c5e99f0f4941.jpg",
       alt: "Серый котик отдыхает на мягкой лежанке",
-      name: "Дымок"
+      name: "Тиша"
     },
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a7048c48-50ad-4e89-a33f-3d1cb52ff81e.jpg",
