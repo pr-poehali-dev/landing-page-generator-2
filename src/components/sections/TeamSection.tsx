@@ -33,7 +33,7 @@ export const TeamSection = () => {
     {
       name: "Наталья Никонова",
       role: "Котоняня",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a7dbad96-fc46-474a-8cf5-40b75abf53b6.jpg",
+      photo: "https://cdn.poehali.dev/files/7904b37b-a583-4479-b904-1601562fd986.jpeg",
       description: "Опытный специалист по уходу за кошками"
     },
     {
