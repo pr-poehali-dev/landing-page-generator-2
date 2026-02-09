@@ -193,7 +193,7 @@ export const BookingSection = () => {
                     max={nextMonth}
                     value={bookingData.checkIn}
                     onChange={(e) => setBookingData({...bookingData, checkIn: e.target.value})}
-                    className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
+                    className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
                   />
                 </div>
                 
@@ -206,7 +206,7 @@ export const BookingSection = () => {
                     max={nextMonth}
                     value={bookingData.checkOut}
                     onChange={(e) => setBookingData({...bookingData, checkOut: e.target.value})}
-                    className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
+                    className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
                   />
                 </div>
               </div>
@@ -220,7 +220,7 @@ export const BookingSection = () => {
                   max="10"
                   value={bookingData.catsCount}
                   onChange={(e) => setBookingData({...bookingData, catsCount: e.target.value})}
-                  className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
+                  className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
                 />
               </div>
 
@@ -232,7 +232,7 @@ export const BookingSection = () => {
                   placeholder="Иван Иванов"
                   value={bookingData.name}
                   onChange={(e) => setBookingData({...bookingData, name: e.target.value})}
-                  className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
+                  className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
                 />
               </div>
 
@@ -244,7 +244,7 @@ export const BookingSection = () => {
                   placeholder="+7 (999) 123-45-67"
                   value={bookingData.phone}
                   onChange={(e) => setBookingData({...bookingData, phone: e.target.value})}
-                  className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
+                  className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
                 />
               </div>
 
@@ -256,7 +256,7 @@ export const BookingSection = () => {
                   placeholder="example@mail.ru"
                   value={bookingData.email}
                   onChange={(e) => setBookingData({...bookingData, email: e.target.value})}
-                  className="mt-2 bg-gradient-to-r from-[#00F0FF]/10 via-[#43E3FF]/10 to-[#FF4FD8]/10 border-2 border-primary/20 focus:border-primary"
+                  className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
                 />
               </div>
 
