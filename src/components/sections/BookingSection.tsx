@@ -128,7 +128,7 @@ export const BookingSection = () => {
   };
 
   return (
-    <section id="booking" className="py-20 px-4 bg-gradient-to-br from-accent/10 via-primary/5 to-background relative overflow-hidden">
+    <section id="booking" className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5 relative overflow-hidden">
       <div className="absolute top-10 left-10 w-32 h-32 opacity-20 animate-pulse-gentle">
         <MouseToyIcon />
       </div>
