@@ -7,9 +7,9 @@ import Icon from '@/components/ui/icon';
 export const TeamSection = () => {
   const team = [
     {
-      name: "Анна Ветрова",
+      name: "Ирина Вертушенко",
       role: "Главный ветеринар",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/c8ee1052-f012-49e2-bbfd-98fa6fda6fae.jpg",
+      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/bucket/f0491738-0e37-47de-b533-d1cd98deb2e7.jpeg",
       description: "15 лет опыта, специалист по кошачьему здоровью"
     },
     {
