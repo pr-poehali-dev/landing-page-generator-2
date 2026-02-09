@@ -39,7 +39,7 @@ export const TeamSection = () => {
     {
       name: "Мария Князян",
       role: "Администратор",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/af277dbf-7da8-4f3d-bf18-86751077ebe2.jpg",
+      photo: "https://cdn.poehali.dev/files/f3a74a1b-a352-4698-a7c5-d340c6c2eb8f.jpeg",
       description: "Всегда на связи и поможет с бронированием"
     },
     {
