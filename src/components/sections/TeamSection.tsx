@@ -97,7 +97,7 @@ export const TeamSection = () => {
     <section className="py-20 px-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
-          Наша команда 👨‍⚕️
+          Наша команда
         </h2>
         <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto">
           Опытные специалисты с любовью заботятся о каждом пушистом госте
