@@ -26,8 +26,12 @@ const Index = () => {
       <BenefitsSection id="benefits" />
       <PricingSection id="pricing" onBookNowClick={scrollToBooking} />
       
-      <section id="booking" className="py-20 px-4 bg-gradient-to-br from-accent/10 via-primary/5 to-background">
-        <div className="max-w-7xl mx-auto">
+      <section id="booking" className="py-20 px-4 bg-gradient-to-br from-accent/10 via-primary/5 to-background relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#00F0FF]/5 via-[#43E3FF]/5 to-[#FF4FD8]/5 animate-pulse-gentle"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-gentle"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse-gentle delay-100"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
             Онлайн бронирование
           </h2>
