@@ -115,50 +115,51 @@ export const BookingCalendar = () => {
   const disabledDays = { before: new Date() };
 
   return (
-    <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+    <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
       <Card className="shadow-xl">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-2xl">
-            <Icon name="Calendar" size={28} />
+        <CardHeader className="pb-4 sm:pb-6">
+          <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl">
+            <Icon name="Calendar" size={24} className="sm:w-7 sm:h-7" />
             Выберите даты
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-sm sm:text-base">
             Укажите период проживания вашего питомца
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-3 sm:px-6">
           <Calendar
             mode="range"
             selected={dateRange}
             onSelect={handleDateSelect}
-            numberOfMonths={2}
+            numberOfMonths={1}
             disabled={disabledDays}
             locale={ru}
-            className="rounded-md border"
+            className="rounded-md border w-full"
           />
           
           {dateRange.from && dateRange.to && (
-            <div className="mt-6 space-y-4">
-              <div className="flex items-center justify-between p-4 bg-primary/5 rounded-lg">
-                <div>
-                  <p className="text-sm text-muted-foreground">Заезд</p>
-                  <p className="font-semibold">{format(dateRange.from, 'dd MMMM yyyy', { locale: ru })}</p>
+            <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 p-3 sm:p-4 bg-primary/5 rounded-lg">
+                <div className="flex-1">
+                  <p className="text-xs sm:text-sm text-muted-foreground">Заезд</p>
+                  <p className="font-semibold text-sm sm:text-base">{format(dateRange.from, 'dd MMMM yyyy', { locale: ru })}</p>
                 </div>
-                <Icon name="ArrowRight" size={20} className="text-muted-foreground" />
-                <div>
-                  <p className="text-sm text-muted-foreground">Выезд</p>
-                  <p className="font-semibold">{format(dateRange.to, 'dd MMMM yyyy', { locale: ru })}</p>
+                <Icon name="ArrowRight" size={18} className="text-muted-foreground hidden sm:block" />
+                <Icon name="ArrowDown" size={18} className="text-muted-foreground sm:hidden" />
+                <div className="flex-1 sm:text-right">
+                  <p className="text-xs sm:text-sm text-muted-foreground">Выезд</p>
+                  <p className="font-semibold text-sm sm:text-base">{format(dateRange.to, 'dd MMMM yyyy', { locale: ru })}</p>
                 </div>
               </div>
               
-              <div className="flex items-center justify-between p-4 bg-accent/50 rounded-lg">
+              <div className="flex items-center justify-between p-3 sm:p-4 bg-accent/50 rounded-lg">
                 <div>
-                  <p className="text-sm text-muted-foreground">Количество дней</p>
-                  <p className="text-2xl font-bold">{days}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Количество дней</p>
+                  <p className="text-xl sm:text-2xl font-bold">{days}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-muted-foreground">Итого к оплате</p>
-                  <p className="text-2xl font-bold text-primary">{totalPrice.toLocaleString()} ₽</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Итого к оплате</p>
+                  <p className="text-xl sm:text-2xl font-bold text-primary">{totalPrice.toLocaleString()} ₽</p>
                 </div>
               </div>
             </div>
@@ -167,19 +168,19 @@ export const BookingCalendar = () => {
       </Card>
 
       <Card className="shadow-xl">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-2xl">
-            <Icon name="FileText" size={28} />
+        <CardHeader className="pb-4 sm:pb-6">
+          <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl">
+            <Icon name="FileText" size={24} className="sm:w-7 sm:h-7" />
             Данные для бронирования
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-sm sm:text-base">
             Заполните форму и мы свяжемся с вами
           </CardDescription>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="customerName">Ваше имя *</Label>
+        <CardContent className="px-3 sm:px-6">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="customerName" className="text-sm sm:text-base">Ваше имя *</Label>
               <Input
                 id="customerName"
                 placeholder="Анна Иванова"
@@ -189,8 +190,8 @@ export const BookingCalendar = () => {
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="phone">Телефон *</Label>
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="phone" className="text-sm sm:text-base">Телефон *</Label>
               <Input
                 id="phone"
                 type="tel"
@@ -201,8 +202,8 @@ export const BookingCalendar = () => {
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="email" className="text-sm sm:text-base">Email</Label>
               <Input
                 id="email"
                 type="email"
@@ -212,15 +213,15 @@ export const BookingCalendar = () => {
               />
             </div>
 
-            <div className="border-t pt-4">
-              <h3 className="font-semibold mb-3 flex items-center gap-2">
-                <Icon name="Cat" size={20} />
+            <div className="border-t pt-3 sm:pt-4">
+              <h3 className="font-semibold mb-3 flex items-center gap-2 text-sm sm:text-base">
+                <Icon name="Cat" size={18} className="sm:w-5 sm:h-5" />
                 Информация о питомце
               </h3>
               
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="catName">Кличка котика *</Label>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-1.5 sm:space-y-2">
+                  <Label htmlFor="catName" className="text-sm sm:text-base">Кличка котика *</Label>
                   <Input
                     id="catName"
                     placeholder="Мурзик"
@@ -230,8 +231,8 @@ export const BookingCalendar = () => {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="catBreed">Порода</Label>
+                <div className="space-y-1.5 sm:space-y-2">
+                  <Label htmlFor="catBreed" className="text-sm sm:text-base">Порода</Label>
                   <Input
                     id="catBreed"
                     placeholder="Британская короткошерстная"
@@ -240,8 +241,8 @@ export const BookingCalendar = () => {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="specialNeeds">Особые потребности / Питание</Label>
+                <div className="space-y-1.5 sm:space-y-2">
+                  <Label htmlFor="specialNeeds" className="text-sm sm:text-base">Особые потребности / Питание</Label>
                   <Textarea
                     id="specialNeeds"
                     placeholder="Аллергии, особенности поведения, предпочтения в еде..."
@@ -255,18 +256,18 @@ export const BookingCalendar = () => {
 
             <Button 
               type="submit" 
-              className="w-full text-lg py-6"
+              className="w-full text-base sm:text-lg py-5 sm:py-6 min-h-[56px]"
               disabled={isSubmitting || !dateRange.from || !dateRange.to}
             >
               {isSubmitting ? (
                 <>
-                  <Icon name="Loader2" size={20} className="mr-2 animate-spin" />
-                  Отправка...
+                  <Icon name="Loader2" size={18} className="mr-2 animate-spin sm:w-5 sm:h-5" />
+                  <span className="text-sm sm:text-base">Отправка...</span>
                 </>
               ) : (
                 <>
-                  <Icon name="Check" size={20} className="mr-2" />
-                  Забронировать {totalPrice > 0 && `за ${totalPrice.toLocaleString()} ₽`}
+                  <Icon name="Check" size={18} className="mr-2 sm:w-5 sm:h-5" />
+                  <span className="text-sm sm:text-base">Забронировать {totalPrice > 0 && `за ${totalPrice.toLocaleString()} ₽`}</span>
                 </>
               )}
             </Button>

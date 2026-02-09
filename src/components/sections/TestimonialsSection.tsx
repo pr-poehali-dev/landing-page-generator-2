@@ -92,12 +92,12 @@ export const TestimonialsSection = ({ id }: TestimonialsSectionProps) => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id={id} className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+    <section id={id} className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-3 sm:mb-4">
           Отзывы наших клиентов
         </h2>
-        <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground text-base sm:text-lg mb-10 sm:mb-12 md:mb-16 max-w-2xl mx-auto px-2 leading-relaxed">
           Реальные истории от хозяев счастливых котиков
         </p>
         
@@ -110,7 +110,7 @@ export const TestimonialsSection = ({ id }: TestimonialsSectionProps) => {
                   className="relative flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
                 >
                   <Card className="hover:shadow-xl transition-all duration-300 border-2 flex flex-col h-full">
-                    <div className="relative h-48 overflow-hidden">
+                    <div className="relative h-40 sm:h-48 overflow-hidden">
                       <img 
                         src={testimonial.photo} 
                         alt={testimonial.catName}
@@ -123,13 +123,13 @@ export const TestimonialsSection = ({ id }: TestimonialsSectionProps) => {
                       </div>
                     </div>
                     
-                    <CardContent className="pt-6 flex-1 flex flex-col">
-                      <div className="mb-3">
-                        <p className="font-semibold text-lg text-primary mb-1">{testimonial.catName}</p>
-                        <p className="text-sm text-muted-foreground">{testimonial.author}</p>
+                    <CardContent className="pt-4 sm:pt-6 pb-4 px-4 sm:px-6 flex-1 flex flex-col">
+                      <div className="mb-2 sm:mb-3">
+                        <p className="font-semibold text-base sm:text-lg text-primary mb-0.5 sm:mb-1">{testimonial.catName}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{testimonial.author}</p>
                       </div>
                       
-                      <p className="text-sm leading-relaxed mb-4 flex-1 italic text-muted-foreground">
+                      <p className="text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 flex-1 italic text-muted-foreground">
                         "{testimonial.text}"
                       </p>
                       
@@ -147,23 +147,23 @@ export const TestimonialsSection = ({ id }: TestimonialsSectionProps) => {
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background shadow-xl"
+            className="absolute left-1 sm:left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background shadow-xl w-10 h-10 sm:w-11 sm:h-11"
             onClick={scrollPrev}
           >
-            <Icon name="ChevronLeft" size={24} />
+            <Icon name="ChevronLeft" size={20} className="sm:w-6 sm:h-6" />
           </Button>
 
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background shadow-xl"
+            className="absolute right-1 sm:right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm hover:bg-background shadow-xl w-10 h-10 sm:w-11 sm:h-11"
             onClick={scrollNext}
           >
-            <Icon name="ChevronRight" size={24} />
+            <Icon name="ChevronRight" size={20} className="sm:w-6 sm:h-6" />
           </Button>
         </div>
 
-        <div className="flex justify-center gap-2 mt-8">
+        <div className="flex justify-center gap-2 mt-6 sm:mt-8">
           {scrollSnaps.map((_, idx) => (
             <button
               key={idx}

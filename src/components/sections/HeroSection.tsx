@@ -8,7 +8,7 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#B8D8F0] via-[#D0DEF5] to-[#E6E0F8] overflow-hidden">
       <div className="w-full max-w-[1920px] mx-auto">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-0 min-h-screen">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-0 min-h-screen">
           {/* Left Column - Image */}
           <div className="relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-auto order-2 lg:order-1">
             <img
@@ -31,19 +31,19 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
               </div>
 
               {/* Headline */}
-              <h1 className="text-[#050816] font-extrabold text-[28px] sm:text-[34px] md:text-[42px] lg:text-[56px] leading-[1.1] sm:leading-[1.08] md:leading-[1.05] mb-4 sm:mb-5 md:mb-6">
+              <h1 className="text-[#050816] font-extrabold text-[26px] sm:text-[34px] md:text-[42px] lg:text-[56px] leading-[1.15] sm:leading-[1.08] md:leading-[1.05] mb-3 sm:mb-5 md:mb-6">
                 Ваш лучший друг в надежных руках
               </h1>
 
               {/* Subheadline */}
-              <p className="text-[#2B2E3A] text-[15px] sm:text-base md:text-lg lg:text-xl leading-[1.5] sm:leading-[1.6] md:leading-relaxed mb-6 sm:mb-8 md:mb-10">
+              <p className="text-[#2B2E3A] text-[14px] sm:text-base md:text-lg lg:text-xl leading-[1.6] sm:leading-[1.6] md:leading-relaxed mb-5 sm:mb-8 md:mb-10">
                 Уютная гостиница во Владивостоке с видеонаблюдением, где заботятся о вашем питомце, пока вы в отъезде
               </p>
 
               {/* CTA Button */}
               <Button
                 onClick={onBookNowClick}
-                className="w-full sm:w-auto sm:min-w-[280px] px-8 sm:px-12 md:px-16 lg:px-20 py-4 sm:py-5 text-base sm:text-lg md:text-xl font-semibold rounded-full bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] shadow-[0_0_30px_rgba(0,0,0,0.25)] hover:shadow-[0_0_40px_rgba(0,0,0,0.3)] hover:scale-[1.02] transition-all duration-300"
+                className="w-full sm:w-auto sm:min-w-[280px] px-6 sm:px-12 md:px-16 lg:px-20 py-5 sm:py-5 text-[15px] sm:text-lg md:text-xl font-semibold rounded-full bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] shadow-[0_0_30px_rgba(0,0,0,0.25)] hover:shadow-[0_0_40px_rgba(0,0,0,0.3)] hover:scale-[1.02] transition-all duration-300 min-h-[56px]"
               >
                 Забронировать номер
               </Button>
