@@ -20,7 +20,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 export const BookingSection = () => {
   const { toast } = useToast();
   const today = new Date().toISOString().split('T')[0];
-  const nextMonth = new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().split('T')[0];
+  const twoMonthsLater = new Date(new Date().setMonth(new Date().getMonth() + 2)).toISOString().split('T')[0];
 
   const [bookingData, setBookingData] = useState({
     roomType: "comfort",
@@ -190,7 +190,7 @@ export const BookingSection = () => {
                     id="checkIn"
                     type="date" 
                     min={today}
-                    max={nextMonth}
+                    max={twoMonthsLater}
                     value={bookingData.checkIn}
                     onChange={(e) => setBookingData({...bookingData, checkIn: e.target.value})}
                     className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
@@ -203,7 +203,7 @@ export const BookingSection = () => {
                     id="checkOut"
                     type="date" 
                     min={today}
-                    max={nextMonth}
+                    max={twoMonthsLater}
                     value={bookingData.checkOut}
                     onChange={(e) => setBookingData({...bookingData, checkOut: e.target.value})}
                     className="mt-2 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold placeholder:text-[#050816]/70 border-2 border-transparent focus:border-[#050816]"
