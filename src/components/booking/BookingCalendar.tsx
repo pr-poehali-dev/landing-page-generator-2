@@ -131,7 +131,7 @@ export const BookingCalendar = () => {
             mode="range"
             selected={dateRange}
             onSelect={handleDateSelect}
-            numberOfMonths={1}
+            numberOfMonths={2}
             disabled={disabledDays}
             locale={ru}
             className="rounded-md border"
