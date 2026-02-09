@@ -18,7 +18,7 @@ export const GallerySection = () => {
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a7048c48-50ad-4e89-a33f-3d1cb52ff81e.jpg",
       alt: "Белый котик кушает премиум корм",
-      name: "Снежок"
+      name: "Каспер"
     },
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/035c8c87-a03e-4147-a04b-d16be02b1f93.jpg",
