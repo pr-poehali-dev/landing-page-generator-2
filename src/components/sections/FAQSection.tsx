@@ -134,14 +134,14 @@ export const FAQSection = ({ id }: FAQSectionProps) => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a 
-                href="tel:+74235555555"
+                href="tel:+79244303990"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-semibold"
               >
                 <Icon name="Phone" size={18} />
-                +7 (423) 555-55-55
+                +7 924 430 39 90
               </a>
               <a 
-                href="https://t.me/+74235555555"
+                href="https://t.me/+79244303990"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"

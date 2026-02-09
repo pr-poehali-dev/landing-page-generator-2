@@ -22,11 +22,11 @@ export const Footer = () => {
             <h4 className="font-heading font-bold mb-4 text-lg">Контакты</h4>
             <div className="space-y-3 text-sm">
               <a 
-                href="tel:+74235555555" 
+                href="tel:+79244303990" 
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Icon name="Phone" size={16} />
-                +7 (423) 555-55-55
+                +7 924 430 39 90
               </a>
               <a 
                 href="mailto:info@kotnyanya.ru" 

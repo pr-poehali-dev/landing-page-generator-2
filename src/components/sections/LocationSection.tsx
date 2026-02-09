@@ -34,7 +34,7 @@ export const LocationSection = () => {
                 <div>
                   <h3 className="font-semibold text-lg mb-1">Телефон</h3>
                   <p className="text-muted-foreground">
-                    +7 (423) 555-55-55
+                    +7 924 430 39 90
                   </p>
                 </div>
               </div>
