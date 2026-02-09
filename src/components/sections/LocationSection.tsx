@@ -6,10 +6,10 @@ export const LocationSection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <h2 className="text-4xl md:text-5xl font-heading font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 sm:mb-6">
               Наша гостиница во Владивостоке
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
               Современная кошачья гостиница в самом сердце Владивостока. Удобное расположение, 
               тихий район и профессиональный уход за вашими питомцами.
             </p>
@@ -20,8 +20,8 @@ export const LocationSection = () => {
                   <MapPin className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">Адрес</h3>
-                  <p className="text-muted-foreground">
+                  <h3 className="font-semibold text-base sm:text-lg mb-1">Адрес</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     г. Владивосток, ул. Светланская, 123
                   </p>
                 </div>
@@ -32,8 +32,8 @@ export const LocationSection = () => {
                   <Phone className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">Телефон</h3>
-                  <p className="text-muted-foreground">
+                  <h3 className="font-semibold text-base sm:text-lg mb-1">Телефон</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     +7 924 430 39 90
                   </p>
                 </div>
@@ -44,8 +44,8 @@ export const LocationSection = () => {
                   <Clock className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg mb-1">Режим работы</h3>
-                  <p className="text-muted-foreground">
+                  <h3 className="font-semibold text-base sm:text-lg mb-1">Режим работы</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                     Ежедневно с 9:00 до 21:00
                   </p>
                 </div>
@@ -54,7 +54,7 @@ export const LocationSection = () => {
           </div>
 
           <div className="order-1 md:order-2">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full min-h-[500px]">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full min-h-[280px] sm:min-h-[350px] md:min-h-[500px]">
               <img 
                 src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/bucket/e7477d05-20a5-4308-9e5c-5b3726368f2b.jpeg" 
                 alt="Кошачья гостиница КОТ🐱НЯНЯ во Владивостоке"

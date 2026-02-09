@@ -67,25 +67,25 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
   return (
     <section id={id} className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-3 sm:mb-4">
           Тарифы и цены
         </h2>
-        <p className="text-center text-muted-foreground mb-8 text-lg max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-6 sm:mb-8 text-base sm:text-lg max-w-2xl mx-auto px-2">
           Выберите подходящий вариант для вашего пушистого друга
         </p>
         
-        <div className="bg-primary/10 border-2 border-primary/20 rounded-xl p-4 mb-12 max-w-3xl mx-auto">
-          <p className="text-center font-semibold text-lg">
+        <div className="bg-primary/10 border-2 border-primary/20 rounded-xl p-3 sm:p-4 mb-8 sm:mb-12 max-w-3xl mx-auto">
+          <p className="text-center font-semibold text-sm sm:text-base md:text-lg leading-relaxed">
             🎁 Специальные скидки: от 7 дней = -10% | от 14 дней = -15% | 2+ кошки = -20%
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {plans.map((plan, idx) => (
             <Card 
               key={idx}
               className={`relative hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fade-in flex flex-col ${
-                plan.popular ? 'border-primary border-4 shadow-xl scale-105' : 'border-2'
+                plan.popular ? 'border-primary border-4 shadow-xl sm:scale-105' : 'border-2'
               }`}
               style={{ animationDelay: `${idx * 100}ms` }}
             >
@@ -101,23 +101,23 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                   <Icon name={plan.icon} size={32} className="text-primary" />
                 </div>
-                <CardTitle className="text-3xl mb-2">{plan.name}</CardTitle>
-                <CardDescription className="text-sm mb-4 min-h-[40px]">
+                <CardTitle className="text-2xl sm:text-3xl mb-2">{plan.name}</CardTitle>
+                <CardDescription className="text-xs sm:text-sm mb-4 min-h-[40px] leading-relaxed px-2">
                   {plan.description}
                 </CardDescription>
                 <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-5xl font-bold text-primary">{plan.price}</span>
-                  <span className="text-xl text-muted-foreground">₽</span>
-                  <span className="text-lg text-muted-foreground">/{plan.period}</span>
+                  <span className="text-4xl sm:text-5xl font-bold text-primary">{plan.price}</span>
+                  <span className="text-lg sm:text-xl text-muted-foreground">₽</span>
+                  <span className="text-base sm:text-lg text-muted-foreground">/{plan.period}</span>
                 </div>
               </CardHeader>
               
               <CardContent className="space-y-6 flex-1 flex flex-col">
                 <ul className="space-y-3 flex-1">
                   {plan.features.map((feature, fidx) => (
-                    <li key={fidx} className="flex items-start gap-3">
-                      <Icon name="Check" size={20} className="text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm">{feature}</span>
+                    <li key={fidx} className="flex items-start gap-2 sm:gap-3">
+                      <Icon name="Check" size={18} className="text-green-600 flex-shrink-0 mt-0.5" />
+                      <span className="text-xs sm:text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -138,7 +138,7 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
           ))}
         </div>
         
-        <p className="text-center text-muted-foreground mt-12 text-sm">
+        <p className="text-center text-muted-foreground mt-8 sm:mt-12 text-xs sm:text-sm px-4 leading-relaxed">
           * Все цены указаны за одного котика. При бронировании от 7 дней скидки применяются автоматически.
         </p>
       </div>

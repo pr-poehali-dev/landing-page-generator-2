@@ -100,6 +100,10 @@
   body {
     @apply text-foreground;
     font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background: linear-gradient(
       135deg,
       hsl(200, 85%, 75%) 0%,
@@ -110,6 +114,12 @@
     background-attachment: fixed;
   }
 
+  @media (max-width: 640px) {
+    body {
+      font-size: 15px;
+    }
+  }
+
   h1,
   h2,
   h3,
@@ -117,6 +127,31 @@
   h5,
   h6 {
     font-family: "Rubik", sans-serif;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  /* Улучшенная читаемость текста */
+  p,
+  li,
+  span {
+    line-height: 1.6;
+  }
+
+  /* Минимальные размеры для кликабельных элементов (44x44px - рекомендация Apple) */
+  button,
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 640px) {
+    button,
+    a {
+      min-height: 40px;
+    }
   }
 }
 

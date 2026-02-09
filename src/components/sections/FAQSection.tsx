@@ -82,25 +82,25 @@ export const FAQSection = ({ id }: FAQSectionProps) => {
   return (
     <section id={id} className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-3 sm:mb-4">
           Частые вопросы
         </h2>
-        <p className="text-center text-muted-foreground text-lg mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground text-base sm:text-lg mb-8 sm:mb-12 max-w-2xl mx-auto px-2 leading-relaxed">
           Ответы на самые популярные вопросы о нашей гостинице
         </p>
         
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
           {faqCategories.map((category, catIdx) => (
             <Card 
               key={catIdx} 
-              className="p-6 animate-fade-in border-2 hover:shadow-xl transition-all duration-300"
+              className="p-4 sm:p-6 animate-fade-in border-2 hover:shadow-xl transition-all duration-300"
               style={{ animationDelay: `${catIdx * 100}ms` }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Icon name={category.icon} size={20} className="text-primary" />
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Icon name={category.icon} size={18} className="text-primary sm:w-5 sm:h-5" />
                 </div>
-                <h3 className="text-xl font-heading font-bold">{category.category}</h3>
+                <h3 className="text-base sm:text-lg md:text-xl font-heading font-bold leading-tight">{category.category}</h3>
               </div>
               
               <Accordion type="single" collapsible className="space-y-3">
@@ -110,10 +110,10 @@ export const FAQSection = ({ id }: FAQSectionProps) => {
                     value={`item-${catIdx}-${idx}`}
                     className="border rounded-lg px-4 hover:border-primary/50 transition-colors"
                   >
-                    <AccordionTrigger className="text-left text-base font-semibold hover:no-underline py-4">
+                    <AccordionTrigger className="text-left text-sm sm:text-base font-semibold hover:no-underline py-3 sm:py-4 leading-snug">
                       {item.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-sm text-muted-foreground pb-4 leading-relaxed">
+                    <AccordionContent className="text-xs sm:text-sm text-muted-foreground pb-3 sm:pb-4 leading-relaxed">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>
@@ -124,29 +124,29 @@ export const FAQSection = ({ id }: FAQSectionProps) => {
         </div>
         
         <div className="mt-12 text-center">
-          <Card className="inline-block p-6 bg-primary/5 border-2 border-primary/20">
-            <div className="flex items-center gap-3 mb-3">
-              <Icon name="MessageCircle" size={24} className="text-primary" />
-              <h3 className="text-xl font-bold">Не нашли ответ?</h3>
+          <Card className="inline-block p-4 sm:p-6 bg-primary/5 border-2 border-primary/20 w-full max-w-md">
+            <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 justify-center">
+              <Icon name="MessageCircle" size={20} className="text-primary sm:w-6 sm:h-6" />
+              <h3 className="text-lg sm:text-xl font-bold">Не нашли ответ?</h3>
             </div>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base text-center leading-relaxed">
               Свяжитесь с нами по телефону или Telegram
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a 
                 href="tel:+79244303990"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-semibold"
+                className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-semibold text-sm sm:text-base"
               >
-                <Icon name="Phone" size={18} />
+                <Icon name="Phone" size={16} className="sm:w-[18px] sm:h-[18px]" />
                 +7 924 430 39 90
               </a>
               <a 
                 href="https://t.me/+79244303990"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold"
+                className="inline-flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-semibold text-sm sm:text-base"
               >
-                <Icon name="Send" size={18} />
+                <Icon name="Send" size={16} className="sm:w-[18px] sm:h-[18px]" />
                 Telegram
               </a>
             </div>
