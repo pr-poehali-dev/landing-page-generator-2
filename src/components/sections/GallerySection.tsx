@@ -23,7 +23,7 @@ export const GallerySection = () => {
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/035c8c87-a03e-4147-a04b-d16be02b1f93.jpg",
       alt: "Котики играют вместе на игровых конструкциях",
-      name: "Мурзик"
+      name: "Кокос и Оскар"
     },
     {
       url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/1efe21b4-e23b-4f06-b499-df48d629a168.jpg",
