@@ -51,7 +51,7 @@ export const TeamSection = () => {
     {
       name: "Владислав Саенко",
       role: "Ветеринар и смотритель",
-      photo: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/e9fedca7-82c2-46bf-92d0-e8576c3f9f03.jpg",
+      photo: "https://cdn.poehali.dev/files/a41b6b17-02f2-4a8f-8da9-c4b69c779bb5.jpeg",
       description: "Следит за здоровьем и безопасностью котиков"
     }
   ];
