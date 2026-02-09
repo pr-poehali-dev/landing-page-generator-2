@@ -16,7 +16,7 @@ export const GallerySection = () => {
       name: "Дымок"
     },
     {
-      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/15c0aab2-2952-4f72-9ab3-1d1bcadd69c1.jpg",
+      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a7048c48-50ad-4e89-a33f-3d1cb52ff81e.jpg",
       alt: "Белый котик кушает премиум корм",
       name: "Снежок"
     },
@@ -100,16 +100,7 @@ export const GallerySection = () => {
                         alt={photo.alt}
                         className="w-full h-full object-cover"
                       />
-                      {/* Logo overlay for Снежок */}
-                      {photo.name === "Снежок" && (
-                        <div className="absolute bottom-[15%] left-[50%] transform -translate-x-1/2">
-                          <img 
-                            src="https://cdn.poehali.dev/files/ec9616eb-8d7b-437e-bfa8-77c40fb752db.png"
-                            alt="Котоняня"
-                            className="w-24 h-auto opacity-90"
-                          />
-                        </div>
-                      )}
+
                     </div>
                     {/* Handwritten name */}
                     <div className="absolute bottom-4 left-4 right-4 text-center">
