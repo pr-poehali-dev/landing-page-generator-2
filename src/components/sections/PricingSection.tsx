@@ -65,17 +65,17 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
   ];
 
   return (
-    <section id={id} className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+    <section id={id} className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-3 sm:mb-4">
           Тарифы и цены
         </h2>
-        <p className="text-center text-muted-foreground mb-6 sm:mb-8 text-base sm:text-lg max-w-2xl mx-auto px-2">
+        <p className="text-center text-muted-foreground mb-6 sm:mb-8 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto px-2">
           Выберите подходящий вариант для вашего пушистого друга
         </p>
         
-        <div className="bg-primary/10 border-2 border-primary/20 rounded-xl p-3 sm:p-4 mb-8 sm:mb-12 max-w-3xl mx-auto">
-          <p className="text-center font-semibold text-sm sm:text-base md:text-lg leading-relaxed">
+        <div className="bg-primary/10 border-2 border-primary/20 rounded-xl p-4 sm:p-5 mb-8 sm:mb-12 max-w-3xl mx-auto">
+          <p className="text-center font-semibold text-base sm:text-lg md:text-xl leading-relaxed">
             🎁 Специальные скидки: от 7 дней = -10% | от 14 дней = -15% | 2+ кошки = -20%
           </p>
         </div>
@@ -101,7 +101,7 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                   <Icon name={plan.icon} size={32} className="text-primary" />
                 </div>
-                <CardTitle className="text-2xl sm:text-3xl mb-2">{plan.name}</CardTitle>
+                <CardTitle className="text-2xl sm:text-3xl md:text-4xl mb-2">{plan.name}</CardTitle>
                 <CardDescription className="text-xs sm:text-sm mb-4 min-h-[40px] leading-relaxed px-2">
                   {plan.description}
                 </CardDescription>

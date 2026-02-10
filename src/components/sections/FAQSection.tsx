@@ -110,10 +110,10 @@ export const FAQSection = ({ id }: FAQSectionProps) => {
                     value={`item-${catIdx}-${idx}`}
                     className="border rounded-lg px-4 hover:border-primary/50 transition-colors"
                   >
-                    <AccordionTrigger className="text-left text-sm sm:text-base font-semibold hover:no-underline py-3 sm:py-4 leading-snug">
+                    <AccordionTrigger className="text-left text-base sm:text-lg font-semibold hover:no-underline py-3 sm:py-4 leading-snug">
                       {item.q}
                     </AccordionTrigger>
-                    <AccordionContent className="text-xs sm:text-sm text-muted-foreground pb-3 sm:pb-4 leading-relaxed">
+                    <AccordionContent className="text-base sm:text-lg text-muted-foreground pb-3 sm:pb-4 leading-relaxed">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>

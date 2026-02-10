@@ -31,12 +31,12 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
               </div>
 
               {/* Headline */}
-              <h1 className="text-[#050816] font-extrabold text-[26px] sm:text-[34px] md:text-[42px] lg:text-[56px] leading-[1.15] sm:leading-[1.08] md:leading-[1.05] mb-3 sm:mb-5 md:mb-6">
+              <h1 className="text-[#050816] font-extrabold text-[28px] sm:text-[36px] md:text-[44px] lg:text-[56px] leading-[1.2] sm:leading-[1.15] md:leading-[1.08] mb-4 sm:mb-5 md:mb-6">
                 Ваш лучший друг в надежных руках
               </h1>
 
               {/* Subheadline */}
-              <p className="text-[#2B2E3A] text-[14px] sm:text-base md:text-lg lg:text-xl leading-[1.6] sm:leading-[1.6] md:leading-relaxed mb-5 sm:mb-8 md:mb-10">
+              <p className="text-[#2B2E3A] text-[16px] sm:text-[18px] md:text-lg lg:text-xl leading-[1.65] sm:leading-[1.7] md:leading-relaxed mb-6 sm:mb-8 md:mb-10">
                 Уютная гостиница во Владивостоке с видеонаблюдением, где заботятся о вашем питомце, пока вы в отъезде
               </p>
 

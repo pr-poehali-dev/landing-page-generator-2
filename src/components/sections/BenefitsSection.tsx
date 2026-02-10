@@ -56,9 +56,9 @@ export const BenefitsSection = ({ id }: BenefitsSectionProps) => {
   };
 
   return (
-    <section id={id} className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+    <section id={id} className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-16">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 sm:mb-12 md:mb-16">
           6 преимуществ Кот🐱няни
         </h2>
         
@@ -80,7 +80,7 @@ export const BenefitsSection = ({ id }: BenefitsSectionProps) => {
                         <IconComponent />
                       </div>
                       <div className="flex-grow flex items-center justify-center">
-                        <CardTitle className="text-base sm:text-lg md:text-xl leading-tight">{benefit.title}</CardTitle>
+                        <CardTitle className="text-lg sm:text-xl md:text-2xl leading-tight">{benefit.title}</CardTitle>
                       </div>
                       
                       <div className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -91,8 +91,8 @@ export const BenefitsSection = ({ id }: BenefitsSectionProps) => {
 
                   <Card className="absolute w-full h-full backface-hidden rotate-y-180 hover:shadow-xl transition-shadow duration-300 border-2 bg-primary text-primary-foreground min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
                     <CardContent className="flex flex-col items-center justify-center h-full p-5 sm:p-6 md:p-8 text-center min-h-[280px] sm:min-h-[300px] md:min-h-[320px]">
-                      <CardTitle className="text-base sm:text-lg md:text-xl mb-3 sm:mb-4 leading-tight">{benefit.title}</CardTitle>
-                      <p className="text-sm sm:text-base leading-relaxed">
+                      <CardTitle className="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 leading-tight">{benefit.title}</CardTitle>
+                      <p className="text-base sm:text-lg leading-relaxed">
                         {benefit.detailedDesc}
                       </p>
                     </CardContent>

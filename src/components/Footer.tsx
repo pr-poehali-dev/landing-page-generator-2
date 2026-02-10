@@ -13,14 +13,14 @@ export const Footer = () => {
               alt="Котоняня"
               className="h-10 sm:h-12 w-auto mb-3 sm:mb-4"
             />
-            <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
               Премиум-гостиница для кошек во Владивостоке с видеонаблюдением и заботой 24/7
             </p>
           </div>
 
           <div>
             <h4 className="font-heading font-bold mb-3 sm:mb-4 text-base sm:text-lg">Контакты</h4>
-            <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
+            <div className="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <a 
                 href="tel:+79244303990" 
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
@@ -44,7 +44,7 @@ export const Footer = () => {
 
           <div>
             <h4 className="font-heading font-bold mb-3 sm:mb-4 text-base sm:text-lg">Режим работы</h4>
-            <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
+            <div className="space-y-1.5 sm:space-y-2 text-sm sm:text-base text-muted-foreground">
               <p>Пн-Вс: 9:00 - 21:00</p>
               <p className="text-primary font-semibold">Круглосуточный уход</p>
               <p className="text-primary font-semibold">Ветеринар 24/7</p>
