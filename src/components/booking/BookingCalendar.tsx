@@ -72,7 +72,7 @@ export const BookingCalendar = () => {
 
   const calculatePrice = () => {
     if (!dateRange.from || !dateRange.to) return 0;
-    const days = differenceInDays(dateRange.to, dateRange.from);
+    const days = differenceInDays(dateRange.to, dateRange.from) + 1;
     const pricePerDay = 1500;
     return days * pricePerDay;
   };
@@ -138,7 +138,7 @@ export const BookingCalendar = () => {
     }
   };
 
-  const days = dateRange.from && dateRange.to ? differenceInDays(dateRange.to, dateRange.from) : 0;
+  const days = dateRange.from && dateRange.to ? differenceInDays(dateRange.to, dateRange.from) + 1 : 0;
   const totalPrice = calculatePrice();
 
   const disabledDays = [
