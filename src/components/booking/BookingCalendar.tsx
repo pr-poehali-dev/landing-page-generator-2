@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar } from '@/components/ui/calendar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
-import { format, differenceInDays, addMonths } from 'date-fns';
+import { format, differenceInDays, addMonths, parseISO, eachDayOfInterval } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
 interface BookingFormData {
@@ -33,7 +33,36 @@ export const BookingCalendar = () => {
     specialNeeds: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [bookedDates, setBookedDates] = useState<Date[]>([]);
+  const [isLoadingDates, setIsLoadingDates] = useState(true);
   const { toast } = useToast();
+
+  useEffect(() => {
+    const fetchBookedDates = async () => {
+      try {
+        const response = await fetch('https://functions.poehali.dev/bookings-dates');
+        if (response.ok) {
+          const data = await response.json();
+          const dates: Date[] = [];
+          
+          data.occupiedDates?.forEach((booking: { from: string; to: string }) => {
+            const from = parseISO(booking.from);
+            const to = parseISO(booking.to);
+            const range = eachDayOfInterval({ start: from, end: to });
+            dates.push(...range);
+          });
+          
+          setBookedDates(dates);
+        }
+      } catch (error) {
+        console.error('Failed to load booked dates:', error);
+      } finally {
+        setIsLoadingDates(false);
+      }
+    };
+
+    fetchBookedDates();
+  }, []);
 
   const handleDateSelect = (range: { from: Date | undefined; to: Date | undefined } | undefined) => {
     if (range) {
@@ -112,7 +141,10 @@ export const BookingCalendar = () => {
   const days = dateRange.from && dateRange.to ? differenceInDays(dateRange.to, dateRange.from) : 0;
   const totalPrice = calculatePrice();
 
-  const disabledDays = { before: new Date() };
+  const disabledDays = [
+    { before: new Date() },
+    ...bookedDates
+  ];
   const currentMonth = new Date();
   const nextMonth = addMonths(currentMonth, 1);
 
@@ -125,8 +157,14 @@ export const BookingCalendar = () => {
             Выберите даты
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
-            Укажите период проживания вашего питомца
+            Укажите период проживания вашего питомца. Занятые даты недоступны для выбора.
           </CardDescription>
+          {isLoadingDates && (
+            <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2">
+              <Icon name="Loader2" size={16} className="animate-spin" />
+              Загружаю занятые даты...
+            </div>
+          )}
         </CardHeader>
         <CardContent className="px-3 sm:px-6">
           <div className="space-y-6">
