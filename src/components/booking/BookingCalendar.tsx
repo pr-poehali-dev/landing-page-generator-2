@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
-import { format, differenceInDays, addDays } from 'date-fns';
+import { format, differenceInDays, addMonths } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
 interface BookingFormData {
@@ -113,6 +113,8 @@ export const BookingCalendar = () => {
   const totalPrice = calculatePrice();
 
   const disabledDays = { before: new Date() };
+  const currentMonth = new Date();
+  const nextMonth = addMonths(currentMonth, 1);
 
   return (
     <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
@@ -127,15 +129,43 @@ export const BookingCalendar = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="px-3 sm:px-6">
-          <Calendar
-            mode="range"
-            selected={dateRange}
-            onSelect={handleDateSelect}
-            numberOfMonths={1}
-            disabled={disabledDays}
-            locale={ru}
-            className="rounded-md border w-full"
-          />
+          <div className="space-y-6">
+            <div>
+              <div className="mb-3 px-3 py-2 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg">
+                <h3 className="text-center font-semibold text-lg">
+                  {format(currentMonth, 'LLLL yyyy', { locale: ru })}
+                </h3>
+              </div>
+              <Calendar
+                mode="range"
+                selected={dateRange}
+                onSelect={handleDateSelect}
+                month={currentMonth}
+                numberOfMonths={1}
+                disabled={disabledDays}
+                locale={ru}
+                className="rounded-md border w-full"
+              />
+            </div>
+
+            <div>
+              <div className="mb-3 px-3 py-2 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg">
+                <h3 className="text-center font-semibold text-lg">
+                  {format(nextMonth, 'LLLL yyyy', { locale: ru })}
+                </h3>
+              </div>
+              <Calendar
+                mode="range"
+                selected={dateRange}
+                onSelect={handleDateSelect}
+                month={nextMonth}
+                numberOfMonths={1}
+                disabled={disabledDays}
+                locale={ru}
+                className="rounded-md border w-full"
+              />
+            </div>
+          </div>
           
           {dateRange.from && dateRange.to && (
             <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
@@ -221,10 +251,10 @@ export const BookingCalendar = () => {
               
               <div className="space-y-3 sm:space-y-4">
                 <div className="space-y-1.5 sm:space-y-2">
-                  <Label htmlFor="catName" className="text-sm sm:text-base">Кличка котика *</Label>
+                  <Label htmlFor="catName" className="text-sm sm:text-base">Кличка питомца *</Label>
                   <Input
                     id="catName"
-                    placeholder="Мурзик"
+                    placeholder="Мурка"
                     value={formData.catName}
                     onChange={(e) => setFormData({ ...formData, catName: e.target.value })}
                     required
@@ -235,17 +265,17 @@ export const BookingCalendar = () => {
                   <Label htmlFor="catBreed" className="text-sm sm:text-base">Порода</Label>
                   <Input
                     id="catBreed"
-                    placeholder="Британская короткошерстная"
+                    placeholder="Британская короткошёрстная"
                     value={formData.catBreed}
                     onChange={(e) => setFormData({ ...formData, catBreed: e.target.value })}
                   />
                 </div>
 
                 <div className="space-y-1.5 sm:space-y-2">
-                  <Label htmlFor="specialNeeds" className="text-sm sm:text-base">Особые потребности / Питание</Label>
+                  <Label htmlFor="specialNeeds" className="text-sm sm:text-base">Особые пожелания</Label>
                   <Textarea
                     id="specialNeeds"
-                    placeholder="Аллергии, особенности поведения, предпочтения в еде..."
+                    placeholder="Особенности ухода, диета, лекарства..."
                     value={formData.specialNeeds}
                     onChange={(e) => setFormData({ ...formData, specialNeeds: e.target.value })}
                     rows={3}
@@ -254,27 +284,23 @@ export const BookingCalendar = () => {
               </div>
             </div>
 
-            <Button 
-              type="submit" 
-              className="w-full text-base sm:text-lg py-5 sm:py-6 min-h-[56px]"
+            <Button
+              type="submit"
+              className="w-full text-base sm:text-lg py-5 sm:py-6"
               disabled={isSubmitting || !dateRange.from || !dateRange.to}
             >
               {isSubmitting ? (
                 <>
-                  <Icon name="Loader2" size={18} className="mr-2 animate-spin sm:w-5 sm:h-5" />
-                  <span className="text-sm sm:text-base">Отправка...</span>
+                  <Icon name="Loader2" className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
+                  Отправка...
                 </>
               ) : (
                 <>
-                  <Icon name="Check" size={18} className="mr-2 sm:w-5 sm:h-5" />
-                  <span className="text-sm sm:text-base">Забронировать {totalPrice > 0 && `за ${totalPrice.toLocaleString()} ₽`}</span>
+                  <Icon name="Send" className="mr-2" size={20} />
+                  Отправить заявку
                 </>
               )}
             </Button>
-
-            <p className="text-xs text-muted-foreground text-center">
-              Нажимая кнопку, вы соглашаетесь с условиями бронирования
-            </p>
           </form>
         </CardContent>
       </Card>
