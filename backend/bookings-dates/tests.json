@@ -1,0 +1,10 @@
+{
+  "tests": [
+    {
+      "name": "Get occupied dates",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}
