@@ -121,13 +121,12 @@ export const Navigation = () => {
       </div>
 
       {/* Мобильное меню */}
-      <div
-        className={`fixed inset-0 bg-background/98 backdrop-blur-xl md:hidden transition-all duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
-        style={{ top: isScrolled ? '56px' : '68px' }}
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-4 p-6">
+      {isMobileMenuOpen && (
+        <div
+          className="fixed left-0 right-0 bottom-0 bg-background/98 backdrop-blur-xl md:hidden z-40"
+          style={{ top: isScrolled ? '56px' : '68px' }}
+        >
+          <div className="flex flex-col items-center justify-center h-full gap-4 p-6 overflow-y-auto">
           <Button
             variant="ghost"
             onClick={() => scrollToSection('benefits')}
@@ -174,7 +173,8 @@ export const Navigation = () => {
             Забронировать
           </Button>
         </div>
-      </div>
+        </div>
+      )}
     </nav>
   );
 };
