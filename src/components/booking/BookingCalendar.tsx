@@ -327,7 +327,7 @@ export const BookingCalendar = () => {
 
             <Button
               type="submit"
-              className="w-full text-base sm:text-lg py-5 sm:py-6"
+              className="w-full text-base sm:text-lg py-5 sm:py-6 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold shadow-[0_0_30px_rgba(0,0,0,0.25)] hover:shadow-[0_0_40px_rgba(0,0,0,0.3)] hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:hover:scale-100"
               disabled={isSubmitting || !dateRange.from || !dateRange.to}
             >
               {isSubmitting ? (
