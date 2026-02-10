@@ -247,19 +247,20 @@ export const BookingCalendar = () => {
         </CardHeader>
         <CardContent className="px-3 sm:px-6">
           <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-            <div className="space-y-1.5 sm:space-y-2">
-              <Label htmlFor="customerName" className="text-sm sm:text-base">Ваше имя *</Label>
+            <div className="space-y-1.5 sm:space-y-2 p-3 bg-primary/5 rounded-lg border-2 border-primary/20">
+              <Label htmlFor="customerName" className="text-sm sm:text-base font-semibold">Ваше имя *</Label>
               <Input
                 id="customerName"
                 placeholder="Анна Иванова"
                 value={formData.customerName}
                 onChange={(e) => setFormData({ ...formData, customerName: e.target.value })}
                 required
+                className="bg-white"
               />
             </div>
 
-            <div className="space-y-1.5 sm:space-y-2">
-              <Label htmlFor="phone" className="text-sm sm:text-base">Телефон *</Label>
+            <div className="space-y-1.5 sm:space-y-2 p-3 bg-primary/5 rounded-lg border-2 border-primary/20">
+              <Label htmlFor="phone" className="text-sm sm:text-base font-semibold">Телефон *</Label>
               <Input
                 id="phone"
                 type="tel"
@@ -267,6 +268,7 @@ export const BookingCalendar = () => {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 required
+                className="bg-white"
               />
             </div>
 
@@ -288,14 +290,15 @@ export const BookingCalendar = () => {
               </h3>
               
               <div className="space-y-3 sm:space-y-4">
-                <div className="space-y-1.5 sm:space-y-2">
-                  <Label htmlFor="catName" className="text-sm sm:text-base">Кличка питомца *</Label>
+                <div className="space-y-1.5 sm:space-y-2 p-3 bg-primary/5 rounded-lg border-2 border-primary/20">
+                  <Label htmlFor="catName" className="text-sm sm:text-base font-semibold">Кличка питомца *</Label>
                   <Input
                     id="catName"
                     placeholder="Мурка"
                     value={formData.catName}
                     onChange={(e) => setFormData({ ...formData, catName: e.target.value })}
                     required
+                    className="bg-white"
                   />
                 </div>
 
