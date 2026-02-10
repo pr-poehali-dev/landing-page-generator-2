@@ -120,10 +120,10 @@ export const Navigation = () => {
 
       {/* Мобильное меню */}
       <div
-        className={`fixed inset-0 bg-background/98 backdrop-blur-xl md:hidden transition-all duration-300 ${
+        className={`fixed left-0 right-0 bottom-0 bg-background/98 backdrop-blur-xl md:hidden transition-all duration-300 ${
           isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
-        style={{ top: isScrolled ? '52px' : '60px' }}
+        style={{ top: isScrolled ? '52px' : '64px' }}
       >
         <div className="flex flex-col items-center justify-center h-full gap-4 p-6">
           <Button
