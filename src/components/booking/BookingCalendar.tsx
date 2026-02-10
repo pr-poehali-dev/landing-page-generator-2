@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 import { format, differenceInDays, addMonths, parseISO, eachDayOfInterval } from 'date-fns';
 import { ru } from 'date-fns/locale';
+import confetti from 'canvas-confetti';
 
 interface BookingFormData {
   customerName: string;
@@ -35,6 +36,7 @@ export const BookingCalendar = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookedDates, setBookedDates] = useState<Date[]>([]);
   const [isLoadingDates, setIsLoadingDates] = useState(true);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -110,6 +112,19 @@ export const BookingCalendar = () => {
       });
 
       if (response.ok) {
+        confetti({
+          particleCount: 150,
+          spread: 100,
+          origin: { y: 0.6 },
+          colors: ['#00F0FF', '#43E3FF', '#FF4FD8', '#B8D8F0']
+        });
+        
+        setShowSuccessMessage(true);
+        
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 4000);
+        
         toast({
           title: 'Бронирование отправлено! 🎉',
           description: 'Мы свяжемся с вами в ближайшее время для подтверждения',
@@ -149,7 +164,22 @@ export const BookingCalendar = () => {
   const nextMonth = addMonths(currentMonth, 1);
 
   return (
-    <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto">
+    <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl mx-auto relative">
+      {showSuccessMessage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+          <div className="bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] px-8 py-6 rounded-2xl shadow-2xl animate-in zoom-in-95 duration-500">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 bg-white/30 rounded-full flex items-center justify-center">
+                <Icon name="CheckCircle2" size={40} className="text-white" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-bold mb-1">Заявка успешно отправлена!</h3>
+                <p className="text-lg opacity-90">Мы свяжемся с вами в ближайшее время</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
       <Card className="shadow-xl">
         <CardHeader className="pb-4 sm:pb-6">
           <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl">
