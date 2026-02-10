@@ -34,11 +34,13 @@ export const Navigation = () => {
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-background/95 backdrop-blur-md shadow-lg py-2 sm:py-3' 
-          : 'bg-transparent py-3 sm:py-4'
+          ? 'bg-background/95 backdrop-blur-md shadow-lg' 
+          : 'bg-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-3 sm:px-4">
+      <div className={`max-w-7xl mx-auto px-3 sm:px-4 transition-all duration-300 ${
+        isScrolled ? 'py-2' : 'py-3 sm:py-4'
+      }`}>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img 
@@ -120,10 +122,10 @@ export const Navigation = () => {
 
       {/* Мобильное меню */}
       <div
-        className={`fixed left-0 right-0 bottom-0 bg-background/98 backdrop-blur-xl md:hidden transition-all duration-300 ${
+        className={`fixed inset-0 bg-background/98 backdrop-blur-xl md:hidden transition-all duration-300 ${
           isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
-        style={{ top: isScrolled ? '52px' : '64px' }}
+        style={{ top: isScrolled ? '56px' : '68px' }}
       >
         <div className="flex flex-col items-center justify-center h-full gap-4 p-6">
           <Button
