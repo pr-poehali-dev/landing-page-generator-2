@@ -1,3 +1,5 @@
+import { useState, useCallback, useEffect } from "react";
+import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +12,7 @@ interface PricingSectionProps {
 }
 
 export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
-  const plans = [
+  const allPlans = [
     {
       name: "Стандарт",
       price: "600",
@@ -64,6 +66,91 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
     }
   ];
 
+  const plans = allPlans;
+  const mobilePlans = [allPlans[1], allPlans[0], allPlans[2]];
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: 'center',
+  });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+  }, [emblaApi, onSelect]);
+
+  const renderPricingCard = (plan: typeof allPlans[0], idx: number) => (
+    <Card 
+      key={idx}
+      className={`relative hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fade-in flex flex-col ${
+        plan.popular ? 'border-primary border-4 shadow-xl sm:scale-105' : 'border-2'
+      }`}
+      style={{ animationDelay: `${idx * 100}ms` }}
+    >
+      {plan.popular && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+          <Badge className="text-sm px-6 py-1.5 bg-primary text-primary-foreground shadow-lg">
+            ⭐ ПОПУЛЯРНЫЙ
+          </Badge>
+        </div>
+      )}
+      
+      <CardHeader className="text-center pt-8 pb-4">
+        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+          <Icon name={plan.icon} size={32} className="text-primary" />
+        </div>
+        <CardTitle className="text-2xl sm:text-3xl md:text-4xl mb-2">{plan.name}</CardTitle>
+        <CardDescription className="text-xs sm:text-sm mb-4 min-h-[40px] leading-relaxed px-2">
+          {plan.description}
+        </CardDescription>
+        <div className="flex items-baseline justify-center gap-1">
+          <span className="text-4xl sm:text-5xl font-bold text-primary">{plan.price}</span>
+          <span className="text-lg sm:text-xl text-muted-foreground">₽</span>
+          <span className="text-base sm:text-lg text-muted-foreground">/{plan.period}</span>
+        </div>
+      </CardHeader>
+      
+      <CardContent className="space-y-6 flex-1 flex flex-col">
+        <ul className="space-y-3 flex-1">
+          {plan.features.map((feature, fidx) => (
+            <li key={fidx} className="flex items-start gap-2 sm:gap-3">
+              <Icon name="Check" size={18} className="text-green-600 flex-shrink-0 mt-0.5" />
+              <span className="text-xs sm:text-sm leading-relaxed">{feature}</span>
+            </li>
+          ))}
+        </ul>
+        
+        <Button 
+          className={`w-full mt-4 ${plan.popular ? 'bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold hover:shadow-lg' : ''}`}
+          size="lg"
+          variant={plan.popular ? "default" : "outline"}
+          onClick={() => {
+            playSound('meow');
+            onBookNowClick();
+          }}
+        >
+          {plan.popular ? "Забронировать сейчас" : "Выбрать тариф"}
+        </Button>
+      </CardContent>
+    </Card>
+  );
+
   return (
     <section id={id} className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
@@ -80,62 +167,51 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
           </p>
         </div>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {plans.map((plan, idx) => (
-            <Card 
-              key={idx}
-              className={`relative hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fade-in flex flex-col ${
-                plan.popular ? 'border-primary border-4 shadow-xl sm:scale-105' : 'border-2'
-              }`}
-              style={{ animationDelay: `${idx * 100}ms` }}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
-                  <Badge className="text-sm px-6 py-1.5 bg-primary text-primary-foreground shadow-lg">
-                    ⭐ ПОПУЛЯРНЫЙ
-                  </Badge>
+        {/* Mobile carousel */}
+        <div className="sm:hidden relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-4">
+              {mobilePlans.map((plan, idx) => (
+                <div key={idx} className="flex-[0_0_90%] min-w-0">
+                  {renderPricingCard(plan, idx)}
                 </div>
-              )}
-              
-              <CardHeader className="text-center pt-8 pb-4">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Icon name={plan.icon} size={32} className="text-primary" />
-                </div>
-                <CardTitle className="text-2xl sm:text-3xl md:text-4xl mb-2">{plan.name}</CardTitle>
-                <CardDescription className="text-xs sm:text-sm mb-4 min-h-[40px] leading-relaxed px-2">
-                  {plan.description}
-                </CardDescription>
-                <div className="flex items-baseline justify-center gap-1">
-                  <span className="text-4xl sm:text-5xl font-bold text-primary">{plan.price}</span>
-                  <span className="text-lg sm:text-xl text-muted-foreground">₽</span>
-                  <span className="text-base sm:text-lg text-muted-foreground">/{plan.period}</span>
-                </div>
-              </CardHeader>
-              
-              <CardContent className="space-y-6 flex-1 flex flex-col">
-                <ul className="space-y-3 flex-1">
-                  {plan.features.map((feature, fidx) => (
-                    <li key={fidx} className="flex items-start gap-2 sm:gap-3">
-                      <Icon name="Check" size={18} className="text-green-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-xs sm:text-sm leading-relaxed">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <Button 
-                  className={`w-full mt-4 ${plan.popular ? 'bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold hover:shadow-lg' : ''}`}
-                  size="lg"
-                  variant={plan.popular ? "default" : "outline"}
-                  onClick={() => {
-                    playSound('meow');
-                    onBookNowClick();
-                  }}
-                >
-                  {plan.popular ? "Забронировать сейчас" : "Выбрать тариф"}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+              ))}
+            </div>
+          </div>
+          
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+            onClick={scrollPrev}
+          >
+            <Icon name="ChevronLeft" size={24} />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm"
+            onClick={scrollNext}
+          >
+            <Icon name="ChevronRight" size={24} />
+          </Button>
+          
+          <div className="flex justify-center gap-2 mt-6">
+            {mobilePlans.map((_, idx) => (
+              <button
+                key={idx}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  idx === selectedIndex ? 'bg-primary w-6' : 'bg-primary/30'
+                }`}
+                onClick={() => emblaApi?.scrollTo(idx)}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop grid */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {plans.map((plan, idx) => renderPricingCard(plan, idx))}
         </div>
         
         <p className="text-center text-muted-foreground mt-8 sm:mt-12 text-xs sm:text-sm px-4 leading-relaxed">
