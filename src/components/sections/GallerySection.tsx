@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import confetti from 'canvas-confetti';
 
 export const GallerySection = () => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
@@ -58,6 +59,17 @@ export const GallerySection = () => {
   ];
 
   const toggleFlip = (index: number) => {
+    const isCurrentlyFlipped = flippedCards.includes(index);
+    
+    if (!isCurrentlyFlipped) {
+      confetti({
+        particleCount: 30,
+        spread: 60,
+        origin: { y: 0.6 },
+        colors: ['#FFD700', '#FFA500', '#FF69B4', '#87CEEB']
+      });
+    }
+    
     setFlippedCards(prev => 
       prev.includes(index) 
         ? prev.filter(i => i !== index)
@@ -105,11 +117,11 @@ export const GallerySection = () => {
   return (
     <section className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4 animate-fade-in">
           Галерея счастливых котиков
         </h2>
-        <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto">
-          Наши пушистые гости наслаждаются комфортом, играми и заботой
+        <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '100ms' }}>
+          Наши пушистые гости наслаждаются комфортом, играми и заботой. Нажмите на карточку, чтобы увидеть отзыв! 
         </p>
         
         <div className="relative">
@@ -124,7 +136,7 @@ export const GallerySection = () => {
                     style={{ perspective: '1000px' }}
                   >
                     <div 
-                      className={`relative w-full transition-transform duration-700 cursor-pointer`}
+                      className={`relative w-full transition-all duration-700 cursor-pointer hover:scale-105`}
                       style={{ 
                         transformStyle: 'preserve-3d',
                         transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
@@ -133,16 +145,19 @@ export const GallerySection = () => {
                     >
                       {/* Front side - Photo */}
                       <div 
-                        className="group bg-white p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-shadow duration-300"
-                        style={{ backfaceVisibility: 'hidden' }}
+                        className="group bg-white p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300 animate-fade-in"
+                        style={{ 
+                          backfaceVisibility: 'hidden',
+                          animationDelay: `${idx * 100}ms`
+                        }}
                       >
                         <div className="relative overflow-hidden aspect-square">
                           <img 
                             src={photo.url} 
                             alt={photo.alt}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
-                          <div className="absolute top-3 right-3 bg-primary/90 text-white rounded-full p-2 hover:scale-110 transition-transform">
+                          <div className="absolute top-3 right-3 bg-primary/90 text-primary-foreground rounded-full p-2 hover:scale-110 transition-transform opacity-0 group-hover:opacity-100 animate-pulse">
                             <Icon name="RotateCw" size={18} />
                           </div>
                         </div>
@@ -155,7 +170,7 @@ export const GallerySection = () => {
 
                       {/* Back side - Testimonial */}
                       <div 
-                        className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] flex flex-col justify-between"
+                        className="absolute inset-0 bg-primary text-primary-foreground p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] flex flex-col justify-between"
                         style={{ 
                           backfaceVisibility: 'hidden',
                           transform: 'rotateY(180deg)'
@@ -164,18 +179,18 @@ export const GallerySection = () => {
                         <div className="flex-1 flex flex-col justify-center space-y-3 px-2">
                           <div className="flex justify-center gap-1 mb-2">
                             {[...Array(photo.rating)].map((_, i) => (
-                              <Icon key={i} name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
+                              <Icon key={i} name="Star" size={16} className="text-orange-600 fill-orange-600" />
                             ))}
                           </div>
-                          <p className="text-sm italic text-center leading-relaxed">
+                          <p className="text-sm italic text-center leading-relaxed font-medium">
                             "{photo.testimonial}"
                           </p>
                           <div className="text-center">
-                            <p className="text-sm font-semibold text-primary">{photo.name}</p>
-                            <p className="text-xs text-muted-foreground">{photo.author}</p>
+                            <p className="text-base font-bold">{photo.name}</p>
+                            <p className="text-xs opacity-80">{photo.author}</p>
                           </div>
                         </div>
-                        <div className="absolute bottom-4 right-4 bg-primary/90 text-white rounded-full p-2">
+                        <div className="absolute bottom-4 right-4 bg-primary-foreground/20 text-primary-foreground rounded-full p-2 animate-pulse">
                           <Icon name="RotateCcw" size={18} />
                         </div>
                       </div>
