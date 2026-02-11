@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
-import { playSound } from "@/utils/sounds";
 
 interface RoomsSectionProps {
   onBookNowClick: () => void;
@@ -77,10 +76,7 @@ export const RoomsSection = ({ onBookNowClick }: RoomsSectionProps) => {
                 <Button 
                   className="w-full mt-6"
                   variant={room.popular ? "default" : "outline"}
-                  onClick={() => {
-                    playSound('meow');
-                    onBookNowClick();
-                  }}
+                  onClick={onBookNowClick}
                 >
                   Забронировать
                 </Button>

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
-import { playSound } from "@/utils/sounds";
 
 interface PricingSectionProps {
   id?: string;
@@ -164,10 +163,7 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
           className={`w-full mt-4 ${plan.popular ? 'bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold hover:shadow-lg' : ''}`}
           size="lg"
           variant={plan.popular ? "default" : "outline"}
-          onClick={() => {
-            playSound('meow');
-            onBookNowClick();
-          }}
+          onClick={onBookNowClick}
         >
           {plan.popular ? "Забронировать сейчас" : "Выбрать тариф"}
         </Button>

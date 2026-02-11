@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { MouseToyIcon, CatBowlIcon } from "@/components/DecorationIcons";
-import { playSound, playMeowSequence } from "@/utils/sounds";
 import {
   Dialog,
   DialogContent,
@@ -61,7 +60,6 @@ export const BookingSection = () => {
     const total = calculateTotal();
     
     if (!bookingData.checkIn || !bookingData.checkOut || !bookingData.name || !bookingData.phone) {
-      playSound('meow');
       toast({
         title: "Заполните все поля",
         description: "Пожалуйста, укажите даты, имя и телефон",
@@ -71,7 +69,6 @@ export const BookingSection = () => {
     }
     
     if (!bookingData.agreeToTerms) {
-      playSound('meow');
       toast({
         title: "Необходимо согласие",
         description: "Пожалуйста, примите условия соглашения",
@@ -101,7 +98,6 @@ export const BookingSection = () => {
       const data = await response.json();
       
       if (data.success) {
-        playMeowSequence();
         toast({
           title: "Бронирование отправлено! 🎉",
           description: `Итого: ${total}₽. Мы свяжемся с вами в течение часа!`,
@@ -121,7 +117,6 @@ export const BookingSection = () => {
         throw new Error(data.error || 'Ошибка сервера');
       }
     } catch (error) {
-      playSound('meow');
       toast({
         title: "Ошибка отправки",
         description: "Попробуйте позже или позвоните нам",
