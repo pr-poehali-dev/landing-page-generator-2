@@ -4,38 +4,66 @@ import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
 export const GallerySection = () => {
+  const [flippedCards, setFlippedCards] = useState<number[]>([]);
+
   const photos = [
     {
-      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/bd502c4a-abe5-47f8-94ef-fa9343ad1e1a.jpg",
-      alt: "Рыжий котик играет с игрушками",
-      name: "Рыжик"
+      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/2419dd70-326e-47f9-a060-00a19862050f.jpg",
+      alt: "Рыжик играет в гостинице",
+      name: "Рыжик",
+      testimonial: "Рыжик впервые остался без нас, очень переживали. Но видеонаблюдение 24/7 успокоило - видели, что он прекрасно проводит время. Теперь только сюда!",
+      author: "Сергей и Мария Петровы",
+      rating: 5
     },
     {
-      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/45ece2d9-d7ee-45a8-aa76-c5e99f0f4941.jpg",
-      alt: "Серый котик отдыхает на мягкой лежанке",
-      name: "Тиша"
+      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/919d5031-54ca-4c63-a3ee-87d93be34ddf.jpg",
+      alt: "Мурка отдыхает",
+      name: "Мурка",
+      testimonial: "Оставили нашу Мурку на две недели. Каждый день получали видео, как она играет и спит. Вернулась довольная и упитанная! Спасибо команде за заботу ❤️",
+      author: "Елена Иванова",
+      rating: 5
     },
     {
-      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/a7048c48-50ad-4e89-a33f-3d1cb52ff81e.jpg",
-      alt: "Белый котик кушает премиум корм",
-      name: "Каспер"
+      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/603557ff-8038-465f-b5e7-833fa3b1a1e4.jpg",
+      alt: "Симба после груминга",
+      name: "Симба",
+      testimonial: "Это не гостиница, это спа-курорт для кошек! Симба вернулся расчесанный, довольный, даже похудел немного. Груминг на высшем уровне 👍",
+      author: "Виктория Кравцова",
+      rating: 5
     },
     {
-      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/035c8c87-a03e-4147-a04b-d16be02b1f93.jpg",
-      alt: "Котики играют вместе на игровых конструкциях",
-      name: "Кокос и Оскар"
+      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/31bb39c6-1283-493a-adc3-3588a6fdd6f3.jpg",
+      alt: "Боня в номере",
+      name: "Боня",
+      testimonial: "Впервые доверили кого-то чужим рукам. Боня оказался в надёжных руках профессионалов. Ежедневные фотоотчёты и внимательное отношение - рекомендую!",
+      author: "Дмитрий Соколов",
+      rating: 5
     },
     {
-      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/1efe21b4-e23b-4f06-b499-df48d629a168.jpg",
-      alt: "Черный котик на груминге",
-      name: "Уголёк"
+      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/5206530d-a986-4b08-98bb-d704b7e1e987.jpg",
+      alt: "Багира кушает",
+      name: "Багира",
+      testimonial: "Багира очень привередливая, но здесь ей понравилось! Персонал нашёл подход, кормили только тем, что она любит. Спасибо за индивидуальный подход 🐈‍⬛",
+      author: "Анна Романова",
+      rating: 5
     },
     {
-      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/0c5526c5-b6d9-4f74-a96f-e3b3ec6c105c.jpg",
-      alt: "Трехцветный котик мирно спит у окна",
-      name: "Маркиза"
+      url: "https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/6959f908-7068-46bb-adf4-1132bb3648e3.jpg",
+      alt: "Барсик в люксе",
+      name: "Барсик",
+      testimonial: "Люксовый номер превзошёл ожидания! Барсик жил как король - панорамное окно, спа-процедуры. Теперь он требует такой же сервис дома 😄",
+      author: "Олег и Светлана",
+      rating: 5
     }
   ];
+
+  const toggleFlip = (index: number) => {
+    setFlippedCards(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -87,30 +115,74 @@ export const GallerySection = () => {
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex gap-6">
-              {photos.map((photo, idx) => (
-                <div 
-                  key={idx}
-                  className="relative flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
-                >
-                  {/* Polaroid frame */}
-                  <div className="group relative bg-white p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300 rotate-0 hover:rotate-1">
-                    <div className="relative overflow-hidden aspect-square">
-                      <img 
-                        src={photo.url} 
-                        alt={photo.alt}
-                        className="w-full h-full object-cover"
-                      />
+              {photos.map((photo, idx) => {
+                const isFlipped = flippedCards.includes(idx);
+                return (
+                  <div 
+                    key={idx}
+                    className="relative flex-[0_0_100%] min-w-0 sm:flex-[0_0_50%] lg:flex-[0_0_33.333%]"
+                    style={{ perspective: '1000px' }}
+                  >
+                    <div 
+                      className={`relative w-full transition-transform duration-700 cursor-pointer`}
+                      style={{ 
+                        transformStyle: 'preserve-3d',
+                        transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                      }}
+                      onClick={() => toggleFlip(idx)}
+                    >
+                      {/* Front side - Photo */}
+                      <div 
+                        className="group bg-white p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-shadow duration-300"
+                        style={{ backfaceVisibility: 'hidden' }}
+                      >
+                        <div className="relative overflow-hidden aspect-square">
+                          <img 
+                            src={photo.url} 
+                            alt={photo.alt}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute top-3 right-3 bg-primary/90 text-white rounded-full p-2 hover:scale-110 transition-transform">
+                            <Icon name="RotateCw" size={18} />
+                          </div>
+                        </div>
+                        <div className="absolute bottom-4 left-4 right-4 text-center">
+                          <p className="text-xl font-handwriting text-black" style={{ fontFamily: 'Permanent Marker, cursive' }}>
+                            {photo.name}
+                          </p>
+                        </div>
+                      </div>
 
-                    </div>
-                    {/* Handwritten name */}
-                    <div className="absolute bottom-4 left-4 right-4 text-center">
-                      <p className="text-xl font-handwriting text-black" style={{ fontFamily: 'Permanent Marker, cursive' }}>
-                        {photo.name}
-                      </p>
+                      {/* Back side - Testimonial */}
+                      <div 
+                        className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 p-4 pb-16 shadow-[0_4px_20px_rgba(0,0,0,0.15)] flex flex-col justify-between"
+                        style={{ 
+                          backfaceVisibility: 'hidden',
+                          transform: 'rotateY(180deg)'
+                        }}
+                      >
+                        <div className="flex-1 flex flex-col justify-center space-y-3 px-2">
+                          <div className="flex justify-center gap-1 mb-2">
+                            {[...Array(photo.rating)].map((_, i) => (
+                              <Icon key={i} name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
+                            ))}
+                          </div>
+                          <p className="text-sm italic text-center leading-relaxed">
+                            "{photo.testimonial}"
+                          </p>
+                          <div className="text-center">
+                            <p className="text-sm font-semibold text-primary">{photo.name}</p>
+                            <p className="text-xs text-muted-foreground">{photo.author}</p>
+                          </div>
+                        </div>
+                        <div className="absolute bottom-4 right-4 bg-primary/90 text-white rounded-full p-2">
+                          <Icon name="RotateCcw" size={18} />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
