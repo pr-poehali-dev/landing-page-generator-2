@@ -131,7 +131,7 @@ export const GallerySection = ({ id }: GallerySectionProps) => {
           Отзывы наших гостей
         </h2>
         <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '100ms' }}>
-          Наши пушистые гости наслаждаются комфортом, играми и заботой. Нажмите на карточку, чтобы увидеть отзыв! 
+          Наши пушистые постояльцы наслаждаются комфортом, играми и заботой. Нажмите на карточку, чтобы увидеть отзыв! 
         </p>
         
         <div className="relative">
