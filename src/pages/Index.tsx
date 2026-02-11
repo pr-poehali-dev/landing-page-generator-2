@@ -6,6 +6,7 @@ import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { PricingSection } from "@/components/sections/PricingSection";
 import { GallerySection } from "@/components/sections/GallerySection";
 import { TeamSection } from "@/components/sections/TeamSection";
+import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
 import { ScrollToTop } from "@/components/ScrollToTop";
@@ -43,7 +44,8 @@ const Index = () => {
       </section>
       
       <GallerySection />
-      <TeamSection id="testimonials" />
+      <TestimonialsSection id="testimonials" />
+      <TeamSection />
       <FAQSection id="faq" />
       <ScrollToTop />
       <TelegramFloatingButton />

@@ -4,7 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 
-export const TeamSection = () => {
+interface TeamSectionProps {
+  id?: string;
+}
+
+export const TeamSection = ({ id }: TeamSectionProps) => {
   const team = [
     {
       name: "Ирина Вертушенко",
@@ -94,7 +98,7 @@ export const TeamSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
+    <section id={id} className="py-20 px-4 bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4">
           Наша команда
