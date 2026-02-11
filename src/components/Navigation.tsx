@@ -32,6 +32,7 @@ export const Navigation = () => {
 
   return (
     <nav 
+      aria-label="Основная навигация"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
           ? 'bg-background/95 backdrop-blur-md shadow-lg' 
@@ -45,7 +46,10 @@ export const Navigation = () => {
           <div className="flex items-center gap-2">
             <img 
               src="https://cdn.poehali.dev/files/8dc06b31-00a0-48d2-b370-0158f31a4aa2.png"
-              alt="Котоняня"
+              alt="Котоняня - гостиница для кошек"
+              loading="eager"
+              width="80"
+              height="40"
               className="h-8 sm:h-10 w-auto"
             />
           </div>

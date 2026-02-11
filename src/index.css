@@ -97,6 +97,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply text-foreground;
     font-family: "Open Sans", sans-serif;
@@ -104,6 +108,7 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
     background: linear-gradient(
       135deg,
       hsl(200, 85%, 75%) 0%,
@@ -190,4 +195,37 @@
 
 .rotate-y-180 {
   transform: rotateY(180deg);
+}
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Touch optimization for mobile */
+@media (hover: none) and (pointer: coarse) {
+  button:active,
+  a:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Improved image loading */
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Reduce motion for carousel animations on mobile */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .embla__slide {
+    will-change: transform;
+  }
 }

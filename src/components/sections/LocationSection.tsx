@@ -2,7 +2,7 @@ import { MapPin, Phone, Clock } from 'lucide-react';
 
 export const LocationSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+    <section aria-label="Расположение и контакты" className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
@@ -57,7 +57,10 @@ export const LocationSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-full min-h-[280px] sm:min-h-[350px] md:min-h-[500px]">
               <img 
                 src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/bucket/e7477d05-20a5-4308-9e5c-5b3726368f2b.jpeg" 
-                alt="Кошачья гостиница КОТ🐱НЯНЯ во Владивостоке"
+                alt="Интерьер гостиницы для кошек Котоняня во Владивостоке"
+                loading="lazy"
+                width="800"
+                height="600"
                 className="w-full h-full object-cover"
               />
             </div>

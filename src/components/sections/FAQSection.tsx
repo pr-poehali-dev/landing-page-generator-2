@@ -80,7 +80,7 @@ export const FAQSection = ({ id }: FAQSectionProps) => {
   ];
 
   return (
-    <section id={id} className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+    <section id={id} aria-label="Часто задаваемые вопросы" className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-3 sm:mb-4">
           Частые вопросы

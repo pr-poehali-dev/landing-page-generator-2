@@ -123,7 +123,7 @@ export const BenefitsSection = ({ id }: BenefitsSectionProps) => {
   };
 
   return (
-    <section id={id} className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+    <section id={id} aria-label="Преимущества гостиницы" className="py-12 sm:py-16 md:py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-center mb-8 sm:mb-12 md:mb-16">
           Наши преимущества

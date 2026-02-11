@@ -13,7 +13,11 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
           <div className="relative h-[280px] sm:h-[350px] md:h-[400px] lg:h-auto order-2 lg:order-1 mt-16 sm:mt-20 lg:mt-0">
             <img
               src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/files/19f647d6-2546-4471-9ccc-d7ca21f6f925.jpg"
-              alt="Довольный пушистый кот на мягком пледе"
+              alt="Довольный пушистый кот на мягком пледе в гостинице для кошек"
+              loading="eager"
+              fetchpriority="high"
+              width="960"
+              height="1280"
               className="w-full h-full object-cover"
             />
           </div>
@@ -25,7 +29,10 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
               <div className="mb-2 sm:mb-2 md:mb-3 lg:mb-3">
                 <img
                   src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/bucket/9c87fc62-5581-492b-8b9e-abafef336bc8.png"
-                  alt="Котняня"
+                  alt="Котоняня - логотип гостиницы для кошек"
+                  loading="eager"
+                  width="332"
+                  height="166"
                   className="h-[104px] sm:h-[127px] md:h-[150px] lg:h-[166px] w-auto"
                 />
               </div>
