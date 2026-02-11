@@ -15,7 +15,7 @@ export const BenefitsSection = ({ id }: BenefitsSectionProps) => {
   const benefits = [
     {
       icon: CatCameraIcon,
-      title: "Видеонаблюдение 24/7",
+      title: "Круглосуточное видеонаблюдение",
       desc: "4K камеры в каждой комнате с защищённым приложением",
       detailedDesc: "Смотрите жизнь вашей кошки онлайн в любой момент со смартфона — полная прозрачность и спокойствие."
     },
