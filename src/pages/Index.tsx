@@ -20,8 +20,8 @@ const Index = () => {
   return (
     <div className="min-h-screen relative">
       <MousePawPrints />
-      <Navigation />
       <HeroSection onBookNowClick={scrollToBooking} />
+      <Navigation />
       <LocationSection />
       <BenefitsSection id="benefits" />
       <PricingSection id="pricing" onBookNowClick={scrollToBooking} />
