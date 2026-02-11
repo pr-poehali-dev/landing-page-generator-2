@@ -11,18 +11,18 @@ interface PricingSectionProps {
   onBookNowClick: () => void;
 }
 
-const getFeatureIcon = (feature: string): string => {
-  if (feature.includes('Номер') || feature.includes('кв.м')) return 'Home';
-  if (feature.includes('Видеонаблюдение')) return 'Video';
-  if (feature.includes('игровой')) return 'Gamepad2';
-  if (feature.includes('груминг') || feature.includes('спа')) return 'Scissors';
-  if (feature.includes('котоняня')) return 'UserRound';
-  if (feature.includes('уборка')) return 'Sparkles';
-  if (feature.includes('Ветеринар')) return 'Stethoscope';
-  if (feature.includes('фото') || feature.includes('видео')) return 'Camera';
-  if (feature.includes('доставка')) return 'Car';
-  if (feature.includes('Питание')) return 'UtensilsCrossed';
-  return 'Check';
+const getFeatureIcon = (feature: string): { icon: string; color: string } => {
+  if (feature.includes('Номер') || feature.includes('кв.м')) return { icon: 'Home', color: 'text-blue-600' };
+  if (feature.includes('Видеонаблюдение')) return { icon: 'Video', color: 'text-purple-600' };
+  if (feature.includes('игровой')) return { icon: 'Gamepad2', color: 'text-pink-600' };
+  if (feature.includes('груминг') || feature.includes('спа')) return { icon: 'Scissors', color: 'text-indigo-600' };
+  if (feature.includes('котоняня')) return { icon: 'UserRound', color: 'text-orange-600' };
+  if (feature.includes('уборка')) return { icon: 'Sparkles', color: 'text-yellow-600' };
+  if (feature.includes('Ветеринар')) return { icon: 'Stethoscope', color: 'text-red-600' };
+  if (feature.includes('фото') || feature.includes('видео')) return { icon: 'Camera', color: 'text-cyan-600' };
+  if (feature.includes('доставка')) return { icon: 'Car', color: 'text-green-600' };
+  if (feature.includes('Питание')) return { icon: 'UtensilsCrossed', color: 'text-amber-600' };
+  return { icon: 'Check', color: 'text-green-600' };
 };
 
 export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
@@ -149,12 +149,15 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
       
       <CardContent className="space-y-6 flex-1 flex flex-col">
         <ul className="space-y-3 flex-1">
-          {plan.features.map((feature, fidx) => (
-            <li key={fidx} className="flex items-start gap-2 sm:gap-3">
-              <Icon name={getFeatureIcon(feature)} size={18} className="text-primary flex-shrink-0 mt-0.5" />
-              <span className="text-xs sm:text-sm leading-relaxed">{feature}</span>
-            </li>
-          ))}
+          {plan.features.map((feature, fidx) => {
+            const { icon, color } = getFeatureIcon(feature);
+            return (
+              <li key={fidx} className="flex items-start gap-2 sm:gap-3">
+                <Icon name={icon} size={18} className={`${color} flex-shrink-0 mt-0.5`} />
+                <span className="text-xs sm:text-sm leading-relaxed">{feature}</span>
+              </li>
+            );
+          })}
         </ul>
         
         <Button 
