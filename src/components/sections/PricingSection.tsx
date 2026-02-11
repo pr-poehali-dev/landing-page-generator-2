@@ -11,6 +11,20 @@ interface PricingSectionProps {
   onBookNowClick: () => void;
 }
 
+const getFeatureIcon = (feature: string): string => {
+  if (feature.includes('Номер') || feature.includes('кв.м')) return 'Home';
+  if (feature.includes('Видеонаблюдение')) return 'Video';
+  if (feature.includes('игровой')) return 'Gamepad2';
+  if (feature.includes('груминг') || feature.includes('спа')) return 'Scissors';
+  if (feature.includes('котоняня')) return 'UserRound';
+  if (feature.includes('уборка')) return 'Sparkles';
+  if (feature.includes('Ветеринар')) return 'Stethoscope';
+  if (feature.includes('фото') || feature.includes('видео')) return 'Camera';
+  if (feature.includes('доставка')) return 'Car';
+  if (feature.includes('Питание')) return 'UtensilsCrossed';
+  return 'Check';
+};
+
 export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
   const allPlans = [
     {
@@ -137,7 +151,7 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
         <ul className="space-y-3 flex-1">
           {plan.features.map((feature, fidx) => (
             <li key={fidx} className="flex items-start gap-2 sm:gap-3">
-              <Icon name="Check" size={18} className="text-green-600 flex-shrink-0 mt-0.5" />
+              <Icon name={getFeatureIcon(feature)} size={18} className="text-primary flex-shrink-0 mt-0.5" />
               <span className="text-xs sm:text-sm leading-relaxed">{feature}</span>
             </li>
           ))}
