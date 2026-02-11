@@ -160,7 +160,7 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
         </ul>
         
         <Button 
-          className={`w-full mt-4 ${plan.popular ? 'bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold hover:shadow-lg animate-pulse' : ''}`}
+          className={`w-full mt-4 ${plan.popular ? 'bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold hover:shadow-[0_0_30px_rgba(0,240,255,0.6),0_0_50px_rgba(255,79,216,0.4)] animate-pulse transition-all duration-300' : ''}`}
           size="lg"
           variant={plan.popular ? "default" : "outline"}
           onClick={onBookNowClick}
