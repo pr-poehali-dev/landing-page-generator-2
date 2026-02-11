@@ -106,7 +106,12 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
       {plan.popular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
           <Badge className="text-sm px-6 py-1.5 bg-primary text-primary-foreground shadow-lg">
-            ⭐⭐⭐⭐⭐ ПОПУЛЯРНЫЙ
+            <span className="inline-block animate-[starShimmer_2s_ease-in-out_infinite]">⭐</span>
+            <span className="inline-block animate-[starShimmer_2s_ease-in-out_infinite_0.2s]">⭐</span>
+            <span className="inline-block animate-[starShimmer_2s_ease-in-out_infinite_0.4s]">⭐</span>
+            <span className="inline-block animate-[starShimmer_2s_ease-in-out_infinite_0.6s]">⭐</span>
+            <span className="inline-block animate-[starShimmer_2s_ease-in-out_infinite_0.8s]">⭐</span>
+            <span className="ml-1">ПОПУЛЯРНЫЙ</span>
           </Badge>
         </div>
       )}
