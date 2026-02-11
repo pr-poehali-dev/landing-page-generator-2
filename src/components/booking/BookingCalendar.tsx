@@ -6,11 +6,15 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 import { format, differenceInDays, addMonths, parseISO, eachDayOfInterval } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import confetti from 'canvas-confetti';
+import { PrivacyPolicyModal } from '@/components/modals/PrivacyPolicyModal';
+import { OfferAgreementModal } from '@/components/modals/OfferAgreementModal';
+import { PersonalDataConsentModal } from '@/components/modals/PersonalDataConsentModal';
 
 interface BookingFormData {
   customerName: string;
@@ -46,6 +50,10 @@ export const BookingCalendar = () => {
   const [bookedDates, setBookedDates] = useState<Date[]>([]);
   const [isLoadingDates, setIsLoadingDates] = useState(true);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
+  const [consentOpen, setConsentOpen] = useState(false);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -122,6 +130,15 @@ export const BookingCalendar = () => {
       return;
     }
 
+    if (!agreedToTerms) {
+      toast({
+        title: 'Ошибка',
+        description: 'Необходимо согласиться с условиями обработки данных',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -176,6 +193,7 @@ export const BookingCalendar = () => {
           tariff: 'comfort',
         });
         setDateRange({ from: undefined, to: undefined });
+        setAgreedToTerms(false);
       } else {
         throw new Error('Ошибка отправки');
       }
@@ -418,10 +436,45 @@ export const BookingCalendar = () => {
               </div>
             </div>
 
+            <div className="flex items-start gap-3 p-4 bg-muted/50 rounded-lg border-2 border-border">
+              <Checkbox
+                id="terms"
+                checked={agreedToTerms}
+                onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
+                className="mt-1"
+              />
+              <Label htmlFor="terms" className="text-xs sm:text-sm leading-relaxed cursor-pointer">
+                Я согласен(на) с{' '}
+                <button
+                  type="button"
+                  onClick={() => setOfferOpen(true)}
+                  className="text-primary hover:underline font-semibold"
+                >
+                  договором оферты
+                </button>
+                ,{' '}
+                <button
+                  type="button"
+                  onClick={() => setPrivacyOpen(true)}
+                  className="text-primary hover:underline font-semibold"
+                >
+                  политикой конфиденциальности
+                </button>
+                {' '}и даю{' '}
+                <button
+                  type="button"
+                  onClick={() => setConsentOpen(true)}
+                  className="text-primary hover:underline font-semibold"
+                >
+                  согласие на обработку персональных данных
+                </button>
+              </Label>
+            </div>
+
             <Button
               type="submit"
               className="w-full text-base sm:text-lg py-5 sm:py-6 bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] font-semibold shadow-[0_0_30px_rgba(0,0,0,0.25)] hover:shadow-[0_0_40px_rgba(0,0,0,0.3)] hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:hover:scale-100"
-              disabled={isSubmitting || !dateRange.from || !dateRange.to}
+              disabled={isSubmitting || !dateRange.from || !dateRange.to || !agreedToTerms}
             >
               {isSubmitting ? (
                 <>
@@ -435,6 +488,10 @@ export const BookingCalendar = () => {
           </form>
         </CardContent>
       </Card>
+
+      <PrivacyPolicyModal open={privacyOpen} onOpenChange={setPrivacyOpen} />
+      <OfferAgreementModal open={offerOpen} onOpenChange={setOfferOpen} />
+      <PersonalDataConsentModal open={consentOpen} onOpenChange={setConsentOpen} />
     </div>
   );
 };
