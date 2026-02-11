@@ -124,7 +124,7 @@ export const GallerySection = () => {
     <section className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4 animate-fade-in">
-          Галерея счастливых котиков
+          Отзывы наших гостей
         </h2>
         <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '100ms' }}>
           Наши пушистые гости наслаждаются комфортом, играми и заботой. Нажмите на карточку, чтобы увидеть отзыв! 
