@@ -106,7 +106,7 @@ export const PricingSection = ({ id, onBookNowClick }: PricingSectionProps) => {
       {plan.popular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
           <Badge className="text-sm px-6 py-1.5 bg-primary text-primary-foreground shadow-lg">
-            ⭐ ПОПУЛЯРНЫЙ
+            ⭐⭐⭐⭐⭐ ПОПУЛЯРНЫЙ
           </Badge>
         </div>
       )}
