@@ -86,7 +86,28 @@ export const BookingCalendar = () => {
     const days = differenceInDays(dateRange.to, dateRange.from) + 1;
     const selectedTariff = TARIFFS.find(t => t.id === formData.tariff);
     const pricePerDay = selectedTariff?.price || 900;
-    return days * pricePerDay;
+    let totalPrice = days * pricePerDay;
+    
+    // Скидки за длительное проживание
+    if (days >= 14) {
+      totalPrice *= 0.85; // -15% от 14 дней
+    } else if (days >= 7) {
+      totalPrice *= 0.90; // -10% от 7 дней
+    }
+    
+    return Math.round(totalPrice);
+  };
+
+  const getDiscountInfo = () => {
+    if (!dateRange.from || !dateRange.to) return null;
+    const days = differenceInDays(dateRange.to, dateRange.from) + 1;
+    
+    if (days >= 14) {
+      return { percent: 15, text: 'Скидка 15% за проживание от 14 дней' };
+    } else if (days >= 7) {
+      return { percent: 10, text: 'Скидка 10% за проживание от 7 дней' };
+    }
+    return null;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -283,6 +304,15 @@ export const BookingCalendar = () => {
                 </div>
               </div>
               
+              {getDiscountInfo() && (
+                <div className="flex items-center gap-2 p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
+                  <Icon name="BadgePercent" size={20} className="text-green-600" />
+                  <span className="text-sm font-medium text-green-700 dark:text-green-400">
+                    {getDiscountInfo()?.text}
+                  </span>
+                </div>
+              )}
+
               <div className="flex items-center justify-between p-3 sm:p-4 bg-accent/50 rounded-lg">
                 <div>
                   <p className="text-xs sm:text-sm text-muted-foreground">Количество дней</p>
