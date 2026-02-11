@@ -1,12 +1,61 @@
 import { Button } from "@/components/ui/button";
+import Icon from "@/components/ui/icon";
 
 interface HeroSectionProps {
   onBookNowClick: () => void;
 }
 
 export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#B8D8F0] via-[#D0DEF5] to-[#E6E0F8] overflow-hidden">
+      {/* Navigation Menu */}
+      <nav className="absolute top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            <div className="flex items-center gap-6 sm:gap-8 md:gap-12">
+              <button
+                onClick={() => scrollToSection('benefits')}
+                className="flex items-center gap-2 text-sm sm:text-base text-[#050816] hover:text-primary transition-colors"
+              >
+                <Icon name="Star" size={18} />
+                <span>Преимущества</span>
+              </button>
+              <button
+                onClick={() => scrollToSection('pricing')}
+                className="flex items-center gap-2 text-sm sm:text-base text-[#050816] hover:text-primary transition-colors"
+              >
+                <Icon name="DollarSign" size={18} />
+                <span>Тарифы</span>
+              </button>
+              <button
+                onClick={() => scrollToSection('testimonials')}
+                className="flex items-center gap-2 text-sm sm:text-base text-[#050816] hover:text-primary transition-colors"
+              >
+                <Icon name="MessageSquare" size={18} />
+                <span>Отзывы</span>
+              </button>
+              <button
+                onClick={() => scrollToSection('faq')}
+                className="flex items-center gap-2 text-sm sm:text-base text-[#050816] hover:text-primary transition-colors"
+              >
+                <Icon name="HelpCircle" size={18} />
+                <span>Вопросы</span>
+              </button>
+            </div>
+            <Button
+              onClick={onBookNowClick}
+              className="px-4 sm:px-6 py-2 text-sm sm:text-base font-semibold rounded-full bg-gradient-to-r from-[#00F0FF] via-[#43E3FF] to-[#FF4FD8] text-[#050816] shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              Бронь
+            </Button>
+          </div>
+        </div>
+      </nav>
+
       <div className="w-full max-w-[1920px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-0 min-h-screen">
           {/* Left Column - Image */}
