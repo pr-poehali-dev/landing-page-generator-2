@@ -1,7 +1,14 @@
+import { useState } from 'react';
 import Icon from '@/components/ui/icon';
+import { PrivacyPolicyModal } from '@/components/modals/PrivacyPolicyModal';
+import { OfferAgreementModal } from '@/components/modals/OfferAgreementModal';
+import { PersonalDataConsentModal } from '@/components/modals/PersonalDataConsentModal';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [privacyOpen, setPrivacyOpen] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
+  const [consentOpen, setConsentOpen] = useState(false);
 
   return (
     <footer role="contentinfo" className="bg-gradient-to-br from-primary/10 via-background to-accent/10 border-t-2 border-primary/20">
@@ -109,16 +116,32 @@ export const Footer = () => {
               <p>© {currentYear} Котоняня. Все права защищены.</p>
             </div>
             <div className="flex flex-wrap justify-center gap-6">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <button 
+                onClick={() => setPrivacyOpen(true)}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 Политика конфиденциальности
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button 
+                onClick={() => setOfferOpen(true)}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
                 Договор оферты
-              </a>
+              </button>
+              <button 
+                onClick={() => setConsentOpen(true)}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                Согласие на обработку данных
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      <PrivacyPolicyModal open={privacyOpen} onOpenChange={setPrivacyOpen} />
+      <OfferAgreementModal open={offerOpen} onOpenChange={setOfferOpen} />
+      <PersonalDataConsentModal open={consentOpen} onOpenChange={setConsentOpen} />
     </footer>
   );
 };
