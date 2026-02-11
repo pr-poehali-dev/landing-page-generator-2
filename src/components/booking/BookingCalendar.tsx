@@ -429,10 +429,7 @@ export const BookingCalendar = () => {
                   Отправка...
                 </>
               ) : (
-                <>
-                  <Icon name="Send" className="mr-2" size={20} />
-                  Отправить заявку
-                </>
+                'Отправить заявку'
               )}
             </Button>
           </form>
