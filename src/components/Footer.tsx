@@ -26,16 +26,16 @@ export const Footer = () => {
             <div className="space-y-3 text-sm">
               <a 
                 href="tel:+79244303990" 
-                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+                className="flex items-start gap-3 text-muted-foreground hover:text-primary transition-colors group"
               >
-                <Icon name="Phone" size={18} className="shrink-0 group-hover:scale-110 transition-transform" />
+                <Icon name="Phone" size={18} className="shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
                 <span>+7 924 430 39 90</span>
               </a>
               <a 
                 href="mailto:info@kotnyanya.ru" 
-                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
+                className="flex items-start gap-3 text-muted-foreground hover:text-primary transition-colors group"
               >
-                <Icon name="Mail" size={18} className="shrink-0 group-hover:scale-110 transition-transform" />
+                <Icon name="Mail" size={18} className="shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
                 <span>info@kotnyanya.ru</span>
               </a>
               <div className="flex items-start gap-3 text-muted-foreground">
