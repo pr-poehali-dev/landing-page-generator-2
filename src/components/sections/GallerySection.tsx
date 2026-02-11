@@ -3,7 +3,6 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import confetti from 'canvas-confetti';
-import { playSound } from '@/utils/sounds';
 
 export const GallerySection = () => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
@@ -61,8 +60,6 @@ export const GallerySection = () => {
 
   const toggleFlip = (index: number) => {
     const isCurrentlyFlipped = flippedCards.includes(index);
-    
-    playSound('meow');
     
     if (!isCurrentlyFlipped) {
       confetti({
