@@ -85,11 +85,11 @@ export const HeroSection = ({ onBookNowClick }: HeroSectionProps) => {
           <div className="flex flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-20 py-6 sm:py-8 md:py-12 lg:py-0 order-1 lg:order-2">
             <div className="max-w-[480px] mx-auto lg:mx-0">
               {/* Logo */}
-              <div className="mb-4 sm:mb-6">
+              <div className="mb-6 sm:mb-8 md:mb-10">
                 <img
                   src="https://cdn.poehali.dev/projects/ca3db9f9-0ce2-4601-97bd-22400ea91d8a/bucket/9c87fc62-5581-492b-8b9e-abafef336bc8.png"
                   alt="Котняня"
-                  className="h-[90px] sm:h-[110px] md:h-[130px] lg:h-[144px] w-auto"
+                  className="h-[104px] sm:h-[127px] md:h-[150px] lg:h-[166px] w-auto"
                 />
               </div>
 
