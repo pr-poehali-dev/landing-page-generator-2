@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import Icon from '@/components/ui/icon';
 import { format, differenceInDays, addMonths, parseISO, eachDayOfInterval } from 'date-fns';
@@ -18,7 +19,14 @@ interface BookingFormData {
   catName: string;
   catBreed: string;
   specialNeeds: string;
+  tariff: string;
 }
+
+const TARIFFS = [
+  { id: 'standard', name: 'Стандартный', price: 600, description: 'Уютный номер с базовыми удобствами' },
+  { id: 'comfort', name: 'Комфорт ⭐', price: 900, description: 'Просторный номер с дополнительными игрушками' },
+  { id: 'luxury', name: 'Люкс 💎', price: 1400, description: 'Премиум номер с панорамными окнами' },
+];
 
 export const BookingCalendar = () => {
   const [dateRange, setDateRange] = useState<{ from: Date | undefined; to: Date | undefined }>({
@@ -32,6 +40,7 @@ export const BookingCalendar = () => {
     catName: '',
     catBreed: '',
     specialNeeds: '',
+    tariff: 'comfort',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bookedDates, setBookedDates] = useState<Date[]>([]);
@@ -75,7 +84,8 @@ export const BookingCalendar = () => {
   const calculatePrice = () => {
     if (!dateRange.from || !dateRange.to) return 0;
     const days = differenceInDays(dateRange.to, dateRange.from) + 1;
-    const pricePerDay = 1500;
+    const selectedTariff = TARIFFS.find(t => t.id === formData.tariff);
+    const pricePerDay = selectedTariff?.price || 900;
     return days * pricePerDay;
   };
 
@@ -105,9 +115,14 @@ export const BookingCalendar = () => {
           email: formData.email,
           checkinDate: format(dateRange.from, 'yyyy-MM-dd'),
           checkoutDate: format(dateRange.to, 'yyyy-MM-dd'),
-          tariff: `${formData.catName}${formData.catBreed ? ' (' + formData.catBreed + ')' : ''}`,
+          tariff: formData.tariff,
           catCount: 1,
-          message: formData.specialNeeds,
+          message: `Питомец: ${formData.catName}${formData.catBreed ? ' (' + formData.catBreed + ')' : ''}. ${formData.specialNeeds}`,
+          catInfo: {
+            name: formData.catName,
+            breed: formData.catBreed,
+            specialNeeds: formData.specialNeeds
+          },
         }),
       });
 
@@ -137,6 +152,7 @@ export const BookingCalendar = () => {
           catName: '',
           catBreed: '',
           specialNeeds: '',
+          tariff: 'comfort',
         });
         setDateRange({ from: undefined, to: undefined });
       } else {
@@ -186,8 +202,25 @@ export const BookingCalendar = () => {
             <Icon name="Calendar" size={24} className="sm:w-7 sm:h-7" />
             Выберите даты
           </CardTitle>
-          <CardDescription className="text-sm sm:text-base">
-            Укажите период проживания вашего питомца. Занятые даты недоступны для выбора.
+          <CardDescription className="space-y-3">
+            <div>
+              <Label htmlFor="tariff" className="text-base font-semibold mb-2 block">Выберите тариф проживания</Label>
+              <Select value={formData.tariff} onValueChange={(value) => setFormData({ ...formData, tariff: value })}>
+                <SelectTrigger id="tariff" className="w-full">
+                  <SelectValue placeholder="Выберите тариф" />
+                </SelectTrigger>
+                <SelectContent>
+                  {TARIFFS.map(tariff => (
+                    <SelectItem key={tariff.id} value={tariff.id}>
+                      <div className="flex flex-col">
+                        <span className="font-semibold">{tariff.name} — {tariff.price} ₽/день</span>
+                        <span className="text-xs text-muted-foreground">{tariff.description}</span>
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </CardDescription>
           {isLoadingDates && (
             <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2">
