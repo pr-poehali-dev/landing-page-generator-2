@@ -10,6 +10,7 @@ interface GallerySectionProps {
 
 export const GallerySection = ({ id }: GallerySectionProps) => {
   const [flippedCards, setFlippedCards] = useState<number[]>([]);
+  const [isVisible, setIsVisible] = useState(false);
 
   const photos = [
     {
@@ -124,13 +125,46 @@ export const GallerySection = ({ id }: GallerySectionProps) => {
     emblaApi.on('reInit', onSelect);
   }, [emblaApi, onSelect]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const section = document.getElementById(id || '');
+    if (section) {
+      observer.observe(section);
+    }
+
+    return () => {
+      if (section) {
+        observer.unobserve(section);
+      }
+    };
+  }, [id]);
+
   return (
     <section id={id} aria-label="Отзывы наших гостей" className="py-20 px-4 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-heading font-bold text-center mb-4 animate-fade-in">
+        <h2 
+          className={`text-4xl md:text-5xl font-heading font-bold text-center mb-4 transition-all duration-700 ${
+            isVisible ? 'animate-[slideInFromBottom_0.7s_ease-out]' : 'opacity-0'
+          }`}
+        >
           Отзывы наших гостей
         </h2>
-        <p className="text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '100ms' }}>
+        <p 
+          className={`text-center text-muted-foreground text-lg mb-16 max-w-2xl mx-auto transition-all duration-700 ${
+            isVisible ? 'animate-[slideInFromBottom_0.7s_ease-out_0.2s]' : 'opacity-0'
+          }`}
+          style={{ animationFillMode: 'both' }}
+        >
           Наши пушистые постояльцы наслаждаются комфортом, играми и заботой. Нажмите на карточку, чтобы увидеть отзыв! 
         </p>
         
