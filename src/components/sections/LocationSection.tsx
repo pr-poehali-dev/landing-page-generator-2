@@ -11,7 +11,7 @@ export const LocationSection = () => {
             </h2>
             <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
               Современная кошачья гостиница в самом сердце Владивостока. Удобное расположение, 
-              тихий район и профессиональный уход за вашими питомцами.
+              современный сервис и профессиональный уход за вашими питомцами.
             </p>
             
             <div className="space-y-4">
