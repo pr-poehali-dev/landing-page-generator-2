@@ -2,16 +2,63 @@ const soundCache: Record<string, HTMLAudioElement> = {};
 
 export const playSound = (soundType: 'meow' | 'purr' | 'click' | 'success') => {
   try {
+    const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    const audioContext = new AudioContextClass();
+
+    if (soundType === 'meow') {
+      const duration = 0.5;
+      const now = audioContext.currentTime;
+
+      const oscillator1 = audioContext.createOscillator();
+      const oscillator2 = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      const filter = audioContext.createBiquadFilter();
+
+      oscillator1.connect(filter);
+      oscillator2.connect(filter);
+      filter.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      oscillator1.type = 'sawtooth';
+      oscillator2.type = 'square';
+      filter.type = 'bandpass';
+      filter.frequency.value = 1500;
+      filter.Q.value = 1;
+
+      oscillator1.frequency.setValueAtTime(900, now);
+      oscillator1.frequency.exponentialRampToValueAtTime(600, now + 0.15);
+      oscillator1.frequency.exponentialRampToValueAtTime(400, now + duration);
+
+      oscillator2.frequency.setValueAtTime(450, now);
+      oscillator2.frequency.exponentialRampToValueAtTime(300, now + 0.15);
+      oscillator2.frequency.exponentialRampToValueAtTime(200, now + duration);
+
+      gainNode.gain.setValueAtTime(0, now);
+      gainNode.gain.linearRampToValueAtTime(0.15, now + 0.02);
+      gainNode.gain.linearRampToValueAtTime(0.12, now + 0.1);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, now + duration);
+
+      oscillator1.start(now);
+      oscillator2.start(now);
+      oscillator1.stop(now + duration);
+      oscillator2.stop(now + duration);
+
+      setTimeout(() => {
+        oscillator1.disconnect();
+        oscillator2.disconnect();
+        filter.disconnect();
+        gainNode.disconnect();
+        audioContext.close();
+      }, duration * 1000 + 100);
+
+      return;
+    }
+
     let frequency = 400;
     let duration = 0.15;
     let volume = 0.15;
 
     switch (soundType) {
-      case 'meow':
-        frequency = 800;
-        duration = 0.3;
-        volume = 0.2;
-        break;
       case 'purr':
         frequency = 200;
         duration = 0.5;
@@ -29,7 +76,6 @@ export const playSound = (soundType: 'meow' | 'purr' | 'click' | 'success') => {
         break;
     }
 
-    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
 
@@ -42,11 +88,7 @@ export const playSound = (soundType: 'meow' | 'purr' | 'click' | 'success') => {
     gainNode.gain.setValueAtTime(0, audioContext.currentTime);
     gainNode.gain.linearRampToValueAtTime(volume, audioContext.currentTime + 0.01);
     
-    if (soundType === 'meow') {
-      oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
-      oscillator.frequency.linearRampToValueAtTime(frequency * 0.7, audioContext.currentTime + duration * 0.5);
-      oscillator.frequency.linearRampToValueAtTime(frequency * 0.5, audioContext.currentTime + duration);
-    } else if (soundType === 'purr') {
+    if (soundType === 'purr') {
       oscillator.frequency.setValueAtTime(frequency, audioContext.currentTime);
       oscillator.frequency.linearRampToValueAtTime(frequency * 1.1, audioContext.currentTime + duration * 0.5);
       oscillator.frequency.linearRampToValueAtTime(frequency, audioContext.currentTime + duration);
